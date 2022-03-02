@@ -1,0 +1,3 @@
+SqlLocalDb start ArtDBInstance
+SqlLocalDb info ArtDBInstance
+pause

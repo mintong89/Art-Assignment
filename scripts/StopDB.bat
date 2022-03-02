@@ -1,0 +1,1 @@
+SqlLocalDb stop ArtDBInstance
