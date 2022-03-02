@@ -33,7 +33,6 @@ GO
 CREATE TABLE [dbo].[Artist] (
   [ID] varchar(255) NOT NULL PRIMARY KEY,
   [Name] varchar(255) NOT NULL,
-  [Email] varchar(255),
   [BioDesc] varchar(255),
   [Rating] int,
   [UserID] varchar(255) NOT NULL,
