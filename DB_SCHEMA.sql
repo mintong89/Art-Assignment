@@ -36,7 +36,7 @@ CREATE TABLE [dbo].[Artist] (
   [Email] varchar(255),
   [BioDesc] varchar(255),
   [Rating] int,
-  [UserID] varchar(255),
+  [UserID] varchar(255) NOT NULL,
 
   -- Common Fields
   DateCreated Date,
@@ -50,7 +50,7 @@ CREATE TABLE [dbo].[ArtProd] (
   [ID] varchar(255) NOT NULL PRIMARY KEY,
   [Name] varchar(255) NOT NULL,
   [Description] varchar(255),
-  [ArtistOwner] varchar(255),
+  [ArtistOwner] varchar(255) NOT NULL,
   
   -- Common Fields
   [DateCreated] Date,
@@ -70,8 +70,8 @@ CREATE TABLE [dbo].[Order] (
   [State] varchar(255) NOT NULL,
   [Country] varchar(255) NOT NULL,
   [OrderTotal] float NOT NULL,
-  [OrderMadeBy] varchar(255),
-  [DeliveryFee] int NOT NULL,
+  [OrderMadeBy] varchar(255) NOT NULL,
+  [DeliveryFee] int,
 
   -- Common Fields
   [DateCreated] Date,
@@ -101,7 +101,7 @@ CREATE TABLE [dbo].[Payment] (
   [Status] varchar(255) NOT NULL,
   [PaymentMethod] varchar(255) NOT NULL,
   [PaymentAmount] float,
-  [OrderID] varchar(255),
+  [OrderID] varchar(255) NOT NULL,
   -- Common Fields
   [DateCreated] Date,
   [DateModified] Date,
