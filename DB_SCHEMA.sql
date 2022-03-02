@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS [dbo].[User];
 GO
 
 CREATE TABLE [dbo].[User] (
-  [ID] varchar(200) NOT NULL PRIMARY KEY,
+  [ID] varchar(255) NOT NULL PRIMARY KEY,
   [IsActive] BIT,
   [Name] varchar(255) NOT NULL,
   [Password] varchar(255) NOT NULL,
