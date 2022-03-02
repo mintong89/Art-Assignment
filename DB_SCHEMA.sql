@@ -36,12 +36,13 @@ CREATE TABLE [dbo].[Artist] (
   [Email] varchar(255),
   [BioDesc] varchar(255),
   [Rating] int,
-  [UserID] varchar(255) FOREIGN KEY REFERENCES [dbo].[User](ID),
+  [UserID] varchar(255),
 
   -- Common Fields
   DateCreated Date,
   DateModified Date,
-  DateDeleted Date
+  DateDeleted Date,
+  CONSTRAINT FK_UserID FOREIGN KEY (UserID) REFERENCES [dbo].[User](ID)
 );
 GO
 
@@ -49,12 +50,13 @@ CREATE TABLE [dbo].[ArtProd] (
   [ID] varchar(255) NOT NULL PRIMARY KEY,
   [Name] varchar(255) NOT NULL,
   [Description] varchar(255),
-  [ArtistOwner] varchar(255) FOREIGN KEY REFERENCES [dbo].[Artist](ID),
-
+  [ArtistOwner] varchar(255),
+  
   -- Common Fields
   [DateCreated] Date,
   [DateModified] Date,
-  [DateDeleted] Date
+  [DateDeleted] Date,
+  CONSTRAINT FK_ArtistOwner FOREIGN KEY (ArtistOwner) REFERENCES [dbo].[Artist](ID)
 );
 GO
 
@@ -68,13 +70,14 @@ CREATE TABLE [dbo].[Order] (
   [State] varchar(255) NOT NULL,
   [Country] varchar(255) NOT NULL,
   [OrderTotal] float NOT NULL,
+  [OrderMadeBy] varchar(255),
   [DeliveryFee] int NOT NULL,
-  [OrderMadeBy] varchar(255) NOT NULL FOREIGN KEY REFERENCES [dbo].[User](ID),
 
   -- Common Fields
   [DateCreated] Date,
   [DateModified] Date,
-  [DateDeleted] Date
+  [DateDeleted] Date,
+  CONSTRAINT FK_OrderMadeBy FOREIGN KEY (OrderMadeBy) REFERENCES [dbo].[User](ID)
 );
 GO
 
@@ -84,8 +87,8 @@ GO
 CREATE TABLE [dbo].[OrderItem] (
   OrderID varchar(255) NOT NULL,
   ArtItemID varchar(255) NOT NULL,
-  CONSTRAINT FK_OrderID FOREIGN KEY (OrderID) REFERENCES [dbo].[Order](ID),
-  CONSTRAINT FK_ArtItemID FOREIGN KEY (ArtItemID) REFERENCES [dbo].[ArtProd](ID), 
+  CONSTRAINT COM_K_OrderID FOREIGN KEY (OrderID) REFERENCES [dbo].[Order](ID),
+  CONSTRAINT COM_K_ArtItemID FOREIGN KEY (ArtItemID) REFERENCES [dbo].[ArtProd](ID), 
   CONSTRAINT [PK_OrderItem] PRIMARY KEY ([ArtItemID], [OrderID])
 );
 GO
@@ -97,11 +100,14 @@ CREATE TABLE [dbo].[Payment] (
   [ID] varchar(255) NOT NULL PRIMARY KEY,
   [Status] varchar(255) NOT NULL,
   [PaymentMethod] varchar(255) NOT NULL,
-
+  [PaymentAmount] float,
+  [OrderID] varchar(255),
   -- Common Fields
   [DateCreated] Date,
   [DateModified] Date,
-  [DateDeleted] Date
+  [DateDeleted] Date,
+
+  CONSTRAINT FK_OrderID FOREIGN KEY (OrderID) REFERENCES [dbo].[Order](ID)
 );
 GO
 
