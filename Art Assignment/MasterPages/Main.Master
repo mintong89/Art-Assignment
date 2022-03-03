@@ -12,7 +12,20 @@
 <body>
     <form runat="server">
         <div class="top-nav-bar-cont">
-            Top Nav Here
+            <div>
+                Icon
+            </div>
+            <div>
+                Search
+            </div>
+            <div class="nav-bar-right">
+                <div>
+                    Shopping Cart
+                </div>
+                <div>
+                    Account
+                </div>
+            </div>
         </div>
         <asp:ContentPlaceHolder ID="content" runat="server">
         </asp:ContentPlaceHolder>

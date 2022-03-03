@@ -1,4 +1,9 @@
-﻿body {
+﻿:root {
+    --nav-bar-height: 30px;
+    --nav-bar-padding: 10px;
+}
+
+body {
     font-family: Arial, sans-serif;
 }
 
