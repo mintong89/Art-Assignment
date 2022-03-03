@@ -7,8 +7,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="home-container flex justify-content-center align-items-center">
         <div class="home-content">
-            <div class="flex justify-content-center">Buy Art from {n} artist</div>
-            <asp:TextBox ID="SearchBox" runat="server" placeholder="Find an Art Piece..."></asp:TextBox>
+            <div class="flex justify-content-center text-7xl">Buy Art from {n} artist</div>
+            
+            <div class="flex justify-content-center mt-3 "><asp:TextBox class="rounded-full p-3" ID="SearchBox" runat="server" placeholder="Find an Art Piece..."></asp:TextBox></div>
+            <%--<asp:TextBox ID="SearchBox" runat="server" placeholder="Find an Art Piece..."></asp:TextBox>--%>
         </div>
     </div>
 </asp:Content>
