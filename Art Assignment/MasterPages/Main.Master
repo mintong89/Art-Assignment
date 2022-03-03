@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
+    <link runat="server" href="~/css/normalize.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="~/css/main.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
