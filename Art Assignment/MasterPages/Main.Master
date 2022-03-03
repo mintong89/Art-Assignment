@@ -5,12 +5,16 @@
 <head runat="server">
     <link runat="server" href="~/css/normalize.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="~/css/main.css" rel="stylesheet" type="text/css" />
+    <link runat="server" href="~/css/nav_bar.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
-        <asp:ContentPlaceHolder ID="body" runat="server">
+        <div class="top-nav-bar-cont">
+            Top Nav Here
+        </div>
+        <asp:ContentPlaceHolder ID="content" runat="server">
         </asp:ContentPlaceHolder>
     </form>
 </body>
