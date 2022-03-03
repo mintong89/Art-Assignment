@@ -12,7 +12,7 @@
 </head>
 <body>
     <form runat="server">
-        <div class="top-nav-bar-cont">
+<%--        <div class="top-nav-bar-cont">
             <div>
                 Icon
             </div>
@@ -27,7 +27,19 @@
                     Account
                 </div>
             </div>
-        </div>
+        </div>--%>
+        <header class="fixed w-full bg-white px-4 py-2.5 drop-shadow-lg">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                     <div class="header-icon w-20 h-20 border border-black rounded-full flex justify-center items-center">
+                       LOGO
+                     </div>
+                    <div class="header-search w-96 h-11 mx-5 border border-black rounded-full shadow-md">
+                        
+                    </div>
+                </div>
+            </div>
+        </header>
         <asp:ContentPlaceHolder ID="content" runat="server">
         </asp:ContentPlaceHolder>
     </form>
