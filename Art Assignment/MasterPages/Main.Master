@@ -6,6 +6,7 @@
     <link runat="server" href="~/css/normalize.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="~/css/main.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="~/css/nav_bar.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
