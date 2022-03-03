@@ -9,7 +9,9 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <asp:ContentPlaceHolder ID="body" runat="server">
-    </asp:ContentPlaceHolder>
+    <form runat="server">
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
 </body>
 </html>

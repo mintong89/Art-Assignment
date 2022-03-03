@@ -1,0 +1,18 @@
+﻿.home-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    grid-template-columns: 1fr;
+    background-image: url("../resources/home-background.jpg")
+}
+
+.home-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+}
+
+.hometopbar-container {
+        
+}
