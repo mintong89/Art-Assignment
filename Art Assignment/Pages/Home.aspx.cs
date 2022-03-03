@@ -6,7 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-namespace Art_Assignment
+
+namespace Art_Assignment.Pages
 {
     public partial class Home : System.Web.UI.Page
     {
