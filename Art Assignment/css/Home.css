@@ -1,5 +1,5 @@
 ﻿.home-container {
-    height: calc(100vh - var(--nav-bar-height) - var(--nav-bar-padding));
+    height: calc(100vh - var(--nav-bar-height) - 2 * var(--nav-bar-padding));
     background-image: url("../resources/home-background.jpg");
     background-size: cover;
 }
