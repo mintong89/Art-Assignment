@@ -5,7 +5,6 @@
 <head runat="server">
     <link runat="server" href="~/css/normalize.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="~/css/main.css" rel="stylesheet" type="text/css" />
-    <link runat="server" href="~/css/nav_bar.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="../Content/all.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -13,22 +12,6 @@
 </head>
 <body>
     <form runat="server">
-<%--        <div class="top-nav-bar-cont">
-            <div>
-                Icon
-            </div>
-            <div>
-                Search
-            </div>
-            <div class="nav-bar-right">
-                <div>
-                    Shopping Cart
-                </div>
-                <div>
-                    Account
-                </div>
-            </div>
-        </div>--%>
         <header class="sticky w-full bg-white px-4 py-2.5 drop-shadow-lg">
             <div class="flex justify-between">
                 <div class="flex items-center">
