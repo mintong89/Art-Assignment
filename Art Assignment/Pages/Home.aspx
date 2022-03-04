@@ -10,7 +10,7 @@
         <div class="home-content">
             <div class="flex justify-content-center text-7xl">Buy Art from {n} artist</div>
             
-            <div class="flex justify-content-center mt-3 "><asp:TextBox class="rounded-full p-3" ID="SearchBox" runat="server" placeholder="Find an Art Piece..." ></asp:TextBox></div>
+            <div class="flex justify-content-center mt-3 "><i class="fas fa-lg fa-search" style="position:absolute; left:655px; top:395px;"></i><asp:TextBox class="rounded-full p-3 pl-9" ID="SearchBox" runat="server" placeholder="Find an Art Piece..." ></asp:TextBox></div>
           
             
         </div>
