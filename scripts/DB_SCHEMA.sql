@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS [dbo].[User];
 GO
 
 CREATE TABLE [dbo].[User] (
-  [ID] varchar(255) NOT NULL PRIMARY KEY,
+  [ID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [IsActive] BIT,
   [Name] varchar(255) NOT NULL,
   [Password] varchar(255) NOT NULL,
@@ -31,11 +31,11 @@ DROP TABLE IF EXISTS [dbo].[Artist];
 GO
 
 CREATE TABLE [dbo].[Artist] (
-  [ID] varchar(255) NOT NULL PRIMARY KEY,
+  [ID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [Name] varchar(255) NOT NULL,
   [BioDesc] varchar(255),
   [Rating] int,
-  [UserID] varchar(255) NOT NULL,
+  [UserID] int NOT NULL,
 
   -- Common Fields
   DateCreated Date,
@@ -46,10 +46,10 @@ CREATE TABLE [dbo].[Artist] (
 GO
 
 CREATE TABLE [dbo].[ArtProd] (
-  [ID] varchar(255) NOT NULL PRIMARY KEY,
+  [ID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [Name] varchar(255) NOT NULL,
   [Description] varchar(255),
-  [ArtistOwner] varchar(255) NOT NULL,
+  [ArtistOwner] int NOT NULL,
   
   -- Common Fields
   [DateCreated] Date,
@@ -63,13 +63,13 @@ DROP TABLE IF EXISTS [dbo].[Order];
 GO
 
 CREATE TABLE [dbo].[Order] (
-  [ID] varchar(255) NOT NULL PRIMARY KEY,
+  [ID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [Address1] varchar(255) NOT NULL,
   [Address2] varchar(255) NOT NULL,
   [State] varchar(255) NOT NULL,
   [Country] varchar(255) NOT NULL,
   [OrderTotal] float NOT NULL,
-  [OrderMadeBy] varchar(255) NOT NULL,
+  [OrderMadeBy] int NOT NULL,
   [DeliveryFee] int,
 
   -- Common Fields
@@ -84,8 +84,8 @@ DROP TABLE IF EXISTS [dbo].[OrderItem];
 GO
 
 CREATE TABLE [dbo].[OrderItem] (
-  OrderID varchar(255) NOT NULL,
-  ArtItemID varchar(255) NOT NULL,
+  OrderID int NOT NULL,
+  ArtItemID int NOT NULL,
   CONSTRAINT COM_K_OrderID FOREIGN KEY (OrderID) REFERENCES [dbo].[Order](ID),
   CONSTRAINT COM_K_ArtItemID FOREIGN KEY (ArtItemID) REFERENCES [dbo].[ArtProd](ID), 
   CONSTRAINT [PK_OrderItem] PRIMARY KEY ([ArtItemID], [OrderID])
@@ -96,11 +96,11 @@ DROP TABLE IF EXISTS [dbo].[Payment];
 GO
 
 CREATE TABLE [dbo].[Payment] (
-  [ID] varchar(255) NOT NULL PRIMARY KEY,
+  [ID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
   [Status] varchar(255) NOT NULL,
   [PaymentMethod] varchar(255) NOT NULL,
   [PaymentAmount] float,
-  [OrderID] varchar(255) NOT NULL,
+  [OrderID] int NOT NULL,
   -- Common Fields
   [DateCreated] Date,
   [DateModified] Date,
