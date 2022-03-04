@@ -13,13 +13,28 @@ namespace Art_Assignment.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if(!Page.IsPostBack)
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string sql = "SELECT COUNT(*) FROM [User] WHERE Email = @Email";
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
-                return;
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.Add("@Email", args.Value);
+
+                con.Open();
+                int count = (int)cmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    args.IsValid = false;
+                }
             }
-            Page.Validate();
-            if(!Page.IsValid)
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (!Page.IsValid)
             {
                 return;
             }
@@ -40,23 +55,6 @@ namespace Art_Assignment.Pages
             }
 
             Server.Transfer("Home.aspx");
-        }
-
-        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            string sql = "SELECT COUNT(*) FROM [User] WHERE Email = @Email";
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
-            {
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.Add("@Email", args.Value);
-
-                con.Open();
-                int count = (int) cmd.ExecuteScalar();
-                if(count > 0)
-                {
-                    args.IsValid = false;
-                }
-            }
         }
     }
 }

@@ -27,7 +27,7 @@
                 <asp:TextBox class="input" runat="server" ID="txtConfirmPassword" type="password"></asp:TextBox>
             </div>
             <div class="flex justify-center pt-3">
-                <asp:Button class="button-22" runat="server" ID="btnRegister" Text="Register" />
+                <asp:Button class="button-22" runat="server" ID="btnRegister" Text="Register" OnClick="btnRegister_Click" />
             </div>
             <div class="text-center">
                 <a href="Login.aspx" style="text-decoration: underline; color: darkcyan">Already have an account?</a>
