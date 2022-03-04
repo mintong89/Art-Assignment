@@ -9,7 +9,10 @@
         <div class="register-box-cont p-5 w-96 h-96 text-sm">
             <div class="text-base pb-3">Register</div>
             <div>
-                <div>Email</div>
+                <div>
+                    Email&nbsp;
+                    <asp:CustomValidator ValidateEmptyText="True" ID="CustomValidator1" runat="server" ErrorMessage="(Email had been previously registered !)" ControlToValidate="txtEmail" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic"></asp:CustomValidator>
+                </div>
                 <asp:TextBox class="input" runat="server" ID="txtEmail"></asp:TextBox>
             </div>
             <div>
