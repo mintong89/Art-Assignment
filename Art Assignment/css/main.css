@@ -6,19 +6,3 @@
 body {
     font-family: Arial, sans-serif;
 }
-
-.flex {
-    display: flex;
-}
-
-.align-items-center {
-    align-items: center;
-}
-
-.justify-content-center {
-    justify-content: center;
-}
-
-.justify-content-right {
-    justify-content: right;
-}

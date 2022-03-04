@@ -6,11 +6,11 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <div class="home-container flex justify-content-center align-items-center">
+    <div class="home-container flex justify-center items-center">
         <div class="home-content">
-            <div class="flex justify-content-center text-7xl">Buy Art from {n} artist</div>
+            <div class="flex justify-center text-7xl">Buy Art from {n} artist</div>
 
-            <div class="flex justify-content-center mt-3 ">
+            <div class="flex justify-center mt-3 ">
                 <div class="relative">
                     <asp:TextBox class="rounded-full h-10 pl-12" ID="SearchBox" runat="server" placeholder="Find an Art Piece...">
                     </asp:TextBox>

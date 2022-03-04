@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>--%>
-        <header class="fixed w-full bg-white px-4 py-2.5 drop-shadow-lg">
+        <header class="sticky w-full bg-white px-4 py-2.5 drop-shadow-lg">
             <div class="flex justify-between">
                 <div class="flex items-center">
                      <div class="header-icon w-20 h-20 border border-black rounded-full flex justify-center items-center">
