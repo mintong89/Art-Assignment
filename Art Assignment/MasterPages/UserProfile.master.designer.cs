@@ -24,6 +24,15 @@ namespace Art_Assignment.MasterPages
         protected global::System.Web.UI.WebControls.ContentPlaceHolder subtitle;
 
         /// <summary>
+        /// UserProfileSidebar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Art_Assignment.UserControls.UserProfileSidebar UserProfileSidebar;
+
+        /// <summary>
         /// content control.
         /// </summary>
         /// <remarks>
