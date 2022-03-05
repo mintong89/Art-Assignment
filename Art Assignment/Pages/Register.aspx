@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="flex items-center justify-center home-container">
-        <div class="register-box-cont p-5 w-96 h-96 text-sm">
+        <div class="register-box-cont p-5 w-96 text-sm">
             <div class="text-base pb-3">Register</div>
             <div>
                 <div>
