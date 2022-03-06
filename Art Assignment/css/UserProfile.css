@@ -23,3 +23,7 @@
 .user-profile-sidebar-submenu {
     font-size: 0.9rem;
 }
+
+.user-profile-sidebar-item-active {
+    color: blue;
+}
