@@ -6,10 +6,12 @@
             User Profile
         </div>
     </a>
-    <div runat="server" id="divSecurity" class="user-profile-sidebar-item">
-        <i class="fa-solid fa-lock"></i>
-        Security
-    </div>
+    <a href="Security.aspx">
+        <div runat="server" id="divSecurity" class="user-profile-sidebar-item">
+            <i class="fa-solid fa-lock"></i>
+            Security
+        </div>
+    </a>
     <div runat="server" id="divMyPurchase" class="user-profile-sidebar-item">
         <i class="fa-solid fa-cart-shopping"></i>
         My Purchase
@@ -17,6 +19,20 @@
     <div runat="server" id="divManageArtistProfile" class="user-profile-sidebar-item">
         <i class="fa-solid fa-palette"></i>
         Manage Artist Profile
+    </div>
+    <div runat="server" id="submenuManageArtistProfile" class="user-profile-sidebar-submenu hidden">
+        <a href="ArtistProfile.aspx">
+            <div runat="server" id="divMyArtistProfiles" class="user-profile-sidebar-item">
+                <i></i>
+                My Artist Profiles
+            </div>
+        </a>
+        <a href="AddArtistProfile.aspx">
+            <div runat="server" id="divAddNewArtistProfile" class="user-profile-sidebar-item">
+                <i></i>
+                Add New Artist Profile
+            </div>
+        </a>
     </div>
     <div runat="server" id="divStockManagement" class="user-profile-sidebar-item">
         <i class="fa-solid fa-boxes-stacked"></i>

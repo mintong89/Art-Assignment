@@ -22,6 +22,19 @@ namespace Art_Assignment.UserControls
                     addCssClass(divStockManagement, "user-profile-sidebar-item-active");
                     removeCssClass(submenuStockManagement, "hidden");
                     break;
+                case "ArtistProfile.aspx":
+                    addCssClass(divManageArtistProfile, "user-profile-sidebar-item-active");
+                    addCssClass(divMyArtistProfiles, "user-profile-sidebar-item-active");
+                    removeCssClass(submenuManageArtistProfile, "hidden");
+                    break;
+                case "AddArtistProfile.aspx":
+                    addCssClass(divManageArtistProfile, "user-profile-sidebar-item-active");
+                    addCssClass(divAddNewArtistProfile, "user-profile-sidebar-item-active");
+                    removeCssClass(submenuManageArtistProfile, "hidden");
+                    break;
+                case "Security.aspx":
+                    addCssClass(divSecurity, "user-profile-sidebar-item-active");
+                    break;
             }
         }
 

@@ -82,6 +82,9 @@
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\LogOut.aspx" />
+    <Content Include="Pages\Profile\AddArtistProfile.aspx" />
+    <Content Include="Pages\Profile\ArtistProfile.aspx" />
+    <Content Include="Pages\Profile\Security.aspx" />
     <Content Include="Pages\Profile\StockDetails.aspx" />
     <Content Include="Pages\Profile\User.aspx" />
     <Content Include="Pages\Register.aspx" />
@@ -124,6 +127,27 @@
     </Compile>
     <Compile Include="Pages\LogOut.aspx.designer.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\AddArtistProfile.aspx.cs">
+      <DependentUpon>AddArtistProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\AddArtistProfile.aspx.designer.cs">
+      <DependentUpon>AddArtistProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\ArtistProfile.aspx.cs">
+      <DependentUpon>ArtistProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\ArtistProfile.aspx.designer.cs">
+      <DependentUpon>ArtistProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\Security.aspx.cs">
+      <DependentUpon>Security.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\Security.aspx.designer.cs">
+      <DependentUpon>Security.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Profile\StockDetails.aspx.cs">
       <DependentUpon>StockDetails.aspx</DependentUpon>

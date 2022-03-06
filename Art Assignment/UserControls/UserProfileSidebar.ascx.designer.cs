@@ -51,6 +51,33 @@ namespace Art_Assignment.UserControls
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divManageArtistProfile;
 
         /// <summary>
+        /// submenuManageArtistProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl submenuManageArtistProfile;
+
+        /// <summary>
+        /// divMyArtistProfiles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMyArtistProfiles;
+
+        /// <summary>
+        /// divAddNewArtistProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddNewArtistProfile;
+
+        /// <summary>
         /// divStockManagement control.
         /// </summary>
         /// <remarks>
