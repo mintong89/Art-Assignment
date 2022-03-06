@@ -82,6 +82,7 @@
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\LogOut.aspx" />
+    <Content Include="Pages\Profile\StockDetails.aspx" />
     <Content Include="Pages\Profile\User.aspx" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="resources\home-background.jpg" />
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="Pages\LogOut.aspx.designer.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\StockDetails.aspx.cs">
+      <DependentUpon>StockDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\StockDetails.aspx.designer.cs">
+      <DependentUpon>StockDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Profile\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>

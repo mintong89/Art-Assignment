@@ -15,9 +15,16 @@ namespace Art_Assignment.UserControls
             switch (currentPageFileName)
             {
                 case "User.aspx":
-                    divUserProfile.Attributes["class"] = divUserProfile.Attributes["class"] + " user-profile-sidebar-item-active";
+                    addCssClass(divUserProfile, "user-profile-sidebar-item-active");
+                    break;
+                case "StockDetails.aspx":
+                    addCssClass(divStockDetails, "user-profile-sidebar-item-active");
                     break;
             }
         }
+
+        private void addCssClass(System.Web.UI.HtmlControls.HtmlGenericControl control, string cssClass)
+        {
+            control.Attributes["class"] = control.Attributes["class"] + " " + cssClass;
+        }
     }
-}
