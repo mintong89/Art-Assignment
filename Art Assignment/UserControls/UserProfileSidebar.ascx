@@ -22,7 +22,7 @@
         <i class="fa-solid fa-boxes-stacked"></i>
         Stock Management
     </div>
-    <div class="user-profile-sidebar-submenu">
+    <div runat="server" id="submenuStockManagement" class="user-profile-sidebar-submenu hidden">
         <a href="StockDetails.aspx">
             <div runat="server" id="divStockDetails" class="user-profile-sidebar-item">
                 <i></i>

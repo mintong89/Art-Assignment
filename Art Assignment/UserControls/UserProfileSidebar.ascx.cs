@@ -19,6 +19,8 @@ namespace Art_Assignment.UserControls
                     break;
                 case "StockDetails.aspx":
                     addCssClass(divStockDetails, "user-profile-sidebar-item-active");
+                    addCssClass(divStockManagement, "user-profile-sidebar-item-active");
+                    removeCssClass(submenuStockManagement, "hidden");
                     break;
             }
         }
@@ -27,4 +29,10 @@ namespace Art_Assignment.UserControls
         {
             control.Attributes["class"] = control.Attributes["class"] + " " + cssClass;
         }
+
+        private void removeCssClass(System.Web.UI.HtmlControls.HtmlGenericControl control, string cssClass)
+        {
+            control.Attributes["class"] = control.Attributes["class"].Replace(cssClass, "");
+        }
     }
+}
