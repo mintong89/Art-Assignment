@@ -24,6 +24,24 @@ namespace Art_Assignment
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
+        /// NavMenuNormal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NavMenuNormal;
+
+        /// <summary>
+        /// NavMenuLoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NavMenuLoggedIn;
+
+        /// <summary>
         /// content control.
         /// </summary>
         /// <remarks>

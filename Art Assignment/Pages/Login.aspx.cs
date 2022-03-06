@@ -50,7 +50,7 @@ namespace Art_Assignment.Pages
 
                 string token = Utility.Auth.sign(payload);
                 Session["token"] = token;
-                Server.Transfer("Browse.aspx");
+                Server.Transfer("Home.aspx");
             }
 
         }

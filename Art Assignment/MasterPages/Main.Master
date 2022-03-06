@@ -24,18 +24,22 @@
                     </div>
                 </div>
                 <!-- Not logged in -->
-                <div class="ml-auto flex p-1 items-center hidden">
-                    <div class="m-2">
-                        <i class="fa-solid fa-lg fa-user"></i>
-                        Register
-                    </div>
-                    <div class="m-2">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        Log In
-                    </div>
+                <div runat="server" Id="NavMenuNormal" class="ml-auto flex p-1 items-center">
+                    <a runat="server" href="~/Pages/Register.aspx">
+                        <div class="m-2">
+                            <i class="fa-solid fa-lg fa-user"></i>
+                            Register
+                        </div>
+                    </a>
+                    <a runat="server" href="~/Pages/Login.aspx">
+                        <div class="m-2">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            Log In
+                        </div>
+                    </a>
                 </div>
                 <!-- Logged in -->
-                <div class="ml-auto flex items-center">
+                <div runat="server" Id="NavMenuLoggedIn" class="ml-auto flex items-center hidden">
                     <div class="m-2 dropdown-menu-item">
                         <i class="fa-solid fa-lg fa-user"></i>
                         Account
@@ -43,14 +47,16 @@
                         <div class="dropdown-cont">
                             <a runat="server" href="~/Pages/Profile/User.aspx">
                                 <div class="dropdown-item">
-                                   <i class="fa-solid fa-address-card"></i>
-                                   Profile
+                                    <i class="fa-solid fa-address-card"></i>
+                                    Profile
                                 </div>
                             </a>
-                            <div class="dropdown-item">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                                Log out
-                            </div>
+                            <a runat="server" href="~/Pages/LogOut.aspx">
+                                <div class="dropdown-item">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    Log out
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

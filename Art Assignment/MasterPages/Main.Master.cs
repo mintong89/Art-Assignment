@@ -14,27 +14,38 @@ namespace Art_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Create authentication payload like this
-            var payload = new Dictionary<string, object>{
-                { "uid", 69 }
-            };
+            //// Create authentication payload like this
+            //var payload = new Dictionary<string, object>{
+            //    { "uid", 69 }
+            //};
 
-            // How to sign
-            var token = Utility.Auth.sign(payload);
+            //// How to sign
+            //var token = Utility.Auth.sign(payload);
 
-            // How to parse
-            var parsedPayload = Utility.Auth.parsePayload(token);
+            //// How to parse
+            //var parsedPayload = Utility.Auth.parsePayload(token);
 
-            // How to store token into Session
-            Session["JWT"] = token;
+            //// How to store token into Session
+            //Session["token"] = token;
 
-            // How to retrieve token from Session
-            Console.WriteLine(Session["JWT"]);
+            //// How to retrieve token from Session
+            //Console.WriteLine(Session["token"]);
 
-            // How to check if token exists
-            if(Session["JWT"] == null)
+            //// How to check if token exists
+            //if(Session["token"] == null)
+            //{
+
+            //}
+
+            if(Session["token"] == null)
             {
+                return;
+            }
 
+            if(Utility.Auth.verify((string) Session["token"]))
+            {
+                NavMenuLoggedIn.Attributes.CssStyle.Add("display", "flex");
+                NavMenuNormal.Attributes.CssStyle.Add("display", "none");
             }
         }
     }
