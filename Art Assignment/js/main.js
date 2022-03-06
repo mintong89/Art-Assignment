@@ -1,8 +1,11 @@
-﻿function dropdownOnclick() {
+﻿function dropdownOnclick(event) {
     e = $(this)
 
     let dd = $(".dropdown-cont", e);
     if (dd.css("top") == "0px") {
+        // Prevent parents from firing their onclick event
+        event.stopPropagation();
+        // Close other dropdown first
         closeAllDropdown();
         dd.css("display", "flex");
         dd.css("top", `calc(${e.css("height")} + .5rem)`);
@@ -32,5 +35,6 @@ function closeAllDropdown() {
 
 $(function () {
     // Register all dropdowns
+    $(document).on("click", closeAllDropdown)
     $(".dropdown-menu-item").on("click", dropdownOnclick)
 });
