@@ -20,4 +20,14 @@
         <i class="fa-solid fa-boxes-stacked"></i>
         Stock Management
     </div>
+    <div class="user-profile-sidebar-submenu">
+        <div class="user-profile-sidebar-item">
+            <i></i>
+            Stock Details
+        </div>
+        <div class="user-profile-sidebar-item">
+            <i></i>
+            Orders
+        </div>
+    </div>
 </div>

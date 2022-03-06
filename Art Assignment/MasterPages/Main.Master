@@ -67,4 +67,5 @@
     </form>
 </body>
 <script src="/js/main.js"></script>
+<asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
 </html>
