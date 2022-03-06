@@ -1,2 +1,21 @@
-﻿body {
+﻿.user-profile-cont {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.user-profile-sidebar-item {
+    display: grid;
+    grid-template-columns: 25px auto;
+    padding: 10px;
+}
+
+.user-profile-sidebar-item:hover {
+    color: rgb(125, 155, 255);
+}
+
+.user-profile-sidebar-item i {
+    display: flex;
+    align-items: center;
 }
