@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 .input {
@@ -10,4 +10,34 @@
 
 .input-label {
     font-size: 12px;
+}
+
+.dropdown-menu-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-cont {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    top: 0;
+    width: 125px;
+    height: 100px;
+    background-color: white;
+    transition: top .25s, opacity .25s;
+    box-shadow: 2px 2px 7px grey;
+    display: none;
+    cursor: default;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dropdown-item {
+    padding: .5rem .75rem;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: greenyellow;
 }
