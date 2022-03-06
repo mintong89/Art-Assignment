@@ -5,7 +5,7 @@
 <head runat="server">
     <link runat="server" href="~/css/normalize.css" rel="stylesheet" type="text/css" />
     <link runat="server" href="~/css/main.css" rel="stylesheet" type="text/css" />
-    <link runat="server" href="../Content/all.css" rel="stylesheet" />
+    <link runat="server" href="../font-awesome/css/all.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -15,12 +15,16 @@
         <header class="sticky w-full bg-white px-4 py-2.5 drop-shadow-lg">
             <div class="flex justify-between">
                 <div class="flex items-center">
-                     <div class="header-icon w-20 h-20 border border-black rounded-full flex justify-center items-center">
-                       LOGO 
-                     </div>
+                    <div class="header-icon w-20 h-20 border border-black rounded-full flex justify-center items-center">
+                        LOGO 
+                    </div>
                     <div class="header-search w-96 h-11 mx-5 border border-black rounded-full shadow-md">
                         <i class="fas fa-lg fa-search mt-3 ml-3"></i>
-                       
+                    </div>
+                </div>
+                <div class="ml-auto flex">
+                    <div>
+                        <i class="fa-solid fa-file-invoice"></i>
                     </div>
                 </div>
             </div>
