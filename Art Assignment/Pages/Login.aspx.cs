@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using Art_Assignment.Utility;
 namespace Art_Assignment.Pages
 {
     public partial class Login : System.Web.UI.Page
@@ -22,21 +23,28 @@ namespace Art_Assignment.Pages
                 errMsg.Text = "Please enter email !";
                 return;
             }
+            //if(Auth.verifyHash(txtPassword.Text, "something"))
             if (txtPassword.Text.Equals(""))
             {
                 errMsg.Text = "Please enter password !";
                 return;
             }
-            string sql = "SELECT ID FROM [User] WHERE Email = @Email AND Password = @Password";
+            string sql = "SELECT ID, Password FROM [User] WHERE Email = @Email";
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.Add("@Email", txtEmail.Text);
-                cmd.Parameters.Add("@Password", txtPassword.Text);
 
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (!reader.Read())
+                {
+                    errMsg.Text = "Invalid Email";
+                    return;
+                }
+
+                string passwordhash = reader.GetColumnSafe<string>("Password");
+                if (!Auth.verifyHash(txtPassword.Text, passwordhash))
                 {
                     errMsg.Text = "Invalid Email / Password !";
                     return;

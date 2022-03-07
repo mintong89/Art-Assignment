@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-
+using Art_Assignment.Utility;
 namespace Art_Assignment.Pages
 {
     public partial class Register : System.Web.UI.Page
@@ -41,7 +41,7 @@ namespace Art_Assignment.Pages
 
 
             string email = txtEmail.Text;
-            string pw = txtPassword.Text;
+            string pw = Auth.encryptToHash(txtPassword.Text);
             string sql = "INSERT INTO [User](Password, Email, DateCreated, DateModified) VALUES(@Password, @Email, CAST( GETDATE() AS Date ), CAST( GETDATE() AS Date ));";
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
