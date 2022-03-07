@@ -12,13 +12,13 @@
                 <asp:Literal ID="errMsg" runat="server"></asp:Literal>
             </div>
             <div>
-                <div>
+                <div class="input-label">
                     Email
                 </div>
                 <asp:TextBox class="input" runat="server" ID="txtEmail"></asp:TextBox>
             </div>
             <div>
-                <div>Password</div>
+                <div class="input-label">Password</div>
                 <asp:TextBox class="input" runat="server" ID="txtPassword" type="password"></asp:TextBox>
             </div>
             <div class="flex justify-center pt-3">

@@ -9,18 +9,18 @@
         <div class="register-box-cont p-5 w-96 text-sm">
             <div class="text-base pb-3">Register</div>
             <div>
-                <div>
+                <div class="input-label">
                     Email&nbsp;
                     <asp:CustomValidator ValidateEmptyText="True" ID="CustomValidator1" runat="server" ErrorMessage="(Email had been previously registered !)" ControlToValidate="txtEmail" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic"></asp:CustomValidator>
                 </div>
                 <asp:TextBox class="input" runat="server" ID="txtEmail"></asp:TextBox>
             </div>
             <div>
-                <div>Password</div>
+                <div class="input-label">Password</div>
                 <asp:TextBox class="input" runat="server" ID="txtPassword" type="password"></asp:TextBox>
             </div>
             <div>
-                <div>
+                <div class="input-label">
                     Confirm Password&nbsp;
                     <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ForeColor="Red">(Password do not match!)</asp:CompareValidator>
                 </div>

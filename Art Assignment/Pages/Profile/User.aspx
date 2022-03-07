@@ -4,7 +4,7 @@
     Profile
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <div>
+    <div style="row-gap: 10px;">
         <div>
             Profile Completion Rate
         </div>
@@ -15,6 +15,12 @@
             <div class="rounded-full overflow-hidden h-32 w-32">
                 <img alt="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png" />
             </div>
+        </div>
+        <div class="inline-block">
+            <a href="EditUser.aspx" class="button-22">
+                <i class="fa-solid fa-pen-to-square"></i>&nbsp;
+                Edit Profile
+            </a>
         </div>
         <div class="grid grid-cols-2">
             <div class="field-cont">
