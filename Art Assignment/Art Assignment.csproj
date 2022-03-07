@@ -179,6 +179,7 @@
       <DependentUpon>UserProfileSidebar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Utility\Auth.cs" />
+    <Compile Include="Utility\Extension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPages\Main.Master" />
