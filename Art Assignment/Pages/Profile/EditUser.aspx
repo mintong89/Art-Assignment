@@ -33,14 +33,14 @@
         </div>
         <div>
             <div class="inline-block">
-                <a href="EditUser.aspx" class="button-22">
+                <button runat="server" class="button-22" onserverclick="btnSubmit_OnClick">
                     <i class="fa-solid fa-pen-to-square"></i>&nbsp;
                 Submit
-                </a>
+                </button>
             </div>
             <div class="inline-block">
-                <a href="EditUser.aspx" class="button-22 button-22-danger">
-                    <i class="fa-solid fa-pen-to-square"></i>&nbsp;
+                <a href="User.aspx" class="button-22 button-22-danger">
+                    <i class="fa-solid fa-xmark"></i>&nbsp;
                 Cancel
                 </a>
             </div>
