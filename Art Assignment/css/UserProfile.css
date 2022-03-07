@@ -10,6 +10,7 @@
     display: grid;
     grid-template-columns: 25px auto;
     padding: 10px;
+    cursor: pointer;
 }
 
 .user-profile-sidebar-item:hover {

@@ -15,6 +15,7 @@ namespace Art_Assignment.UserControls
             switch (currentPageFileName)
             {
                 case "User.aspx":
+                case "EditUser.aspx":
                     addCssClass(divUserProfile, "user-profile-sidebar-item-active");
                     break;
                 case "StockDetails.aspx":
