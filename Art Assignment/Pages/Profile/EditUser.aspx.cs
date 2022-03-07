@@ -57,7 +57,7 @@ namespace Art_Assignment.Pages.Profile
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE [User] SET Name = @Name, FirstName = @FirstName, LastName = @LastName, DateBirth = @DateOfBirth WHERE ID = @ID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE [User] SET Name = @Name, FirstName = @FirstName, LastName = @LastName, DateBirth = @DateOfBirth, DateModified = GETDATE() WHERE ID = @ID", con);
                 cmd.Parameters.AddWithValue("@ID", userid);
                 cmd.Parameters.AddWithValue("@Name", txtUsername.Text == "" ? (object) DBNull.Value : txtUsername.Text);
                 cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text == "" ? (object) DBNull.Value : txtFirstName.Text);

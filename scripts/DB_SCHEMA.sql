@@ -19,9 +19,9 @@ CREATE TABLE [dbo].[User] (
   [DateBirth] Date, --This one suppose to be enter by user
 
   -- Common Fields
-  [DateCreated] Date,
-  [DateModified] Date,
-  [DateDeleted] Date,
+  [DateCreated] DateTime,
+  [DateModified] DateTime,
+  [DateDeleted] DateTime,
   CONSTRAINT FirstName CHECK (FirstName NOT LIKE '% [^A-Z] % ]'), 
   CONSTRAINT LastName CHECK (LastName NOT LIKE '% [^A-Z] % ]')
 );
@@ -38,9 +38,9 @@ CREATE TABLE [dbo].[Artist] (
   [UserID] int NOT NULL,
 
   -- Common Fields
-  DateCreated Date,
-  DateModified Date,
-  DateDeleted Date,
+  DateCreated DateTime,
+  DateModified DateTime,
+  DateDeleted DateTime,
   CONSTRAINT FK_UserID FOREIGN KEY (UserID) REFERENCES [dbo].[User](ID)
 );
 GO
@@ -52,9 +52,9 @@ CREATE TABLE [dbo].[ArtProd] (
   [ArtistOwner] int NOT NULL,
   
   -- Common Fields
-  [DateCreated] Date,
-  [DateModified] Date,
-  [DateDeleted] Date,
+  [DateCreated] DateTime,
+  [DateModified] DateTime,
+  [DateDeleted] DateTime,
   CONSTRAINT FK_ArtistOwner FOREIGN KEY (ArtistOwner) REFERENCES [dbo].[Artist](ID)
 );
 GO
@@ -73,9 +73,9 @@ CREATE TABLE [dbo].[Order] (
   [DeliveryFee] int,
 
   -- Common Fields
-  [DateCreated] Date,
-  [DateModified] Date,
-  [DateDeleted] Date,
+  [DateCreated] DateTime,
+  [DateModified] DateTime,
+  [DateDeleted] DateTime,
   CONSTRAINT FK_OrderMadeBy FOREIGN KEY (OrderMadeBy) REFERENCES [dbo].[User](ID)
 );
 GO
@@ -102,9 +102,9 @@ CREATE TABLE [dbo].[Payment] (
   [PaymentAmount] float,
   [OrderID] int NOT NULL,
   -- Common Fields
-  [DateCreated] Date,
-  [DateModified] Date,
-  [DateDeleted] Date,
+  [DateCreated] DateTime,
+  [DateModified] DateTime,
+  [DateDeleted] DateTime,
 
   CONSTRAINT FK_OrderID FOREIGN KEY (OrderID) REFERENCES [dbo].[Order](ID)
 );

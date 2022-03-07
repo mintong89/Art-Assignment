@@ -42,7 +42,7 @@ namespace Art_Assignment.Pages
 
             string email = txtEmail.Text;
             string pw = Auth.encryptToHash(txtPassword.Text);
-            string sql = "INSERT INTO [User](Password, Email, DateCreated, DateModified) VALUES(@Password, @Email, CAST( GETDATE() AS Date ), CAST( GETDATE() AS Date ));";
+            string sql = "INSERT INTO [User](Password, Email, DateCreated, DateModified) VALUES(@Password, @Email, GETDATE(), GETDATE());";
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
