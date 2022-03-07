@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: 300px 1fr;
     padding: 10px;
-    cursor: pointer;
 }
 
 .user-profile-sidebar-item {

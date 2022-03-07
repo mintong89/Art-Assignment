@@ -2,6 +2,18 @@
     font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
+.field-cont {
+    padding: 10px;
+}
+
+.field-label {
+    color: grey;
+}
+
+.field-text {
+    color: black;
+}
+
 .input {
     padding: 5px;
     border: 1px solid black;
