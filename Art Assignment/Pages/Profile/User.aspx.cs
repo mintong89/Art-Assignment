@@ -37,7 +37,8 @@ namespace Art_Assignment.Pages.Profile
                         lblEmail.Text = reader.GetColumnSafe<string>("Email", "&lt;not set&gt;");
                         lblFirstName.Text = reader.GetColumnSafe<string>("FirstName", "&lt;not set&gt;");
                         lblLastName.Text = reader.GetColumnSafe<string>("LastName", "&lt;not set&gt;");
-                        lblDateOfBirth.Text = reader.GetColumnSafe<string>("DateBirth", "&lt;not set&gt;");
+                        DateTime? dateBirth = reader.GetColumnSafe<DateTime?>("DateBirth", null);
+                        lblDateOfBirth.Text = dateBirth == null ? "&lt;not set&gt;" : dateBirth.ToString();
                     }
                 }
             }
