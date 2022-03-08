@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Utility\Auth.cs" />
     <Compile Include="Utility\Extension.cs" />
+    <Compile Include="Utility\Misc.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPages\Main.Master" />

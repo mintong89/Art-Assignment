@@ -13,12 +13,14 @@
                     <div class="user-profile-upload-image-hover-overlay">
                         Click to Upload
                     </div>
+                    
                 </div>
             </div>
-            <input type="file" id="profilePicInput" class="hidden" />
+            <input type="file" id="profilePicInput" class="hidden" runat="server" ClientIDMode="Static" />
             <div>
                 <div class="input-label">
-                    Artist Display Name
+                    Artist Display Name<span style="color: red">*</span>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtistDisplayName" ForeColor="Red">Display Name is required.</asp:RequiredFieldValidator>
                 </div>
                 <asp:TextBox class="input" runat="server" ID="txtArtistDisplayName"></asp:TextBox>
             </div>
@@ -30,8 +32,8 @@
             </div>
             <div>
                 <div class="inline-block">
-                    <button runat="server" class="button-22">
-                        <i class="fa-solid fa-pen-to-square"></i>&nbsp;
+                    <button runat="server" class="button-22 button-22-success" onserverclick="AddArtist_OnClick">
+                        <i class="fa-solid fa-plus"></i>&nbsp;
                             Add
                     </button>
                 </div>

@@ -96,3 +96,9 @@
 .button-22-danger:hover {
     background-color: red !important;
 }
+
+.button-22-success,
+.button-22-success:active,
+.button-22-success:hover {
+    background-color: green !important;
+}
