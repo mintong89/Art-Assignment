@@ -19,4 +19,5 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <script src="<%= Page.ResolveUrl("~/js/UserProfile.js") %>"></script>
+    <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

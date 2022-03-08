@@ -13,14 +13,14 @@
     cursor: pointer;
 }
 
-.user-profile-sidebar-item:hover {
-    color: rgb(125, 155, 255);
-}
+    .user-profile-sidebar-item:hover {
+        color: rgb(125, 155, 255);
+    }
 
-.user-profile-sidebar-item i {
-    display: flex;
-    align-items: center;
-}
+    .user-profile-sidebar-item i {
+        display: flex;
+        align-items: center;
+    }
 
 .user-profile-sidebar-submenu {
     font-size: 0.9rem;
@@ -28,4 +28,31 @@
 
 .user-profile-sidebar-item-active {
     color: blue;
+}
+
+.user-profile-upload-image-cont {
+    border-radius: 9999px;
+    overflow: hidden;
+    width: 12rem;
+    height: 12rem;
+    position: relative;
+    cursor: pointer;
+}
+
+    .user-profile-upload-image-cont:hover .user-profile-upload-image-hover-overlay {
+        display: flex;
+    }
+
+.user-profile-upload-image-hover-overlay {
+    display: none;
+    border-radius: 9999px;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute
 }
