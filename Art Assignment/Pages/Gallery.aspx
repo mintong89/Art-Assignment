@@ -19,7 +19,7 @@
                         <div class="gallery--tag">
                             <div onclick="handleTag(this)" class="flex items-center mb-2 cursor-pointer select-none" data-open="false">
                                 <span class="mr-2">
-                                    <img class="gallery-tag-chevron" src="<%= Page.ResolveUrl("~/resources/chevron.png") %>" /></span>
+                                    <img class="gallery-tag-chevron transition-all" src="<%= Page.ResolveUrl("~/resources/chevron.png") %>" /></span>
                                 <p class="drop-shadow-lg">Tags</p>
                             </div>
                             <ul class="ml-6 max-h-0 transition-all overflow-hidden">
@@ -36,7 +36,7 @@
                         <div class="gallery--tag">
                             <div onclick="handleTag(this)" class="flex items-center mb-2 cursor-pointer select-none" data-open="false">
                                 <span class="mr-2">
-                                    <img class="gallery-tag-chevron" src="<%= Page.ResolveUrl("~/resources/chevron.png") %>" /></span>
+                                    <img class="gallery-tag-chevron transition-all" src="<%= Page.ResolveUrl("~/resources/chevron.png") %>" /></span>
                                 <p class="drop-shadow-lg">Tags</p>
                             </div>
                             <ul class="ml-6 max-h-0 transition-all overflow-hidden">
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="mt-28 mb-10">
-            <ul class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-5">
+            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5">
                 <li>
                     <div class="w-44 h-44 border border-black">
                     </div>
