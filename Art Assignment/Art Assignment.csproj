@@ -70,13 +70,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\Gallery.css" />
     <Content Include="css\Home.css" />
     <Content Include="css\main.css" />
     <Content Include="css\normalize.css" />
     <Content Include="css\UserProfile.css" />
     <Content Include="js\AddArtistProfile.js" />
+    <Content Include="js\Gallery.js" />
     <Content Include="js\main.js" />
     <Content Include="js\UserProfile.js" />
+    <Content Include="Pages\Gallery.aspx" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\LogOut.aspx" />
@@ -106,6 +109,13 @@
     </Compile>
     <Compile Include="MasterPages\UserProfile.master.designer.cs">
       <DependentUpon>UserProfile.master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Gallery.aspx.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Gallery.aspx.designer.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

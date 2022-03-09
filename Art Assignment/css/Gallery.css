@@ -1,0 +1,4 @@
+﻿.gallery-container {
+    height: calc(100vh - 100px);
+    top: 100px;
+}
