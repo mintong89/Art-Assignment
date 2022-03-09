@@ -1,5 +1,7 @@
 ﻿body {
     font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    max-width: 1440px;
+    margin: 0px auto !important;
 }
 
 .field-cont {
@@ -102,3 +104,33 @@
 .button-22-success:hover {
     background-color: green !important;
 }
+
+.btn {
+    border-width: 1px;
+    padding: 0.25em 1em;
+    color: black;
+    background-color: white;
+    border-color: black;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+    .btn:hover {
+        color: white;
+        background-color: black;
+    }
+
+.star {
+    width: 0.75rem;
+    height: 0.75rem;
+    min-width: 0.75rem;
+    min-height: 0.75rem;
+    background-size: cover;
+    background-position: center;
+    background-image: url("/resources/star.png")
+}
+
+    .star.is-fill {
+        background-image: url("/resources/star-fill.png")
+    }
