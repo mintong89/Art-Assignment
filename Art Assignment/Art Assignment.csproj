@@ -88,6 +88,7 @@
     <Content Include="Pages\Profile\ArtistProfile.aspx" />
     <Content Include="Pages\Profile\EditUser.aspx" />
     <Content Include="Pages\Profile\Security.aspx" />
+    <Content Include="Pages\Profile\StockAdd.aspx" />
     <Content Include="Pages\Profile\StockDetails.aspx" />
     <Content Include="Pages\Profile\User.aspx" />
     <Content Include="Pages\Register.aspx" />
@@ -173,6 +174,13 @@
     </Compile>
     <Compile Include="Pages\Profile\Security.aspx.designer.cs">
       <DependentUpon>Security.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\StockAdd.aspx.cs">
+      <DependentUpon>StockAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\StockAdd.aspx.designer.cs">
+      <DependentUpon>StockAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Profile\StockDetails.aspx.cs">
       <DependentUpon>StockDetails.aspx</DependentUpon>

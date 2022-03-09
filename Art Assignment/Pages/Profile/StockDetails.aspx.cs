@@ -11,7 +11,14 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.IsPostBack)
+            {
+                return;
+            }
+            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            {
+                return;
+            }
         }
     }
 }
