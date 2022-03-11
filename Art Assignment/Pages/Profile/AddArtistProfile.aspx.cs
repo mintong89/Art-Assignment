@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
+using Art_Assignment.Utility;
 namespace Art_Assignment.Pages.Profile
 {
     public partial class AddArtistProfile : System.Web.UI.Page
@@ -16,25 +19,33 @@ namespace Art_Assignment.Pages.Profile
 
         protected void AddArtist_OnClick(object sender, EventArgs arg)
         {
+            if (Session["token"] == null || !Auth.verify(Session["token"].ToString()))
+            {
+                return;
+            }
             Page.Validate();
             if (!Page.IsValid)
             {
                 return;
             }
 
+            Int64 uid = Auth.getLogonUserUID(Session["token"].ToString());
+
+
             // txtArtistDisplayName
             // txtBiography
             // profilePicInput
-            string strFileName;
+            string strFileName = "";
             string strFilePath;
             string strFolder;
-            strFolder = Server.MapPath("~/upload");
-            // Retrieve the name of the file that is posted.
-            strFileName = profilePicInput.PostedFile.FileName;
-            strFileName = Art_Assignment.Utility.Misc.getUniqueID() + Path.GetExtension(strFileName);
-            strFileName = Path.GetFileName(strFileName);
             if (profilePicInput.Value != "")
             {
+                strFolder = Server.MapPath(ConfigurationManager.AppSettings["upload_path"].ToString());
+                // Retrieve the name of the file that is posted.
+                strFileName = profilePicInput.PostedFile.FileName;
+                strFileName = Art_Assignment.Utility.Misc.getUniqueID() + Path.GetExtension(strFileName);
+                strFileName = Path.GetFileName(strFileName);
+
                 // Create the folder if it does not exist.
                 if (!Directory.Exists(strFolder))
                 {
@@ -45,6 +56,33 @@ namespace Art_Assignment.Pages.Profile
                 profilePicInput.PostedFile.SaveAs(strFilePath);
             }
 
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO Artist([Name], [BioDesc], [Rating], [ArtistProfilePicture], [UserID], [DateCreated], [DateModified]) VALUES(@Name, @BioDesc, 0, @ArtistProfilePicture, @UserID, getdate(), getdate())", con);
+                cmd.Parameters.AddWithValue("@Name", txtArtistDisplayName.Text);
+                if (txtBiography.Text == "")
+                {
+                    cmd.Parameters.AddWithValue("@BioDesc", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@BioDesc", txtBiography.Text);
+                }
+                if (strFileName == "")
+                {
+                    cmd.Parameters.AddWithValue("@ArtistProfilePicture", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ArtistProfilePicture", strFileName);
+                }
+
+                cmd.Parameters.AddWithValue("@UserID", uid);
+                cmd.ExecuteNonQuery();
+            }
+            Response.Redirect("ArtistProfile.aspx");
         }
     }
 }

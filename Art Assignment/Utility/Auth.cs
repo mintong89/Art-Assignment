@@ -80,6 +80,17 @@ namespace Art_Assignment.Utility
             return true;
         }
 
+        public static Int64 getLogonUserUID(string token)
+        {
+            if(!verify(token))
+            {
+                return -1;
+            }
+
+            Dictionary<string, object> payload = parsePayload(token);
+            return (Int64) payload["uid"];
+        }
+
         public static string encryptToHash(string password)
         {
             byte[] salt;

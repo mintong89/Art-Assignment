@@ -35,6 +35,7 @@ CREATE TABLE [dbo].[Artist] (
   [Name] varchar(255) NOT NULL,
   [BioDesc] varchar(255),
   [Rating] int,
+  [ArtistProfilePicture] varchar(255),
   [UserID] int NOT NULL,
 
   -- Common Fields
