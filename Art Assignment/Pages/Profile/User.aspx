@@ -6,42 +6,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <form runat="server">
         <div style="row-gap: 10px;">
-            <div>
-                Profile Completion Rate
-            </div>
-            <div>
-                Progress Bar: 90%
-            </div>
-            <div class="flex justify-center">
-                <div class="rounded-full overflow-hidden h-32 w-32">
-                    <img alt="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png" />
-                </div>
-            </div>
-            <div class="inline-block">
-                <a href="EditUser.aspx" class="button-22">
-                    <i class="fa-solid fa-pen-to-square"></i>&nbsp;
-                Edit Profile
-                </a>
-            </div>
             <asp:FormView ID="FormView1" runat="server" DataSourceID="UserDataSource" RenderOuterTable="false">
-                <itemtemplate>
+                <ItemTemplate>
+                    <div class="flex justify-center">
+                        <div class="rounded-full overflow-hidden h-32 w-32">
+                            <img alt="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png" />
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="p-3 font-bold text-lg">
+                            <%# Eval("Name") %>
+                        </div>
+                        <div class="inline-block">
+                            <a href="EditUser.aspx" class="button-22">
+                                <i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit Profile
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-2">
-                        <div class="field-cont">
-                            <div class="field-label">
-                                Username
-                            </div>
-                            <div class="filed-text">
-                                <%# Eval("Name") %>
-                            </div>
-                        </div>
-
-                        <div class="field-cont">
-                            <div class="field-label">Email</div>
-                            <div>
-                                <%# Eval("Email") %>
-                            </div>
-                        </div>
-
                         <div class="field-cont">
                             <div class="field-label">First Name</div>
                             <div>
@@ -55,21 +39,35 @@
                             </div>
                         </div>
                         <div class="field-cont">
+                            <div class="field-label">Email</div>
+                            <div>
+                                <%# Eval("Email") %>
+                            </div>
+                        </div>
+                        <div class="field-cont">
                             <div class="field-label">Date of Birth</div>
                             <div>
                                 <%# Eval("DateBirth") %>
                             </div>
                         </div>
+                        <div class="field-cont">
+                            <div class="field-label">Delivery Address</div>
+                            <div>
+                                6, Street 9<br />
+                                42069 Penang<br />
+                                Malaysia
+                            </div>
+                        </div>
                     </div>
-                </itemtemplate>
+                </ItemTemplate>
             </asp:FormView>
             <asp:SqlDataSource
                 ID="UserDataSource"
                 runat="server"
                 ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
-                <selectparameters>
+                <SelectParameters>
                     <asp:Parameter DefaultValue="-1" Name="ID" Type="Int32" />
-                </selectparameters>
+                </SelectParameters>
             </asp:SqlDataSource>
         </div>
     </form>
