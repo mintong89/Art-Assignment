@@ -23,7 +23,7 @@
                 Edit Profile
                 </a>
             </div>
-            <asp:FormView ID="FormView1" runat="server" DataSourceID="UserDataSource">
+            <asp:FormView ID="FormView1" runat="server" DataSourceID="UserDataSource" RenderOuterTable="false">
                 <itemtemplate>
                     <div class="grid grid-cols-2">
                         <div class="field-cont">
