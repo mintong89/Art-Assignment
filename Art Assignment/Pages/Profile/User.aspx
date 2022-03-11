@@ -4,59 +4,73 @@
     Profile
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <div style="row-gap: 10px;">
-        <div>
-            Profile Completion Rate
-        </div>
-        <div>
-            Progress Bar: 90%
-        </div>
-        <div class="flex justify-center">
-            <div class="rounded-full overflow-hidden h-32 w-32">
-                <img alt="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png" />
+    <form runat="server">
+        <div style="row-gap: 10px;">
+            <div>
+                Profile Completion Rate
             </div>
-        </div>
-        <div class="inline-block">
-            <a href="EditUser.aspx" class="button-22">
-                <i class="fa-solid fa-pen-to-square"></i>&nbsp;
+            <div>
+                Progress Bar: 90%
+            </div>
+            <div class="flex justify-center">
+                <div class="rounded-full overflow-hidden h-32 w-32">
+                    <img alt="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png" />
+                </div>
+            </div>
+            <div class="inline-block">
+                <a href="EditUser.aspx" class="button-22">
+                    <i class="fa-solid fa-pen-to-square"></i>&nbsp;
                 Edit Profile
-            </a>
-        </div>
-        <div class="grid grid-cols-2">
-            <div class="field-cont">
-                <div class="field-label">
-                    Username
-                </div>
-                <div class="filed-text">
-                    <asp:Label ID="lblUsername" runat="server" Text="Label"></asp:Label>
-                </div>
+                </a>
             </div>
+            <asp:FormView ID="FormView1" runat="server" DataSourceID="UserDataSource">
+                <itemtemplate>
+                    <div class="grid grid-cols-2">
+                        <div class="field-cont">
+                            <div class="field-label">
+                                Username
+                            </div>
+                            <div class="filed-text">
+                                <%# Eval("Name") %>
+                            </div>
+                        </div>
 
-            <div class="field-cont">
-                <div class="field-label">Email</div>
-                <div>
-                    <asp:Label ID="lblEmail" runat="server" Text="Label"></asp:Label>
-                </div>
-            </div>
+                        <div class="field-cont">
+                            <div class="field-label">Email</div>
+                            <div>
+                                <%# Eval("Email") %>
+                            </div>
+                        </div>
 
-            <div class="field-cont">
-                <div class="field-label">First Name</div>
-                <div>
-                    <asp:Label ID="lblFirstName" runat="server" Text="Label"></asp:Label>
-                </div>
-            </div>
-            <div class="field-cont">
-                <div class="field-label">Last Name</div>
-                <div>
-                    <asp:Label ID="lblLastName" runat="server" Text="Label"></asp:Label>
-                </div>
-            </div>
-            <div class="field-cont">
-                <div class="field-label">Date of Birth</div>
-                <div>
-                    <asp:Label ID="lblDateOfBirth" runat="server" Text="Label"></asp:Label>
-                </div>
-            </div>
+                        <div class="field-cont">
+                            <div class="field-label">First Name</div>
+                            <div>
+                                <%# Eval("FirstName") %>
+                            </div>
+                        </div>
+                        <div class="field-cont">
+                            <div class="field-label">Last Name</div>
+                            <div>
+                                <%# Eval("LastName") %>
+                            </div>
+                        </div>
+                        <div class="field-cont">
+                            <div class="field-label">Date of Birth</div>
+                            <div>
+                                <%# Eval("DateBirth") %>
+                            </div>
+                        </div>
+                    </div>
+                </itemtemplate>
+            </asp:FormView>
+            <asp:SqlDataSource
+                ID="UserDataSource"
+                runat="server"
+                ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
+                <selectparameters>
+                    <asp:Parameter DefaultValue="-1" Name="ID" Type="Int32" />
+                </selectparameters>
+            </asp:SqlDataSource>
         </div>
-    </div>
+    </form>
 </asp:Content>

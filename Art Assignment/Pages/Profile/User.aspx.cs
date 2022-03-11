@@ -13,35 +13,18 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Page.IsPostBack)
+            if (Page.IsPostBack)
             {
                 return;
             }
-            if(Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
             {
                 return;
             }
+            UserDataSource.SelectCommand = "SELECT COALESCE(Name, '&lt;not set&gt;') AS Name,COALESCE(FirstName, '&lt;not set&gt;') AS FirstName,COALESCE(LastName, '&lt;not set&gt;') AS LastName,COALESCE(convert(varchar, getdate(), 3), '&lt;not set&gt;') AS DateBirth, Email FROM [User] WHERE ID = @ID";
             Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
-            Int64 userid = (Int64) payload["uid"];
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE ID = @ID", con);
-                cmd.Parameters.AddWithValue("@ID", userid);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        lblUsername.Text = reader.GetColumnSafe<string>("Name", "&lt;not set&gt;");
-                        lblEmail.Text = reader.GetColumnSafe<string>("Email", "&lt;not set&gt;");
-                        lblFirstName.Text = reader.GetColumnSafe<string>("FirstName", "&lt;not set&gt;");
-                        lblLastName.Text = reader.GetColumnSafe<string>("LastName", "&lt;not set&gt;");
-                        DateTime? dateBirth = reader.GetColumnSafe<DateTime?>("DateBirth", null);
-                        lblDateOfBirth.Text = dateBirth == null ? "&lt;not set&gt;" : dateBirth.ToString();
-                    }
-                }
-            }
+            Int64 userid = (Int64)payload["uid"];
+            UserDataSource.SelectParameters["ID"].DefaultValue = userid.ToString();
         }
     }
 }
