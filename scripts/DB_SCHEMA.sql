@@ -51,6 +51,7 @@ CREATE TABLE [dbo].[ArtProd] (
   [Name] varchar(255) NOT NULL,
   [Description] varchar(255),
   [ArtistOwner] int NOT NULL,
+  [Price] float NOT NULL,
   
   -- Common Fields
   [DateCreated] DateTime,

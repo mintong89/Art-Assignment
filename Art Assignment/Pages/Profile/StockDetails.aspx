@@ -14,7 +14,7 @@
     <div class="grid grid-cols-5 mt-9">
         <div>No.</div>
         <div>Name</div>
-        <div>Stock</div>
+        <div>Description</div>
         <div>Unit Price</div>
         <div>Action</div>
     </div>

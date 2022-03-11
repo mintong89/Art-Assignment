@@ -103,6 +103,7 @@
 .button-22-success:active,
 .button-22-success:hover {
     background-color: green !important;
+    width: 65px;
 }
 
 .btn {
