@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[User] (
   [FirstName] varchar(255),
   [LastName] varchar(255),
   [Email] varchar(255) NOT NULL,
-  [Description] varchar(255),
+  [UserProfilePicture] varchar(255),
   [DateBirth] Date, --This one suppose to be enter by user
 
   -- Common Fields

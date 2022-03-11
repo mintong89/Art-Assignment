@@ -31,29 +31,10 @@ namespace Art_Assignment.Pages.Profile
 
             Int64 uid = Auth.getLogonUserUID(Session["token"].ToString());
 
-
-            // txtArtistDisplayName
-            // txtBiography
-            // profilePicInput
             string strFileName = "";
-            string strFilePath;
-            string strFolder;
             if (profilePicInput.Value != "")
             {
-                strFolder = Server.MapPath(ConfigurationManager.AppSettings["upload_path"].ToString());
-                // Retrieve the name of the file that is posted.
-                strFileName = profilePicInput.PostedFile.FileName;
-                strFileName = Art_Assignment.Utility.Misc.getUniqueID() + Path.GetExtension(strFileName);
-                strFileName = Path.GetFileName(strFileName);
-
-                // Create the folder if it does not exist.
-                if (!Directory.Exists(strFolder))
-                {
-                    Directory.CreateDirectory(strFolder);
-                }
-                // Save the uploaded file to the server.
-                strFilePath = strFolder + "\\" + strFileName;
-                profilePicInput.PostedFile.SaveAs(strFilePath);
+                strFileName = Art_Assignment.Utility.Misc.handleFileUpload(profilePicInput, Server);
             }
 
 

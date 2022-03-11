@@ -10,7 +10,7 @@
                 <ItemTemplate>
                     <div class="flex justify-center">
                         <div class="rounded-full overflow-hidden h-32 w-32">
-                            <img alt="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/RandomBitmap.png" />
+                            <img style="width:100%; height:100%" alt="profile_pic" src="<%= getImageURL() %>" />
                         </div>
                     </div>
 

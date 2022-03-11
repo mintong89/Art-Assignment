@@ -8,6 +8,16 @@
         <div class="grid gap-y-3">
             <h1 class="text-xl font-bold">Edit Profile
             </h1>
+            <div class="flex justify-center">
+                <div class="user-profile-upload-image-cont">
+                    <img runat="server" ClientIDMode="Static" ID="userProfileImg" style="width:100%; height:100%" alt="profile-pic-preview" src="~/resources/profile-pic-blank.png" />
+                    <div class="user-profile-upload-image-hover-overlay">
+                        Click to Upload
+                    </div>  
+                </div>
+            </div>
+            <input type="file" id="profilePicInput" class="hidden" runat="server" ClientIDMode="Static" />
+
             <div>
                 <div class="input-label">
                     Username
@@ -48,4 +58,7 @@
             </div>
         </div>
     </form>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="<%= Page.ResolveUrl("~/js/AddArtistProfile.js") %>"></script>
 </asp:Content>
