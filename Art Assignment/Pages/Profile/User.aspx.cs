@@ -21,7 +21,7 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-            UserDataSource.SelectCommand = "SELECT COALESCE(Name, '&lt;not set&gt;') AS Name,COALESCE(FirstName, '&lt;not set&gt;') AS FirstName,COALESCE(LastName, '&lt;not set&gt;') AS LastName,COALESCE(convert(varchar, getdate(), 3), '&lt;not set&gt;') AS DateBirth, Email FROM [User] WHERE ID = @ID";
+            UserDataSource.SelectCommand = "SELECT COALESCE(Name, '&lt;not set&gt;') AS Name,COALESCE(FirstName, '&lt;not set&gt;') AS FirstName,COALESCE(LastName, '&lt;not set&gt;') AS LastName,COALESCE(convert(varchar, DateBirth, 105), '&lt;not set&gt;') AS DateBirth, Email FROM [User] WHERE ID = @ID";
             Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
             Int64 userid = (Int64)payload["uid"];
             UserDataSource.SelectParameters["ID"].DefaultValue = userid.ToString();
