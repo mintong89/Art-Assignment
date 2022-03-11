@@ -50,6 +50,7 @@
                                 <%# Eval("DateBirth") %>
                             </div>
                         </div>
+                        <!--
                         <div class="field-cont">
                             <div class="field-label">Delivery Address</div>
                             <div>
@@ -58,6 +59,7 @@
                                 Malaysia
                             </div>
                         </div>
+                        -->
                     </div>
                 </ItemTemplate>
             </asp:FormView>
