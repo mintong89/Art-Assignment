@@ -134,3 +134,13 @@
     .star.is-fill {
         background-image: url("/resources/star-fill.png")
     }
+
+/* The css below is meant to be applied on all table */
+.table {
+    width: 100%;
+}
+
+    .table > tbody > tr:first-child {
+        color: white;
+        background-color: black;
+    }
