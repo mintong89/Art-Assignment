@@ -48,8 +48,10 @@
                 </ItemTemplate>
                 <FooterTemplate>
                     <a href="AddArtistProfile.aspx">
-                        <div class="artist-profile-card-cont flex justify-center items-center text-green-900">
+                        <div class="artist-profile-card-cont flex justify-center items-center text-green-900 flex-col">
                             <i class="fa-solid fa-circle-plus fa-2xl"></i>
+                            <br />
+                            Add Artist Profile...
                         </div>
                     </a>
                 </FooterTemplate>
@@ -64,7 +66,13 @@
     else concat('~/upload/', ArtistProfilePicture)
   end AS Image
 FROM
-  [Artist]"></asp:SqlDataSource>
+  [Artist]
+WHERE
+  UserID = @UserID">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
     </form>
 </asp:Content>
 
