@@ -1,0 +1,13 @@
+﻿/*.col{
+    border-top:2px solid black;
+    border-left:2px solid black;
+}
+
+
+.col .row:last-of-type{
+    border-right:2px solid black;
+}
+
+.grid div{
+    border:1px solid green;
+}*/

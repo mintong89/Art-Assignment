@@ -112,3 +112,26 @@ CREATE TABLE [dbo].[Payment] (
 );
 GO
 
+[ID] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+  [IsActive] BIT,
+  [Name] varchar(255),
+  [Password] varchar(255) NOT NULL,
+  [FirstName] varchar(255),
+  [LastName] varchar(255),
+  [Email] varchar(255) NOT NULL,
+  [UserProfilePicture] varchar(255),
+  [DateBirth] Date, --This one suppose to be enter by user
+
+  -- Common Fields
+  [DateCreated] DateTime,
+  [DateModified] DateTime,
+  [DateDeleted] DateTime,
+  CONSTRAINT FirstName CHECK (FirstName NOT LIKE '% [^A-Z] % ]'), 
+  CONSTRAINT LastName CHECK (LastName NOT LIKE '% [^A-Z] % ]')
+);
+GO
+
+
+INSERT INTO ArtProd ([Name],[Description],[ArtistOwner],[Price],[DateCreated],[DateModified])
+VALUES ('Ice Scream','An ice cream screaming.',1,'123.00',getDate(),getDate());
+GO

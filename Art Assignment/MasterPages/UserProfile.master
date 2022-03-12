@@ -7,6 +7,7 @@
     </title>
     <link href="<%= Page.ResolveUrl("~/css/UserProfile.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%= Page.ResolveUrl("~/css/TableStyling.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= Page.ResolveUrl("~/css/Stock.css") %>" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="flex justify-center">

@@ -74,6 +74,7 @@
     <Content Include="css\Home.css" />
     <Content Include="css\main.css" />
     <Content Include="css\normalize.css" />
+    <Content Include="css\Stock.css" />
     <Content Include="css\UserProfile.css" />
     <Content Include="js\AddArtistProfile.js" />
     <Content Include="js\Gallery.js" />
