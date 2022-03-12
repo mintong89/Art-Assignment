@@ -56,3 +56,33 @@
     color: white;
     position: absolute
 }
+
+.artist-profile-card-cont {
+    width: 200px;
+    height: 300px;
+    display: grid;
+    row-gap: 10px;
+    grid-template-rows: 200px 30px 1fr;
+
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+    .artist-profile-card-cont:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+.artist-profile-card-name {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.artist-profile-card-biodesc {
+    font-size: small;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
