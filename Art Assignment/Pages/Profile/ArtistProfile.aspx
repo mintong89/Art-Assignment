@@ -17,7 +17,7 @@
                                 <%# Eval("Name") %>
                             </div>
                             <div class="artist-profile-card-biodesc limit-lines-3">
-                                <%# ((string)Eval("BioDesc")).Replace("\n", "<br />") %>
+                                <%# Eval("BioDesc") == DBNull.Value ? "" : ((string) Eval("BioDesc")).Replace("\n", "<br />") %>
                             </div>
                         </div>
                     </a>
