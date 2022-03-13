@@ -135,17 +135,12 @@
         background-image: url("/resources/star-fill.png")
     }
 
-/* The css below is meant to be applied on all table */
-.table {
-    width: 100%;
+/* Limit the container to show maximum of n-lines */
+.limit-lines-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
-
-    .table > tbody > tr:first-child {
-        color: white;
-        background-color: black;
-    }
-
-    .table tr th,
-    .table tr td{
-        padding: 5px;
-    }
