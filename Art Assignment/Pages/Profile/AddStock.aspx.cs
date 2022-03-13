@@ -19,7 +19,7 @@ namespace Art_Assignment.Pages.Profile
 
         protected void AddArtProd_OnClick(object sender, EventArgs arg)
         {
-            if (Session["token"] == null || !Auth.verify(Session["token"].ToString()))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Auth.verify(Request.Cookies["token"].Value.ToString()))
             {
                 return;
             }
@@ -29,7 +29,7 @@ namespace Art_Assignment.Pages.Profile
                 return;
             }
 
-            Int64 uid = Auth.getLogonUserUID(Session["token"].ToString());
+            Int64 uid = Auth.getLogonUserUID(Request.Cookies["token"].Value.ToString());
 
 
 

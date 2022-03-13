@@ -57,8 +57,9 @@ namespace Art_Assignment.Pages
                 };
 
                 string token = Utility.Auth.sign(payload);
-                Session["token"] = token;
-                if(Request.QueryString["redirectURL"] != null)
+                Response.Cookies["token"].Value = token;
+                Response.Cookies["token"].HttpOnly = true;
+                if (Request.QueryString["redirectURL"] != null)
                 {
                     Response.Redirect(Request.QueryString["redirectURL"]);
                     return;

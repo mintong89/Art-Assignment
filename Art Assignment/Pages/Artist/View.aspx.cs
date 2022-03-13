@@ -12,11 +12,11 @@ namespace Art_Assignment.Pages.Artist
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
             {
                 return;
             }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
+            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
             Int64 userid = (Int64)payload["uid"];
             string artistID = Request.QueryString["id"];
 
@@ -44,11 +44,11 @@ WHERE ID = " + artistID + " AND UserID = " + userid;
 
         protected void FormView1_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
-            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
             {
                 return;
             }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
+            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
             Int64 userid = (Int64)payload["uid"];
             string artistID = Request.QueryString["id"];
 
@@ -72,11 +72,11 @@ WHERE ID = " + artistID + " AND UserID = " + userid;
 
         protected void FormView1_ItemCreated(object sender, EventArgs e)
         {
-            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
             {
                 return;
             }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
+            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
             Int64 userid = (Int64)payload["uid"];
             string artistID = Request.QueryString["id"];
 

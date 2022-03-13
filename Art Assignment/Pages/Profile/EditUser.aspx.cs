@@ -17,11 +17,11 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
             {
                 return;
             }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
+            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
             Int64 userid = (Int64)payload["uid"];
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
@@ -54,11 +54,11 @@ namespace Art_Assignment.Pages.Profile
 
         protected void btnSubmit_OnClick(object sender, EventArgs e)
         {
-            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
             {
                 return;
             }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
+            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
             Int64 userid = (Int64)payload["uid"];
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {

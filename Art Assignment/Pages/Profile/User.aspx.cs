@@ -19,12 +19,12 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-            if (Session["token"] == null || !Utility.Auth.verify((string)Session["token"]))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
             {
                 return;
             }
             UserDataSource.SelectCommand = "SELECT UserProfilePicture, COALESCE(Name, FORMAT(ID, 'User\\#000#')) AS Name,COALESCE(FirstName, '&lt;not set&gt;') AS FirstName,COALESCE(LastName, '&lt;not set&gt;') AS LastName,COALESCE(convert(varchar, DateBirth, 105), '&lt;not set&gt;') AS DateBirth, Email FROM [User] WHERE ID = @ID";
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Session["token"]);
+            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
             Int64 userid = (Int64)payload["uid"];
             UserDataSource.SelectParameters["ID"].DefaultValue = userid.ToString();
         }

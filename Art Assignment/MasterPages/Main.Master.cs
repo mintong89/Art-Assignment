@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Art_Assignment.Utility;
 namespace Art_Assignment
 {
     public partial class Main : System.Web.UI.MasterPage
@@ -26,23 +26,23 @@ namespace Art_Assignment
             //var parsedPayload = Utility.Auth.parsePayload(token);
 
             //// How to store token into Session
-            //Session["token"] = token;
+            //Request.Cookies["token"].Value = token;
 
             //// How to retrieve token from Session
-            //Console.WriteLine(Session["token"]);
+            //Console.WriteLine(Request.Cookies["token"].Value);
 
             //// How to check if token exists
-            //if(Session["token"] == null)
+            //if(Request.Cookies["token"] == null || Request.Cookies["token"].Value == "")
             //{
 
             //}
 
-            if(Session["token"] == null)
+            if(Request.Cookies["token"] == null || Request.Cookies["token"].Value == "")
             {
                 return;
             }
 
-            if(Utility.Auth.verify((string) Session["token"]))
+            if(Auth.verify(Request.Cookies["token"].Value))
             {
                 NavMenuLoggedIn.Attributes.CssStyle.Add("display", "flex");
                 NavMenuNormal.Attributes.CssStyle.Add("display", "none");

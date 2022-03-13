@@ -11,7 +11,7 @@ namespace Art_Assignment.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Remove("token");
+            Response.Cookies["token"].Expires = DateTime.Now.AddDays(-1);
             Server.Transfer("Home.aspx");
         }
     }
