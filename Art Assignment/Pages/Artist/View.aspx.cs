@@ -77,7 +77,11 @@ WHERE ID = @ArtistID AND UserID = @UserID";
         }
 
         protected void FormView1_ItemCreated(object sender, EventArgs e)
-        {
+        { 
+            if(FormView1.FindControl("EditButton") == null)
+            {
+                return;
+            }
             Int64 userid = -1;
             try
             {
