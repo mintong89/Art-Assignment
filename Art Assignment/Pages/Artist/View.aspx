@@ -11,7 +11,11 @@
                 <asp:FormView ID="FormView1" runat="server" DataSourceID="ArtistDataSource" RenderOuterTable="false">
                     <ItemTemplate>
                         <div class="grid gap-y-3 justify-items-center">
-                            <div class="flex justify-center">
+                            <div class="flex justify-center relative w-full">
+                                <div class="absolute right-0">
+                                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CssClass="button-22"
+                                        CommandName="Edit" Text="Edit" />
+                                </div>
                                 <div class="rounded-full w-20 h-20 overflow-hidden">
                                     <img runat="server" id="artistPic" class="w-full h-full" alt="profilePic" src='<%# Bind("ArtistImage") %>' />
                                 </div>
@@ -32,6 +36,17 @@
                             </div>
                         </div>
                     </ItemTemplate>
+                    <EditItemTemplate>
+                        <div class="artist-edit-profile-bg-cont">
+                            <div class="div-card h-48 w-48 bg-white" onclick="event.stopPropagation()">
+                                <div>Weird text</div>
+                                <asp:LinkButton ID="btnArtistProfileUpdate" runat="server" CausesValidation="True" ClientIDMode="Static"
+                                    CommandName="Update" Text="Update" CssClass="button-22 button-22-success" />
+                                <asp:LinkButton ID="btnArtistProfileUpdateCancel" runat="server" CssClass="button-22 button-22-danger" ClientIDMode="Static"
+                                    CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                            </div>
+                        </div>
+                    </EditItemTemplate>
                 </asp:FormView>
                 <asp:SqlDataSource ID="ArtistDataSource" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" runat="server"></asp:SqlDataSource>
             </div>
@@ -84,4 +99,5 @@
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="<%=Page.ResolveUrl("~/js/Artist.js") %>"></script>
 </asp:Content>
