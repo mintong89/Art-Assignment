@@ -38,7 +38,7 @@
                     </ItemTemplate>
                     <EditItemTemplate>
                         <div class="artist-edit-profile-bg-cont">
-                            <div class="div-card w-96 bg-white p-3 grid gap-y-3" onclick="event.stopPropagation()">
+                            <div class="div-card w-96 bg-white p-3 grid gap-y-3" onmousedown="event.stopPropagation()">
                                 <div class="flex justify-center">
                                     <div class="artist-upload-image-cont">
                                         <img runat="server" ClientIDMode="Static" id="edit_image_preview" style="width: 100%; height: 100%" alt="profile-pic-preview" src='<%# Eval("ArtistImage") %>' />
