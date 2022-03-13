@@ -7,6 +7,7 @@ using JWT.Exceptions;
 using System.Configuration;
 using System.Security.Cryptography;
 using LoozMembershipConfig;
+using System.Linq;
 namespace Art_Assignment.Utility
 {
     public class Auth
@@ -139,11 +140,11 @@ namespace Art_Assignment.Utility
             LoozMembershipConfigCollection collection = section.membership;
             foreach (MembershipElement element in collection)
             {
-                if(absPath != element.Path)
+                if(absPath.Equals(element.Path))
                 {
                     continue;
                 }
-
+                string[] requiredRoles = element.RequiredRoles.Split(',').Select(x => x.Trim()).ToArray();
                 Response.Redirect(Server.MapPath("~/Home.aspx"));
             }
         }

@@ -48,7 +48,7 @@ namespace LoozMembershipConfig
         }
 
         [ConfigurationProperty("requiredRoles", IsRequired = true)]
-        public string RequiredRole
+        public string RequiredRoles
         {
             get { return (string)this["requiredRoles"]; }
             set { this["requiredRoles"] = value; }
