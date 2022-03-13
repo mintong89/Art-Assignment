@@ -70,6 +70,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\Artist.css" />
     <Content Include="css\Gallery.css" />
     <Content Include="css\Home.css" />
     <Content Include="css\main.css" />

@@ -1,0 +1,40 @@
+﻿.artist-meta-cont {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    margin: 20px 0;
+    grid-template-rows: 300px 1fr;
+}
+.artist-profile-card-cont {
+    padding: 10px;
+}
+
+.artist-main-cont {
+    padding: 10px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+}
+
+.artist-nav-menu-cont {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+    .artist-nav-menu-cont .item-active {
+        padding: .5rem;
+        border-radius: 10px;
+        background-color: #b3e5fc;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .artist-nav-menu-cont .item-idle {
+        padding: .5rem;
+        border-radius: 10px;
+        color: #a3b5dc;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
