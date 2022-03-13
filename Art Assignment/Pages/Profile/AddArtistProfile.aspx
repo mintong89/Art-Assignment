@@ -31,6 +31,26 @@
                 <asp:TextBox class="input" runat="server" ID="txtBiography" TextMode="MultiLine"></asp:TextBox>
             </div>
             <div>
+                <div class="input-label">
+                    Contact Phone Number
+                    <asp:CustomValidator ID="PhoneNumberValidator" runat="server" ErrorMessage="Invalid Phone Number!" ForeColor="red"></asp:CustomValidator>
+                </div>
+                <asp:TextBox class="input" runat="server" ID="cPhoneNum"></asp:TextBox>
+            </div>
+            <div>
+                <div class="input-label">
+                    Contact Email
+                    <asp:CustomValidator ID="EmailValidator" runat="server" ErrorMessage="Invalid Email !" ForeColor="red"></asp:CustomValidator>
+                </div>
+                <asp:TextBox class="input" runat="server" ID="cEmail"></asp:TextBox>
+            </div>
+            <div>
+                <div class="input-label">
+                    Twitter
+                </div>
+                <asp:TextBox class="input" runat="server" ID="Twitter"></asp:TextBox>
+            </div>
+            <div>
                 <div class="inline-block">
                     <button runat="server" class="button-22 button-22-success" onserverclick="AddArtist_OnClick">
                         <i class="fa-solid fa-plus"></i>&nbsp;

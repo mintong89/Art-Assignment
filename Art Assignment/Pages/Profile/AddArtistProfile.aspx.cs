@@ -41,7 +41,7 @@ namespace Art_Assignment.Pages.Profile
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Artist([Name], [BioDesc], [Rating], [ArtistProfilePicture], [UserID], [DateCreated], [DateModified]) VALUES(@Name, @BioDesc, 0, @ArtistProfilePicture, @UserID, getdate(), getdate())", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Artist([Name], [BioDesc], [Rating], [ArtistProfilePicture], [UserID], [ContactPhone], [ContactEmail], [ContactTwitter], [DateCreated], [DateModified]) VALUES(@Name, @BioDesc, 0, @ArtistProfilePicture, @UserID, @ContactPhone, @ContactEmail, @ContactTwitter, getdate(), getdate())", con);
                 cmd.Parameters.AddWithValue("@Name", txtArtistDisplayName.Text);
                 if (txtBiography.Text == "")
                 {
@@ -59,6 +59,31 @@ namespace Art_Assignment.Pages.Profile
                 else
                 {
                     cmd.Parameters.AddWithValue("@ArtistProfilePicture", strFileName);
+                }
+
+                if (cPhoneNum.Text == "")
+                {
+                    cmd.Parameters.AddWithValue("@ContactPhone", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ContactPhone", cPhoneNum.Text);
+                }
+                if (cEmail.Text == "")
+                {
+                    cmd.Parameters.AddWithValue("@ContactEmail", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ContactEmail", cEmail.Text);
+                }
+                if (Twitter.Text == "")
+                {
+                    cmd.Parameters.AddWithValue("@ContactTwitter", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ContactTwitter", Twitter.Text);
                 }
 
                 cmd.Parameters.AddWithValue("@UserID", uid);

@@ -12,6 +12,17 @@ namespace Art_Assignment.Pages.Artist
         protected void Page_Load(object sender, EventArgs e)
         {
             string artistID = Request.QueryString["id"];
+            if(artistID == null || artistID == "")
+            {
+                Response.Redirect("~/Pages/Gallery.aspx");
+            }
+            ArtistDataSource.SelectCommand = "SELECT *, " +
+                "case when [ArtistProfilePicture] IS NULL THEN " +
+                "'~/resources/profile-pic-blank.png' " +
+                "else concat('~/upload/', ArtistProfilePicture) " +
+                "end " +
+                "AS ArtistImage " +
+                "FROM [Artist] WHERE ID = " + artistID;
         }
     }
 }
