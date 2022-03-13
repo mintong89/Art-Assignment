@@ -17,7 +17,7 @@
                 </div>
             </div>
             <input type="file" id="profilePicInput" class="hidden" runat="server" ClientIDMode="Static" />
-            <div>
+            <div>6
                 <div class="input-label">
                     Artist Display Name<span style="color: red">*</span>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtistDisplayName" ForeColor="Red">Display Name is required.</asp:RequiredFieldValidator>

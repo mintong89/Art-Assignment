@@ -15,7 +15,6 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Auth.useAuthorizationMiddleware(Request, Response, HttpContext.Current, Server);
         }
 
         protected void AddArtist_OnClick(object sender, EventArgs arg)

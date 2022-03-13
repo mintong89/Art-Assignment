@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Security.Cryptography;
 using LoozMembershipConfig;
 using System.Linq;
+using System.Text.RegularExpressions;
 namespace Art_Assignment.Utility
 {
     public class Auth
@@ -123,29 +124,71 @@ namespace Art_Assignment.Utility
             return true;
         }
 
-        /// <summary>
+        /// /// <summary>
         /// Handles .aspx pages authorization
         /// </summary>
         /// <param name="Request">HTTP Request Object</param>
         /// <param name="Response">HTTP Response Object</param>
         /// <param name="HttpContext">Current HttpContext object. Can be obtained using HttpContext.Current</param>
+        /// <param name="Server">Server object</param>
         public static void useAuthorizationMiddleware(System.Web.HttpRequest Request, System.Web.HttpResponse Response, System.Web.HttpContext HttpContext, System.Web.HttpServerUtility Server)
         {
+            // Attempt to read membership configuration
             LoozMemebershipSection section = (LoozMemebershipSection)ConfigurationManager.GetSection("loozMembership");
             if(section == null)
             {
                 return;
             }
+
+            // Get current path
             string absPath = HttpContext.Request.Url.AbsolutePath;
+
+            // Read each collection in the config
             LoozMembershipConfigCollection collection = section.membership;
             foreach (MembershipElement element in collection)
             {
-                if(absPath.Equals(element.Path))
+                // If the path doesnt match, just skip
+                string regexString = element.Path.Replace("*", @"([^\s]+)");
+                Regex rx = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                if(rx.Matches(absPath).Count < 1)
                 {
                     continue;
                 }
+
+                // Parse the requiredRoles
                 string[] requiredRoles = element.RequiredRoles.Split(',').Select(x => x.Trim()).ToArray();
-                Response.Redirect(Server.MapPath("~/Home.aspx"));
+
+                // If token is not provided OR invalid token, reject access
+                if(Request.Cookies["token"] == null || Request.Cookies["token"].Value == "")
+                {
+                    Response.Redirect("~/Pages/Home.aspx");
+                    return;
+                }
+                if(!verify(Request.Cookies["token"].Value))
+                {
+                    Response.Redirect("~/Pages/Home.aspx");
+                    return;
+                }
+
+                // Read role from token
+                Dictionary<string, object> payload = parsePayload(Request.Cookies["token"].Value);
+                string role = (string)payload["role"];
+
+                // Check if user role is correct for access
+                bool access = false;
+                foreach(string r in requiredRoles)
+                {
+                    if(role.Equals(r))
+                    {
+                        access = true;
+                    }
+                }
+
+                if(!access)
+                {
+                    Response.Redirect("~/Pages/Home.aspx");
+                    return;
+                }
             }
         }
     }

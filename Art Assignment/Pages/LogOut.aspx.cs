@@ -12,7 +12,7 @@ namespace Art_Assignment.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             Response.Cookies["token"].Expires = DateTime.Now.AddDays(-1);
-            Server.Transfer("Home.aspx");
+            Response.Redirect("Home.aspx");
         }
     }
 }
