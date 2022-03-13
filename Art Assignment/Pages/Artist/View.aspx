@@ -93,7 +93,15 @@
                         </div>
                     </EditItemTemplate>
                 </asp:FormView>
-                <asp:SqlDataSource ID="ArtistDataSource" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" runat="server"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="ArtistDataSource" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" runat="server">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="-1" Name="ID" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter DefaultValue="-1" Name="ArtistID" Type="Int32" />
+                        <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
             </div>
             <div class="artist-main-cont div-card">
                 <div class="artist-nav-menu-cont">

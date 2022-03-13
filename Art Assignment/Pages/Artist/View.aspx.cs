@@ -20,24 +20,31 @@ namespace Art_Assignment.Pages.Artist
                 Response.Redirect("~/Pages/Gallery.aspx");
             }
 
-            ArtistDataSource.SelectCommand = "SELECT *, " +
-                "case when [ArtistProfilePicture] IS NULL THEN " +
-                "'~/resources/profile-pic-blank.png' " +
-                "else concat('~/upload/', ArtistProfilePicture) " +
-                "end " +
-                "AS ArtistImage " +
-                "FROM [Artist] WHERE ID = " + artistID;
+            ArtistDataSource.SelectCommand = @"SELECT
+  *,
+  case
+    when [ArtistProfilePicture] IS NULL THEN '~/resources/profile-pic-blank.png'
+    else concat('~/upload/', ArtistProfilePicture)
+  end AS ArtistImage
+FROM
+  [Artist]
+WHERE
+  ID = @ID";
 
-            try {
-                Int64 userid = Auth.getLogonUserUID(Request);
-                ArtistDataSource.UpdateCommand = @"UPDATE [Artist]
+            ArtistDataSource.UpdateCommand = @"UPDATE [Artist]
 SET [DateModified] = GETDATE(),
 [Name] = @Name,
 [BioDesc] = @BioDesc,
 [ContactPhone] = @ContactPhone,
 [ContactEmail] = @ContactEmail,
 [ContactTwitter] = @ContactTwitter
-WHERE ID = " + artistID + " AND UserID = " + userid;
+WHERE ID = @ArtistID AND UserID = @UserID";
+
+            ArtistDataSource.SelectParameters["ID"].DefaultValue = artistID;
+            ArtistDataSource.UpdateParameters["ArtistID"].DefaultValue = artistID;
+            try {
+                Int64 userid = Auth.getLogonUserUID(Request);
+                ArtistDataSource.UpdateParameters["UserID"].DefaultValue = userid.ToString();
             } catch (UnauthorizedAccessException ex) {
 
             }
