@@ -13,7 +13,7 @@
                         <div class="grid gap-y-3 justify-items-center">
                             <div class="flex justify-center relative w-full">
                                 <div class="absolute right-0">
-                                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CssClass="button-22"
+                                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CssClass="button-22 hidden"
                                         CommandName="Edit" Text="Edit" />
                                 </div>
                                 <div class="rounded-full w-20 h-20 overflow-hidden">

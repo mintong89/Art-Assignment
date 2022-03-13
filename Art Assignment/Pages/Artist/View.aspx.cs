@@ -42,10 +42,13 @@ WHERE ID = @ArtistID AND UserID = @UserID";
 
             ArtistDataSource.SelectParameters["ID"].DefaultValue = artistID;
             ArtistDataSource.UpdateParameters["ArtistID"].DefaultValue = artistID;
-            try {
+            try
+            {
                 Int64 userid = Auth.getLogonUserUID(Request);
                 ArtistDataSource.UpdateParameters["UserID"].DefaultValue = userid.ToString();
-            } catch (UnauthorizedAccessException ex) {
+            }
+            catch (UnauthorizedAccessException ex)
+            {
 
             }
         }
@@ -75,9 +78,17 @@ WHERE ID = @ArtistID AND UserID = @UserID";
 
         protected void FormView1_ItemCreated(object sender, EventArgs e)
         {
-            Int64 userid = Auth.getLogonUserUID(Request);
-            string artistID = Request.QueryString["id"];
+            Int64 userid = -1;
+            try
+            {
+                userid = Auth.getLogonUserUID(Request);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return;
+            }
 
+            string artistID = Request.QueryString["id"];
             if (artistID == null || artistID == "")
             {
                 Response.Redirect("~/Pages/Gallery.aspx");
@@ -89,10 +100,10 @@ WHERE ID = @ArtistID AND UserID = @UserID";
                 { "@UserID", userid }
             };
 
-            int count = (int) Utility.SqlHelper.ExecuteScalar("SELECT COUNT(*) FROM [Artist] WHERE ID = @ID AND UserID = @UserID;", param);
-            if (count <= 0)
+            int count = (int)Utility.SqlHelper.ExecuteScalar("SELECT COUNT(*) FROM [Artist] WHERE ID = @ID AND UserID = @UserID;", param);
+            if (count > 0)
             {
-                ((LinkButton)FormView1.FindControl("EditButton")).CssClass = Utility.Misc.AddCssClass("hidden", ((LinkButton)FormView1.FindControl("EditButton")).CssClass);
+                ((LinkButton)FormView1.FindControl("EditButton")).CssClass = Utility.Misc.RemoveCssClass("hidden", ((LinkButton)FormView1.FindControl("EditButton")).CssClass);
             }
         }
     }
