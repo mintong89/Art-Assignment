@@ -83,6 +83,12 @@ namespace Art_Assignment.Utility
             return true;
         }
 
+        /// <summary>
+        /// Get the logon userID. May throw UnauthorizedAccessException if user is not logon or the token had expired
+        /// </summary>
+        /// <param name="Request">HTTP Request Object</param>
+        /// <returns>UserID in Int64</returns>
+        /// <exception cref="UnauthorizedAccessException"></exception>
         public static Int64 getLogonUserUID(System.Web.HttpRequest Request)
         {
             if(Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
