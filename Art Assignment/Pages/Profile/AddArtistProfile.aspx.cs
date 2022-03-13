@@ -8,13 +8,14 @@ using System.IO;
 using System.Configuration;
 using System.Data.SqlClient;
 using Art_Assignment.Utility;
+
 namespace Art_Assignment.Pages.Profile
 {
     public partial class AddArtistProfile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Auth.useAuthorizationMiddleware(Request, Response, HttpContext.Current, Server);
         }
 
         protected void AddArtist_OnClick(object sender, EventArgs arg)

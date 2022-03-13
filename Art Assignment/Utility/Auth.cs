@@ -6,6 +6,7 @@ using JWT.Algorithms;
 using JWT.Exceptions;
 using System.Configuration;
 using System.Security.Cryptography;
+using LoozMembershipConfig;
 namespace Art_Assignment.Utility
 {
     public class Auth
@@ -119,6 +120,32 @@ namespace Art_Assignment.Utility
                 if (hashBytes[i + 16] != hash[i])
                     return false;
             return true;
+        }
+
+        /// <summary>
+        /// Handles .aspx pages authorization
+        /// </summary>
+        /// <param name="Request">HTTP Request Object</param>
+        /// <param name="Response">HTTP Response Object</param>
+        /// <param name="HttpContext">Current HttpContext object. Can be obtained using HttpContext.Current</param>
+        public static void useAuthorizationMiddleware(System.Web.HttpRequest Request, System.Web.HttpResponse Response, System.Web.HttpContext HttpContext, System.Web.HttpServerUtility Server)
+        {
+            LoozMemebershipSection section = (LoozMemebershipSection)ConfigurationManager.GetSection("loozMembership");
+            if(section == null)
+            {
+                return;
+            }
+            string absPath = HttpContext.Request.Url.AbsolutePath;
+            LoozMembershipConfigCollection collection = section.membership;
+            foreach (MembershipElement element in collection)
+            {
+                if(absPath != element.Path)
+                {
+                    continue;
+                }
+
+                Response.Redirect(Server.MapPath("~/Home.aspx"));
+            }
         }
     }
 }

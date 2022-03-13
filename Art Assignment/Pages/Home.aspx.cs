@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-
+using LoozMembershipConfig;
 namespace Art_Assignment.Pages
 {
     public partial class Home : System.Web.UI.Page

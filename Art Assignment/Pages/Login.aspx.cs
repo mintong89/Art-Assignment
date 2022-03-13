@@ -54,6 +54,7 @@ namespace Art_Assignment.Pages
                 var payload = new Dictionary<string, object>
                 {
                     {"uid", uid},
+                    {"role", "User"}
                 };
 
                 string token = Utility.Auth.sign(payload);
