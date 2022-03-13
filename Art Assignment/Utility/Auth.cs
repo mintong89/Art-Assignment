@@ -87,12 +87,12 @@ namespace Art_Assignment.Utility
         {
             if(Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
             {
-                throw new UnauthorizedAccessException("Missing token in cookies");
+                throw new UnauthorizedAccessException("Unauthorized Access. (Missing token)");
             }
             string token = Request.Cookies["token"].Value;
             if(!verify(token))
             {
-                throw new UnauthorizedAccessException("Token had expired");
+                throw new UnauthorizedAccessException("Unauthorized Access. (Expired token)");
             }
 
             Dictionary<string, object> payload = parsePayload(token);
