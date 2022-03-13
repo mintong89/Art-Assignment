@@ -4,47 +4,23 @@
     My Artist Profile
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <%--<table>
-        <thead>
-            <tr>
-                <td>Actions</td>
-                <td>No.</td>
-                <td>Picture</td>
-                <td>Name</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    Edit | Delete
-                </td>
-                <td>
-                    1.
-                </td>
-                <td>
-                    Picture
-                </td>
-                <td>
-                    Artist Name 1
-                </td>
-            </tr>
-        </tbody>
-    </table>--%>
     <form runat="server">
         <div class="grid grid-cols-3 gap-2.5">
             <asp:Repeater ID="ArtistProfileRepeater" runat="server" DataSourceID="ArtistDataSource">
                 <ItemTemplate>
-                    <div class="artist-profile-card-cont">
-                        <div class="flex justify-center">
-                            <img style="width: 100%; height: 100%" runat="server" id="profIcon" src='<%# Bind("Image") %>' alt="gay" />
+                    <a runat="server" href='<%# Eval("Url") %>'>
+                        <div class="artist-profile-card-cont">
+                            <div class="flex justify-center">
+                                <img style="width: 100%; height: 100%" runat="server" id="profIcon" src='<%# Bind("Image") %>' alt="gay" />
+                            </div>
+                            <div class="artist-profile-card-name">
+                                <%# Eval("Name") %>
+                            </div>
+                            <div class="artist-profile-card-biodesc">
+                                <%# Eval("BioDesc") %>
+                            </div>
                         </div>
-                        <div class="artist-profile-card-name">
-                            <%# Eval("Name") %>
-                        </div>
-                        <div class="artist-profile-card-biodesc">
-                            <%# Eval("BioDesc") %>
-                        </div>
-                    </div>
+                    </a>
                 </ItemTemplate>
                 <FooterTemplate>
                     <a href="AddArtistProfile.aspx">
@@ -58,6 +34,7 @@
             </asp:Repeater>
         </div>
         <asp:SqlDataSource ID="ArtistDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" SelectCommand="SELECT
+  concat('~/Pages/Artist/View.aspx?ID=', [ID]) as Url,
   [Name],
   [BioDesc],
   [Rating],
