@@ -25,7 +25,7 @@ Just run `DBSetup.bat` inside `scripts` folder, it will delete the existing Loca
 2. On Page Load, call `Art_Assignment.Utility.Auth.useAuthorizationMiddleware(Request, Response, HttpContext.Current, Server);`
 This method will handle all authorization
 
-3. inside `<membership>`, may set absolute path to define the required roles, wildcard (*) can be used. (e.g. `/Pages/Profile/\*` would refer to all paths that start with `/Pages/Profile/`
+3. Inside `<membership>`, may set absolute path to define the required roles, wildcard (*) can be used. (e.g. `/Pages/Profile/\*` would refer to all paths that start with `/Pages/Profile/`
 
 Note 1: User role will usually be stored inside the JWT token.
 
