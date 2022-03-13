@@ -59,7 +59,7 @@
 
 .artist-profile-card-cont {
     width: 200px;
-    height: 300px;
+    height: calc(230px + 6rem);
     display: grid;
     row-gap: 10px;
     grid-template-rows: 200px 30px 1fr;
@@ -85,4 +85,5 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+    
 }

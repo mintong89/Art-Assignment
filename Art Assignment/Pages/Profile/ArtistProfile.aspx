@@ -16,8 +16,8 @@
                             <div class="artist-profile-card-name">
                                 <%# Eval("Name") %>
                             </div>
-                            <div class="artist-profile-card-biodesc">
-                                <%# Eval("BioDesc") %>
+                            <div class="artist-profile-card-biodesc limit-lines-3">
+                                <%# ((string)Eval("BioDesc")).Replace("\n", "<br />") %>
                             </div>
                         </div>
                     </a>

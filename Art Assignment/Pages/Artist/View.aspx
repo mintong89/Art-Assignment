@@ -24,7 +24,7 @@
                                 <%# Eval("Name") %>
                             </div>
                             <div class="text-sm limit-lines-3">
-                                <%# Eval("BioDesc") %>
+                                <%# ((string) Eval("BioDesc")).Replace("\n", "<br />") %>
                             </div>
                             <div class="grid grid-cols-[auto_1fr] gap-x-3">
                                 <div class="flex items-center" style="display: <%# Eval("ContactEmail")!=DBNull.Value && Eval("ContactEmail")!= "" ? "block" : "none" %>"><i class="fa-solid fa-envelope"></i></div>
@@ -59,7 +59,7 @@
                                     <div class="input-label">
                                         Biography
                                     </div>
-                                    <asp:TextBox class="input" runat="server" ID="txtBiography" TextMode="MultiLine" Text='<%# Bind("BioDesc") %>'></asp:TextBox>
+                                    <asp:TextBox class="input" runat="server" ClientIDMode="Static" ID="txtBiography" TextMode="MultiLine" Text='<%# Bind("BioDesc") %>'></asp:TextBox>
                                 </div>
                                 <div>
                                     <div class="input-label">
@@ -109,35 +109,7 @@
                 <div>
                     Item 1<br>
                     Item 2<br>
-                    Item 3Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    Item
-                <br>
-                    <br>
+                    Item 3
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@
     },
     uploadImageOnClick: function (evt) {
         $("#profilePicInput").click();
-    }
+    },
 }
 
 $(function () {

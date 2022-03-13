@@ -49,7 +49,6 @@ namespace Art_Assignment.Pages.Profile
                 }
                 else
                 {
-                    txtBiography.Text = txtBiography.Text.Replace("\n", "<br/>");
                     cmd.Parameters.AddWithValue("@BioDesc", txtBiography.Text);
                 }
                 if (strFileName == "")
