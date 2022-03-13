@@ -83,11 +83,16 @@ namespace Art_Assignment.Utility
             return true;
         }
 
-        public static Int64 getLogonUserUID(string token)
+        public static Int64 getLogonUserUID(System.Web.HttpRequest Request)
         {
+            if(Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
+            {
+                throw new UnauthorizedAccessException("Missing token in cookies");
+            }
+            string token = Request.Cookies["token"].Value;
             if(!verify(token))
             {
-                return -1;
+                throw new UnauthorizedAccessException("Token had expired");
             }
 
             Dictionary<string, object> payload = parsePayload(token);

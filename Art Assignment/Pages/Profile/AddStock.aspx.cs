@@ -19,20 +19,13 @@ namespace Art_Assignment.Pages.Profile
 
         protected void AddArtProd_OnClick(object sender, EventArgs arg)
         {
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Auth.verify(Request.Cookies["token"].Value.ToString()))
-            {
-                return;
-            }
             Page.Validate();
             if (!Page.IsValid)
             {
                 return;
             }
 
-            Int64 uid = Auth.getLogonUserUID(Request.Cookies["token"].Value.ToString());
-
-
-
+            Int64 uid = Auth.getLogonUserUID(Request);
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {

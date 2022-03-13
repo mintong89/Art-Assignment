@@ -24,7 +24,7 @@
                                 <%# Eval("Name") %>
                             </div>
                             <div class="text-sm limit-lines-3">
-                                <%# ((string) Eval("BioDesc")).Replace("\n", "<br />") %>
+                                <%# Eval("BioDesc") == DBNull.Value ? "" :((string) Eval("BioDesc")).Replace("\n", "<br />") %>
                             </div>
                             <div class="grid grid-cols-[auto_1fr] gap-x-3">
                                 <div class="flex items-center" style="display: <%# Eval("ContactEmail")!=DBNull.Value && Eval("ContactEmail")!= "" ? "block" : "none" %>"><i class="fa-solid fa-envelope"></i></div>

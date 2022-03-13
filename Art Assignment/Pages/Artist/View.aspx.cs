@@ -6,18 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using Art_Assignment.Utility;
 namespace Art_Assignment.Pages.Artist
 {
     public partial class View : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
-            {
-                return;
-            }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
-            Int64 userid = (Int64)payload["uid"];
             string artistID = Request.QueryString["id"];
 
             if (artistID == null || artistID == "")
@@ -32,7 +27,10 @@ namespace Art_Assignment.Pages.Artist
                 "end " +
                 "AS ArtistImage " +
                 "FROM [Artist] WHERE ID = " + artistID;
-            ArtistDataSource.UpdateCommand = @"UPDATE [Artist]
+
+            try {
+                Int64 userid = Auth.getLogonUserUID(Request);
+                ArtistDataSource.UpdateCommand = @"UPDATE [Artist]
 SET [DateModified] = GETDATE(),
 [Name] = @Name,
 [BioDesc] = @BioDesc,
@@ -40,16 +38,14 @@ SET [DateModified] = GETDATE(),
 [ContactEmail] = @ContactEmail,
 [ContactTwitter] = @ContactTwitter
 WHERE ID = " + artistID + " AND UserID = " + userid;
+            } catch (UnauthorizedAccessException ex) {
+
+            }
         }
 
         protected void FormView1_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
-            {
-                return;
-            }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
-            Int64 userid = (Int64)payload["uid"];
+            Int64 userid = Auth.getLogonUserUID(Request);
             string artistID = Request.QueryString["id"];
 
             var profilePicInput = (System.Web.UI.HtmlControls.HtmlInputFile)FormView1.FindControl("profilePicInput");
@@ -72,12 +68,7 @@ WHERE ID = " + artistID + " AND UserID = " + userid;
 
         protected void FormView1_ItemCreated(object sender, EventArgs e)
         {
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
-            {
-                return;
-            }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
-            Int64 userid = (Int64)payload["uid"];
+            Int64 userid = Auth.getLogonUserUID(Request);
             string artistID = Request.QueryString["id"];
 
             if (artistID == null || artistID == "")

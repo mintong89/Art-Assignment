@@ -17,12 +17,7 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
-            {
-                return;
-            }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
-            Int64 userid = (Int64)payload["uid"];
+            Int64 userid = Auth.getLogonUserUID(Request);
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
@@ -54,12 +49,7 @@ namespace Art_Assignment.Pages.Profile
 
         protected void btnSubmit_OnClick(object sender, EventArgs e)
         {
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
-            {
-                return;
-            }
-            Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
-            Int64 userid = (Int64)payload["uid"];
+            Int64 userid = Auth.getLogonUserUID(Request);
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();

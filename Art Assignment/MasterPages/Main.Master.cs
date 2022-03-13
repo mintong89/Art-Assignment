@@ -16,16 +16,17 @@ namespace Art_Assignment
         {
             Auth.useAuthorizationMiddleware(Request, Response, HttpContext.Current, Server);
             
-            if(Request.Cookies["token"] == null || Request.Cookies["token"].Value == "")
-            {
+            Int64 userID = -1;
+            try {
+                userID = Auth.getLogonUserUID(Request);
+            } catch(UnauthorizedAccessException ex) {
                 return;
             }
 
-            if(Auth.verify(Request.Cookies["token"].Value))
-            {
-                NavMenuLoggedIn.Attributes.CssStyle.Add("display", "flex");
-                NavMenuNormal.Attributes.CssStyle.Add("display", "none");
-            }
+            // Set log on display
+            NavMenuLoggedIn.Attributes.CssStyle.Add("display", "flex");
+            NavMenuNormal.Attributes.CssStyle.Add("display", "none");
+            
         }
     }
 }
