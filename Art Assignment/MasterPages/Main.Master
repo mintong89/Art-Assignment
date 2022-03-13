@@ -30,7 +30,7 @@
                         Register
                     </div>
                 </a>
-                <a runat="server" href="~/Pages/Login.aspx">
+                <a runat="server" href="~/Pages/Login.aspx?redirectUrl=Profile/User.aspx">
                     <div class="m-2">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                         Log In

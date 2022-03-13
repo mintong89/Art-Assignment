@@ -58,7 +58,12 @@ namespace Art_Assignment.Pages
 
                 string token = Utility.Auth.sign(payload);
                 Session["token"] = token;
-                Server.Transfer("Home.aspx");
+                if(Request.QueryString["redirectURL"] != null)
+                {
+                    Response.Redirect(Request.QueryString["redirectURL"]);
+                    return;
+                }
+                Response.Redirect("Home.aspx");
             }
 
         }
