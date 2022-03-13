@@ -55,3 +55,30 @@
 .artist-edit-profile-bg-cont > * {
     cursor: default;
 }
+
+.artist-upload-image-cont {
+    border-radius: 9999px;
+    overflow: hidden;
+    width: 12rem;
+    height: 12rem;
+    position: relative;
+    cursor: pointer;
+}
+
+    .artist-upload-image-cont:hover .artist-upload-image-hover-overlay {
+        display: flex;
+    }
+
+.artist-upload-image-hover-overlay {
+    display: none;
+    border-radius: 9999px;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute
+}

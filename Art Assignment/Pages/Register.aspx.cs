@@ -47,8 +47,8 @@ namespace Art_Assignment.Pages
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.Add("@Email", email);
-                cmd.Parameters.Add("@Password", pw);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Password", pw);
 
                 con.Open();
                 cmd.ExecuteNonQuery();

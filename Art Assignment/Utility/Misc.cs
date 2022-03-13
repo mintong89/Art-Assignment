@@ -50,5 +50,26 @@ namespace Art_Assignment.Utility
             return strFileName;
 
         }
+
+        public static string AddCssClass(string classname, string oldcssclass)
+        {
+            // Add a class
+            return String.Join(" ", oldcssclass
+                       .Split(' ')
+                       .Except(new string[] { "", classname })
+                       .Concat(new string[] { classname })
+                       .ToArray()
+               );
+        }
+
+        public static string RemoveCssClass(string classname, string oldcssclass)
+        {
+            // Remove a class
+            return String.Join(" ", oldcssclass
+                      .Split(' ')
+                      .Except(new string[] { "", classname })
+                      .ToArray()
+              );
+        }
     }
 }

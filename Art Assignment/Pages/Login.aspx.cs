@@ -33,7 +33,7 @@ namespace Art_Assignment.Pages
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.Add("@Email", txtEmail.Text);
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
 
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
