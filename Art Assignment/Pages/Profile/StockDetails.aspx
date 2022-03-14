@@ -24,12 +24,14 @@
     <form runat="server">
         <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
             <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>
+        
         <br />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" SelectCommand="SELECT
   ROW_NUMBER() OVER(
     ORDER BY
       [Name] ASC
   ) AS [Row],
+  [ID],
   [Name],
   [Description],
   [Price]
@@ -69,8 +71,9 @@ ORDER BY
                                 <asp:Label ID="ArtProdPrice" runat="server"
                                     Text='<%# Eval("Price") %>' />
                             </td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                            <td><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'>Delete</a></td>
+                            
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

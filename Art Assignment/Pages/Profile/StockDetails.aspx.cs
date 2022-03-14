@@ -35,5 +35,7 @@ namespace Art_Assignment.Pages.Profile
         {
 
         }
+
+
     }
 }
