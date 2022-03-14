@@ -14,7 +14,6 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Art_Assignment.Utility.Auth.useAuthorizationMiddleware(Request, Response, HttpContext.Current, Server);
         }
 
         protected void AddArtProd_OnClick(object sender, EventArgs arg)
