@@ -46,15 +46,15 @@
                                 
                                 
                             </td>
-                            <td>
+                            <td class="px-1">
                                 <asp:Label ID="ArtProdName" runat="server"
                                     Text='<%# Eval("Name") %>' />
                             </td>
-                            <td>
+                            <td class="px-1">
                                 <asp:Label ID="ArtProdDescription" runat="server"
                                     Text='<%# Eval("Description") %>' />
                             </td>
-                            <td>
+                            <td class="px-1">
                                 <asp:Label ID="ArtProdPrice" runat="server"
                                     Text='<%# Eval("Price") %>' />
                             </td>
