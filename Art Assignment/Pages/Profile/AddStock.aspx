@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
 
     <h1 class="text-xl font-bold">Add Stock</h1>
-    <form id="Form1" method="post" runat="server" enctype="multipart/form-data" action="AddStock.aspx">
+    <form id="Form1" method="post" runat="server" enctype="multipart/form-data" >
         <div class="grid gap-y-3">
             <div>
                 <div class="input-label">
