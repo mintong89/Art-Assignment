@@ -24,13 +24,13 @@ namespace Art_Assignment.Pages.Profile
         protected global::System.Web.UI.WebControls.HyperLink StockAdd;
 
         /// <summary>
-        /// SqlDataSource1 control.
+        /// ArtProdDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource ArtProdDataSource;
 
         /// <summary>
         /// Repeater1 control.

@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
 
     <h1 class="text-xl font-bold">Add Stock</h1>
-    <form id="Form1" method="post" runat="server" enctype="multipart/form-data" >
+    <form id="Form1" method="post" runat="server" enctype="multipart/form-data">
         <div class="grid gap-y-3">
             <div>
                 <div class="input-label">
@@ -26,7 +26,7 @@
                 <div class="input-label">
                     Price
                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtPrice" ForeColor="Red">Price Is Required.</asp:RequiredFieldValidator>
-
+                    <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtArtPrice" ErrorMessage="Value must be a number" />
                 </div>
                 <asp:TextBox class="input" runat="server" ID="txtArtPrice"></asp:TextBox>
             </div>

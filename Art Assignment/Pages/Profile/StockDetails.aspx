@@ -24,29 +24,26 @@
     <form runat="server">
         <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
             <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>
-        
+
         <br />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" SelectCommand="SELECT
-  ROW_NUMBER() OVER(
-    ORDER BY
-      [ID]
-  ) AS [Row],
-  [ID],
+        <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
+            SelectCommand="SELECT
+             concat('~/Pages/Profile/StockDetails.aspx?ID=', [ID]) as Url,
+ROW_NUMBER() OVER(ORDER BY [ID]) AS [Row],
+[ID],
   [Name],
   [Description],
   [Price]
 FROM
-  [ArtProd]
-WHERE ([ID] = @ID)
-            ">
+  [ArtProd]">
+             <%--WHERE ([ID]=@UserID) This WHERE clause still have errors. Will come back later--%>
             <SelectParameters>
-                <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
+                <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
             </SelectParameters>
 
         </asp:SqlDataSource>
 
-        <%--ORDER BY
-  [Name] ASC--%>
+       
         <table class="mt-8" style="width: 100%">
             <thead>
                 <tr>
@@ -54,13 +51,15 @@ WHERE ([ID] = @ID)
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price(RM)</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th></th>
+                    <th></th>
+                    <%--<th>Edit</th>
+                    <th>Delete</th>--%>
                 </tr>
             </thead>
             <tbody>
 
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
+                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ArtProdDataSource" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
                         <tr>
                             <td class="px-1">
@@ -79,9 +78,9 @@ WHERE ([ID] = @ID)
                                 <asp:Label ID="ArtProdPrice" runat="server"
                                     Text='<%# Eval("Price") %>' />
                             </td>
-                            <td><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'>Edit</a></td>
-                            <td><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'>Delete</a></td>
-                         
+                            <td class="text-center"><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-edit"></i></a></td>
+                            <td  class="text-center"><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-trash-alt"></i></a></td>
+
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

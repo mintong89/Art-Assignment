@@ -40,7 +40,7 @@
         <br />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
             SelectCommand="SELECT [ID], [Name], [Description], [Price] FROM [ArtProd] WHERE ([ID] = @ID)"
-            UpdateCommand="UPDATE [ArtProd] SET [Name]=@Name,[Description]=@Description,[Price]=@Price WHERE ([ID] = @ID)">
+            UpdateCommand="UPDATE [ArtProd] SET [Name]=@Name,[Description]=@Description,[Price]=@Price,[DateModified]=getDate() WHERE ([ID] = @ID)">
             <SelectParameters>
                 <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
             </SelectParameters>

@@ -23,10 +23,9 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-            //UserDataSource.SelectCommand = "SELECT Name, Description, Price FROM [ArtProd] WHERE ArtistOwner = @ArtistOwnerID";
-            //Dictionary<string, object> payload = Utility.Auth.parsePayload((string)Request.Cookies["token"].Value);
-            //Int64 artistOwnerID = (Int64)payload["uid"];
-            //UserDataSource.SelectParameters["ArtistOwnerID"].DefaultValue = artistOwnerID.ToString();
+            Int64 userid = Art_Assignment.Utility.Auth.getLogonUserUID(Request);
+            ArtProdDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
+            
         }
 
         
