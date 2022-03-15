@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Art_Assignment.Pages
 {
@@ -11,7 +8,25 @@ namespace Art_Assignment.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string prodId = Request.QueryString["id"];
 
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
+
+            string sql = "SELECT ArtProd.*, Artist.Name AS ArtistName " +
+                "FROM ArtProd INNER JOIN Artist " +
+                "ON ArtProd.ArtistOwner = Artist.Id " +
+                $"AND ArtProd.Id=${prodId} ";
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            con.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            ProdView.DataSource = dr;
+            ProdView.DataBind();
+
+            dr.Close();
+            con.Close();
         }
     }
 }
