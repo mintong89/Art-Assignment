@@ -29,14 +29,13 @@ namespace Art_Assignment.Pages.Profile
             //UserDataSource.SelectParameters["ArtistOwnerID"].DefaultValue = artistOwnerID.ToString();
         }
 
-        protected void gvStock_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
 
         }
+
+
     }
 }
