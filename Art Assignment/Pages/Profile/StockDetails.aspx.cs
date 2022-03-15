@@ -15,14 +15,14 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                return;
-            }
-            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
-            {
-                return;
-            }
+            //if (Page.IsPostBack)
+            //{
+            //    return;
+            //}
+            //if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "" || !Utility.Auth.verify((string)Request.Cookies["token"].Value))
+            //{
+            //    return;
+            //}
             Int64 userid = Art_Assignment.Utility.Auth.getLogonUserUID(Request);
             ArtProdDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
             

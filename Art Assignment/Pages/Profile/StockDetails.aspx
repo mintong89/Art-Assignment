@@ -28,14 +28,16 @@
         <br />
         <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
             SelectCommand="SELECT
-             concat('~/Pages/Profile/StockDetails.aspx?ID=', [ID]) as Url,
-ROW_NUMBER() OVER(ORDER BY [ID]) AS [Row],
-[ID],
-  [Name],
-  [Description],
-  [Price]
+             concat('~/Pages/Profile/StockDetails.aspx?ID=', [ArtProd].ID) as Url,
+ROW_NUMBER() OVER(ORDER BY [ArtProd].ID) AS [Row],
+[ArtProd].ID,
+  [ArtProd].Name,
+  [ArtProd].Description,
+  [ArtProd].Price
 FROM
-  [ArtProd]">
+  [ArtProd]
+            INNER JOIN Artist ON [ArtProd].ArtistOwner = Artist.ID
+WHERE Artist.UserID = @UserID">
              <%--WHERE ([ID]=@UserID) This WHERE clause still have errors. Will come back later--%>
             <SelectParameters>
                 <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
