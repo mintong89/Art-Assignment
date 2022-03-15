@@ -29,7 +29,7 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" SelectCommand="SELECT
   ROW_NUMBER() OVER(
     ORDER BY
-      [Name] ASC
+      [ID]
   ) AS [Row],
   [ID],
   [Name],
@@ -37,8 +37,16 @@
   [Price]
 FROM
   [ArtProd]
-ORDER BY
-  [Name] ASC"></asp:SqlDataSource>
+WHERE ([ID] = @ID)
+            ">
+            <SelectParameters>
+                <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
+            </SelectParameters>
+
+        </asp:SqlDataSource>
+
+        <%--ORDER BY
+  [Name] ASC--%>
         <table class="mt-8" style="width: 100%">
             <thead>
                 <tr>
@@ -71,9 +79,9 @@ ORDER BY
                                 <asp:Label ID="ArtProdPrice" runat="server"
                                     Text='<%# Eval("Price") %>' />
                             </td>
-                            <td>
+                            <td><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'>Edit</a></td>
                             <td><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'>Delete</a></td>
-                            
+                         
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

@@ -11,7 +11,7 @@ using System.Data;
 
 namespace Art_Assignment.Pages.Profile
 {
-    public partial class DeleteStock : System.Web.UI.Page
+    public partial class EditStock : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
