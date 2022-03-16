@@ -12,7 +12,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <header class="sticky top-0 w-full bg-white px-4 py-2.5 bg-white z-50 drop-shadow-lg">
+    <header class="sticky top-0 w-full px-4 py-2.5 bg-white z-50 drop-shadow-lg" style="background-color: #02214b; color: rgb(182, 224, 248); font-weight: bold;">
         <div class="flex justify-between">
             <div class="flex items-center">
                 <a href="<%= Page.ResolveUrl("~/") %>">
@@ -20,9 +20,11 @@
                         <img src="<%= Page.ResolveUrl("~/resources/logo.png") %>" />
                     </div>
                 </a>
-                <div class="header-search w-96 h-11 mx-5 border border-black rounded-full shadow-md">
+                <!--
+                <div class="header-search w-96 h-11 mx-5 rounded-full shadow-md flex items-center" style="border: 1px solid rgb(182, 224, 248)">
                     <i class="fas fa-lg fa-search mt-3 ml-3"></i>
                 </div>
+                -->
             </div>
             <!-- Not logged in -->
             <div runat="server" id="NavMenuNormal" class="ml-auto flex p-1 items-center">
@@ -45,7 +47,7 @@
                     <i class="fa-solid fa-lg fa-user"></i>
                     Account
                         <i class="fa-solid fa-angle-down"></i>
-                    <div class="dropdown-cont">
+                    <div class="dropdown-cont" style="background-color: #02214b">
                         <a runat="server" href="~/Pages/Profile/User.aspx">
                             <div class="dropdown-item">
                                 <i class="fa-solid fa-address-card"></i>
