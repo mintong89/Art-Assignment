@@ -115,6 +115,24 @@ CREATE TABLE [dbo].[Payment] (
 );
 GO
 
+CREATE TABLE [dbo].[CartItem] (
+    [UserID]    INT NOT NULL,
+    [ArtProdID] INT NOT NULL,
+    CONSTRAINT [PK_CartItem] PRIMARY KEY CLUSTERED ([UserID] ASC, [ArtProdID] ASC),
+    FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([ID]),
+    FOREIGN KEY ([ArtProdID]) REFERENCES [dbo].[ArtProd] ([ID])
+);
+GO
+
+CREATE TABLE [dbo].[WishlistItem] (
+    [UserID]    INT NOT NULL,
+    [ArtProdID] INT NOT NULL,
+    CONSTRAINT [PK_WishlistItem] PRIMARY KEY CLUSTERED ([UserID] ASC, [ArtProdID] ASC),
+    CONSTRAINT [COM_K_UserID] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([ID]),
+    CONSTRAINT [COM_K_ArtProdID] FOREIGN KEY ([ArtProdID]) REFERENCES [dbo].[ArtProd] ([ID])
+);
+GO
+
 INSERT INTO [User](Password, Email, DateCreated, DateModified)
 VALUES (
   'zpBd0M3yJboQo7Ft2pIqstHunFLRjQEVzVj/M51Z8FS9h0jI',
