@@ -15,9 +15,11 @@
     <header class="sticky top-0 w-full bg-white px-4 py-2.5 bg-white z-50 drop-shadow-lg">
         <div class="flex justify-between">
             <div class="flex items-center">
-                <div class="header-icon w-48 h-20 flex justify-center items-center">
-                    <img src="<%= Page.ResolveUrl("~/resources/logo.png") %>"/>
-                </div>
+                <a href="<%= Page.ResolveUrl("~/") %>">
+                    <div class="header-icon w-48 h-20 flex justify-center items-center">
+                        <img src="<%= Page.ResolveUrl("~/resources/logo.png") %>" />
+                    </div>
+                </a>
                 <div class="header-search w-96 h-11 mx-5 border border-black rounded-full shadow-md">
                     <i class="fas fa-lg fa-search mt-3 ml-3"></i>
                 </div>
