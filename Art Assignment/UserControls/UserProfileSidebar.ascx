@@ -16,24 +16,18 @@
         <i class="fa-solid fa-cart-shopping"></i>
         My Purchase
     </div>
-    <div runat="server" id="divManageArtistProfile" class="user-profile-sidebar-item">
-        <i class="fa-solid fa-palette"></i>
-        Manage Artist Profile
-    </div>
-    <div runat="server" id="submenuManageArtistProfile" class="user-profile-sidebar-submenu hidden">
-        <a href="ArtistProfile.aspx">
-            <div runat="server" id="divMyArtistProfiles" class="user-profile-sidebar-item">
-                <i></i>
-                My Artist Profiles
-            </div>
-        </a>
-        <a href="AddArtistProfile.aspx">
-            <div runat="server" id="divAddNewArtistProfile" class="user-profile-sidebar-item">
-                <i></i>
-                Add New Artist Profile
-            </div>
-        </a>
-    </div>
+    <a href="~/Pages/Profile/AddArtistProfile.aspx" runat="server" id="a_AddArtistProfile">
+        <div runat="server" id="divManageArtistProfile" class="user-profile-sidebar-item">
+            <i class="fa-solid fa-palette"></i>
+            Become an Artist
+        </div>
+    </a>
+    <a class="hidden" runat="server" id="a_artist_view">
+        <div runat="server" id="div1" class="user-profile-sidebar-item">
+            <i class="fa-solid fa-palette"></i>
+            My Artist Profile
+        </div>
+    </a>
     <div runat="server" id="divStockManagement" class="user-profile-sidebar-item">
         <i class="fa-solid fa-boxes-stacked"></i>
         Stock Management

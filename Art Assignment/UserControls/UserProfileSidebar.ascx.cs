@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using Art_Assignment.Utility;
 namespace Art_Assignment.UserControls
 {
     public partial class UserProfileSidebar : System.Web.UI.UserControl
@@ -23,20 +24,30 @@ namespace Art_Assignment.UserControls
                     addCssClass(divStockManagement, "user-profile-sidebar-item-active");
                     removeCssClass(submenuStockManagement, "hidden");
                     break;
-                case "ArtistProfile.aspx":
-                    addCssClass(divManageArtistProfile, "user-profile-sidebar-item-active");
-                    addCssClass(divMyArtistProfiles, "user-profile-sidebar-item-active");
-                    removeCssClass(submenuManageArtistProfile, "hidden");
-                    break;
                 case "AddArtistProfile.aspx":
                     addCssClass(divManageArtistProfile, "user-profile-sidebar-item-active");
-                    addCssClass(divAddNewArtistProfile, "user-profile-sidebar-item-active");
-                    removeCssClass(submenuManageArtistProfile, "hidden");
                     break;
                 case "Security.aspx":
                     addCssClass(divSecurity, "user-profile-sidebar-item-active");
                     break;
             }
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {
+                    "UserID", Auth.getLogonUserUID(Request)
+                }
+            };
+            object artistid_obj = SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", param);
+            if (artistid_obj == null)
+            {
+                return;
+            }
+
+            // If logon user have artist profile
+            int artistid = (int)artistid_obj;
+            a_AddArtistProfile.Attributes.Add("class", "hidden");
+            a_artist_view.Attributes.Remove("class");
+            a_artist_view.Attributes.Add("href", "~/Pages/Artist/View.aspx?ID=" + artistid);
         }
 
         private void addCssClass(System.Web.UI.HtmlControls.HtmlGenericControl control, string cssClass)

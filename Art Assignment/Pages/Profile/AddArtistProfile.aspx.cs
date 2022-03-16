@@ -15,6 +15,15 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Check if user already is an artist
+            object artist_id_o = SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", Auth.getLogonUserUID(Request) } });
+            if (artist_id_o == null)
+            {
+                return;
+            }
+
+            // Redirect to artist page directly if user is already an artist
+            Response.Redirect("~/Pages/Artist/View.aspx?ID=" + (int) artist_id_o);
         }
 
         protected void AddArtist_OnClick(object sender, EventArgs arg)
@@ -84,7 +93,9 @@ namespace Art_Assignment.Pages.Profile
                 cmd.Parameters.AddWithValue("@UserID", uid);
                 cmd.ExecuteNonQuery();
             }
-            Response.Redirect("ArtistProfile.aspx");
+
+            int artist_id = (int) SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", Auth.getLogonUserUID(Request) } });
+            Response.Redirect("~/Pages/Artist/View.aspx?ID=" + artist_id);
         }
     }
 }

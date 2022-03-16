@@ -42,6 +42,15 @@ namespace Art_Assignment.UserControls
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMyPurchase;
 
         /// <summary>
+        /// a_AddArtistProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor a_AddArtistProfile;
+
+        /// <summary>
         /// divManageArtistProfile control.
         /// </summary>
         /// <remarks>
@@ -51,31 +60,22 @@ namespace Art_Assignment.UserControls
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divManageArtistProfile;
 
         /// <summary>
-        /// submenuManageArtistProfile control.
+        /// a_artist_view control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl submenuManageArtistProfile;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor a_artist_view;
 
         /// <summary>
-        /// divMyArtistProfiles control.
+        /// div1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMyArtistProfiles;
-
-        /// <summary>
-        /// divAddNewArtistProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddNewArtistProfile;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
 
         /// <summary>
         /// divStockManagement control.

@@ -32,6 +32,6 @@ namespace Art_Assignment.Utility
 
                 return cmd.ExecuteScalar();
             }
-        } 
+        }
     }
 }
