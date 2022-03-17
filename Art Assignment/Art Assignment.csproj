@@ -91,6 +91,7 @@
     <Content Include="Pages\Profile\AddArtistProfile.aspx" />
     <Content Include="Pages\Profile\AddStock.aspx" />
     <Content Include="Pages\Profile\DeleteStock.aspx" />
+    <Content Include="Pages\Profile\DisplayStock.aspx" />
     <Content Include="Pages\Profile\EditStock.aspx" />
     <Content Include="Pages\Profile\EditUser.aspx" />
     <Content Include="Pages\Profile\Security.aspx" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="Pages\Profile\DeleteStock.aspx.designer.cs">
       <DependentUpon>DeleteStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\DisplayStock.aspx.cs">
+      <DependentUpon>DisplayStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\DisplayStock.aspx.designer.cs">
+      <DependentUpon>DisplayStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Profile\EditStock.aspx.cs">
       <DependentUpon>EditStock.aspx</DependentUpon>
