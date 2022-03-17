@@ -15,15 +15,13 @@ namespace Art_Assignment.Pages
         string artProdId = string.Empty;
         Int64 userID = 0;
         bool isUserWished = false;
+        bool isSoldOut = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             artProdId = Request.QueryString["id"];
             userID = Utility.Auth.getLogonUserUID(Request);
 
-            if (artProdId == null || artProdId == "")
-            {
-                Response.Redirect("~/Pages/Gallery.aspx");
-            }
+            if (artProdId == null || artProdId == "") Response.Redirect("~/Pages/Gallery.aspx");
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
 
@@ -44,6 +42,14 @@ namespace Art_Assignment.Pages
             ProdView.DataSource = dr;
             ProdView.DataBind();
             dr.Close();
+
+            // check if sold out
+            SqlDataReader addCartDr = cmd.ExecuteReader();
+            if (addCartDr.Read())
+            {
+                isSoldOut = addCartDr.GetBoolean(addCartDr.GetOrdinal("IsSold"));
+            }
+            addCartDr.Close();
 
             // check if user wishlisted
             if (userID != 0)
@@ -67,10 +73,9 @@ namespace Art_Assignment.Pages
 
         protected void AddCartButton_Click(object sender, EventArgs e)
         {
-            if (userID == 0)
-            {
-                Response.Redirect("~/Pages/Login.aspx");
-            }
+            if (userID == 0) Response.Redirect("~/Pages/Login.aspx");
+
+            if (isSoldOut) return;
 
             HtmlGenericControl CartResultPanel = (HtmlGenericControl)ProdView.FindControl("CartResultPanel");
 
@@ -105,10 +110,7 @@ namespace Art_Assignment.Pages
 
         protected void ToggleWishlist(object sender, EventArgs e)
         {
-            if (userID == 0)
-            {
-                Response.Redirect("~/Pages/Login.aspx");
-            }
+            if (userID == 0) Response.Redirect("~/Pages/Login.aspx");
 
             Button WishlistButton = (Button)ProdView.FindControl("WishlistButton");
             Literal WishlistText = (Literal)ProdView.FindControl("WishlistText");
