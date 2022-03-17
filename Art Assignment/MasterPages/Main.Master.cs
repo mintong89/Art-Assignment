@@ -45,6 +45,11 @@ namespace Art_Assignment
             SqlConnection con = tup.Item1;
             SqlDataReader reader = tup.Item2;
             reader.Read();
+            // Somehow the userid inside the verified token is invalid
+            if(!reader.HasRows)
+            {
+                Response.Redirect("~/Pages/LogOut.aspx");
+            }
             string username = reader.GetColumnSafe<string>("Name");
             string userProfilePicture = reader.GetColumnSafe<string>("UserProfilePicture");
             if (userProfilePicture == null)
