@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using JWT.Exceptions;
 using System.Web.UI.WebControls;
 using Art_Assignment.Utility;
 using System.Data.SqlClient;
@@ -16,12 +17,23 @@ namespace Art_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                Auth.refreshToken(Request, Response);
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("~/Pages/LogOut.aspx");
+            }
             Auth.useAuthorizationMiddleware(Request, Response, HttpContext.Current, Server);
-            
+
             Int64 userID = -1;
-            try {
+            try
+            {
                 userID = Auth.getLogonUserUID(Request);
-            } catch(UnauthorizedAccessException ex) {
+            }
+            catch (UnauthorizedAccessException ex)
+            {
                 return;
             }
 
@@ -35,10 +47,11 @@ namespace Art_Assignment
             reader.Read();
             string username = reader.GetColumnSafe<string>("Name");
             string userProfilePicture = reader.GetColumnSafe<string>("UserProfilePicture");
-            if(userProfilePicture == null)
+            if (userProfilePicture == null)
             {
                 userProfilePicture = "~/resources/profile-pic-blank-sq.png";
-            } else
+            }
+            else
             {
                 userProfilePicture = ConfigurationManager.AppSettings["upload_path"] + "/" + userProfilePicture;
             }

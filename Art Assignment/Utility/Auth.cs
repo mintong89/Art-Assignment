@@ -16,7 +16,7 @@ namespace Art_Assignment.Utility
         private static string auth_secret = ConfigurationManager.AppSettings["auth_secret"].ToString();
 
         // How long before token will expire (Seconds)
-        private static int TOKEN_EXPIRY = 60 * 60 * 24;
+        private static int TOKEN_EXPIRY = 60 * 30;
 
         public static string sign(Dictionary<string, object> payload)
         {
@@ -38,12 +38,40 @@ namespace Art_Assignment.Utility
             return token;
         }
 
-        public static Dictionary<string, object> parsePayload(string token)
+        public static void refreshToken(System.Web.HttpRequest Request, System.Web.HttpResponse Response)
         {
-            if (!verify(token))
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
             {
-                throw new Exception("Invalid / Expired Token");
+                return;
             }
+            Dictionary<string, object> payload;
+
+            payload = parsePayload(Request.Cookies["token"].Value);
+            payload.Remove("exp");
+
+            string new_token = sign(payload);
+            Request.Cookies["token"].Value = new_token;
+            Response.Cookies["token"].Value = new_token;
+        }
+
+        public static Dictionary<string, object> parsePayload(string token, bool allowExpiredToken = false)
+        {
+            try
+            {
+                verify(token);
+            }
+            catch (TokenExpiredException ex)
+            {
+                if (!allowExpiredToken)
+                {
+                    throw ex;
+                }
+            }
+            catch (SignatureVerificationException ex)
+            {
+                throw ex;
+            }
+
 
             IJsonSerializer serializer = new JsonNetSerializer();
             IDateTimeProvider provider = new UtcDateTimeProvider();
@@ -56,31 +84,22 @@ namespace Art_Assignment.Utility
             return json;
         }
 
-        public static bool verify(string token)
+        /// <summary>
+        /// May throw exceptions
+        /// </summary>
+        /// <param name="token"></param>
+        /// <exception cref="TokenExpiredException"></exception>
+        /// <exception cref="SignatureVerificationException"></exception>
+        public static void verify(string token)
         {
-            try
-            {
-                IJsonSerializer serializer = new JsonNetSerializer();
-                IDateTimeProvider provider = new UtcDateTimeProvider();
-                IJwtValidator validator = new JwtValidator(serializer, provider);
-                IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
-                IJwtAlgorithm algorithm = new HMACSHA256Algorithm(); // symmetric
-                IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+            IJsonSerializer serializer = new JsonNetSerializer();
+            IDateTimeProvider provider = new UtcDateTimeProvider();
+            IJwtValidator validator = new JwtValidator(serializer, provider);
+            IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+            IJwtAlgorithm algorithm = new HMACSHA256Algorithm(); // symmetric
+            IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
 
-                var json = decoder.Decode(token, auth_secret, verify: true);
-                Console.WriteLine(json);
-            }
-            catch (TokenExpiredException)
-            {
-                Console.WriteLine("Token has expired");
-                return false;
-            }
-            catch (SignatureVerificationException)
-            {
-                Console.WriteLine("Token has invalid signature");
-                return false;
-            }
-            return true;
+            decoder.Decode(token, auth_secret, verify: true);
         }
 
         /// <summary>
@@ -91,18 +110,22 @@ namespace Art_Assignment.Utility
         /// <exception cref="UnauthorizedAccessException"></exception>
         public static Int64 getLogonUserUID(System.Web.HttpRequest Request)
         {
-            if(Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
+            if (Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
             {
                 throw new UnauthorizedAccessException("Unauthorized Access. (Missing token)");
             }
             string token = Request.Cookies["token"].Value;
-            if(!verify(token))
+            try
+            {
+                verify(token);
+            }
+            catch (Exception ex)
             {
                 throw new UnauthorizedAccessException("Unauthorized Access. (Expired token)");
             }
 
             Dictionary<string, object> payload = parsePayload(token);
-            return (Int64) payload["uid"];
+            return (Int64)payload["uid"];
         }
 
         public static string encryptToHash(string password)
@@ -146,7 +169,7 @@ namespace Art_Assignment.Utility
         {
             // Attempt to read membership configuration
             LoozMemebershipSection section = (LoozMemebershipSection)ConfigurationManager.GetSection("loozMembership");
-            if(section == null)
+            if (section == null)
             {
                 return;
             }
@@ -161,7 +184,7 @@ namespace Art_Assignment.Utility
                 // If the path doesnt match, just skip
                 string regexString = element.Path.Replace("*", @"([^\s]+)");
                 Regex rx = new Regex(regexString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                if(rx.Matches(absPath).Count < 1)
+                if (rx.Matches(absPath).Count < 1)
                 {
                     continue;
                 }
@@ -170,12 +193,16 @@ namespace Art_Assignment.Utility
                 string[] requiredRoles = element.RequiredRoles.Split(',').Select(x => x.Trim()).ToArray();
 
                 // If token is not provided OR invalid token, reject access
-                if(Request.Cookies["token"] == null || Request.Cookies["token"].Value == "")
+                if (Request.Cookies["token"] == null || Request.Cookies["token"].Value == "")
                 {
                     Response.Redirect("~/Pages/Home.aspx");
                     return;
                 }
-                if(!verify(Request.Cookies["token"].Value))
+                try
+                {
+                    verify(Request.Cookies["token"].Value);
+                }
+                catch (Exception ex)
                 {
                     Response.Redirect("~/Pages/Home.aspx");
                     return;
@@ -187,15 +214,15 @@ namespace Art_Assignment.Utility
 
                 // Check if user role is correct for access
                 bool access = false;
-                foreach(string r in requiredRoles)
+                foreach (string r in requiredRoles)
                 {
-                    if(role.Equals(r))
+                    if (role.Equals(r))
                     {
                         access = true;
                     }
                 }
 
-                if(!access)
+                if (!access)
                 {
                     Response.Redirect("~/Pages/Home.aspx");
                     return;
