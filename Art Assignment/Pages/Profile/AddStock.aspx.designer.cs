@@ -24,6 +24,24 @@ namespace Art_Assignment.Pages.Profile
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
 
         /// <summary>
+        /// userProfileImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage userProfileImg;
+
+        /// <summary>
+        /// profilePicInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile profilePicInput;
+
+        /// <summary>
         /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>

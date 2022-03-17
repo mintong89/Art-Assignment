@@ -97,6 +97,7 @@
     <Content Include="Pages\Profile\StockDetails.aspx" />
     <Content Include="Pages\Profile\User.aspx" />
     <Content Include="Pages\Register.aspx" />
+    <Content Include="resources\Blank_Art.jpg" />
     <Content Include="resources\home-background.jpg" />
     <Content Include="resources\profile-pic-blank.png" />
     <Content Include="UserControls\UserProfileSidebar.ascx" />
