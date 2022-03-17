@@ -15,30 +15,21 @@ namespace Art_Assignment.Pages.Profile
     {
 
         /// <summary>
-        /// StockAdd control.
+        /// ArtProdDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink StockAdd;
+        protected global::System.Web.UI.WebControls.SqlDataSource ArtProdDataSource;
 
         /// <summary>
-        /// GridView1 control.
+        /// FormView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-
-        /// <summary>
-        /// SqlDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.FormView FormView1;
     }
 }

@@ -4,7 +4,7 @@
     Create Artist Profile
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <form id="Form1" method="post" runat="server" enctype="multipart/form-data" action="AddArtistProfile.aspx">
+    <form id="Form1" method="post" runat="server" enctype="multipart/form-data" action="AddArtistProfile.aspx" autocomplete="off">
         <div class="grid gap-y-3">
             <h1 class="text-xl font-bold text-center">New Artist Profile</h1>
             <div class="flex justify-center">
