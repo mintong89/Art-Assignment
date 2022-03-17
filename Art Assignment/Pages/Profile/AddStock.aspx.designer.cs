@@ -33,13 +33,13 @@ namespace Art_Assignment.Pages.Profile
         protected global::System.Web.UI.HtmlControls.HtmlImage userProfileImg;
 
         /// <summary>
-        /// profilePicInput control.
+        /// artPicture control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile profilePicInput;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile artPicture;
 
         /// <summary>
         /// RequiredFieldValidator1 control.

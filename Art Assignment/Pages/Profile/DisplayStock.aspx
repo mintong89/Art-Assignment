@@ -34,7 +34,10 @@ ID,
  Name,
  Description,
  Price,
- ArtPicture,
+ case
+    when [ArtPicture] IS NULL THEN '~/resources/Blank_Art.jpg'
+    else concat('~/upload/', ArtPicture)
+  end AS ArtPicture
 FROM
   [ArtProd]
             
@@ -47,12 +50,19 @@ WHERE ID = @ArtProdID">
 
         <asp:FormView ID="FormView1" runat="server" DataSourceID="ArtProdDataSource">
             <ItemTemplate>
-                <div class="flex justify-center">
+                <%-- <div class="flex justify-center">
                         <div class="rounded-full overflow-hidden h-32 w-32">
                             <img style="width:100%; height:100%" alt="profile_pic" src="<%= getImageURL() %>" />
                         </div>
+                    </div>--%>
+
+                <div class="flex justify-center">
+                    <div class="rounded-md overflow-hidden h-40 w-40">
+                        <img id="ArtPicture" style="width: 100%; height: 100%" alt="profile_pic" src='<%# Eval("ArtPicture") %>' runat="server" />
                     </div>
-                <table id="notFormView">
+                </div>
+
+                <table id="notFormView" class="mt-2">
                     <thead>
                         <tr>
                             <th>Name</th>

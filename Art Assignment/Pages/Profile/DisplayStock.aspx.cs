@@ -15,7 +15,7 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Int64 artProdID = Art_Assignment.Utility.Auth.getLogonUserUID(Request);
+            Int64 artProdID = Art_Assignment.Utility.Auth.getLogonUserUID(Request, Response);
             ArtProdDataSource.SelectParameters["ArtProdID"].DefaultValue = artProdID.ToString();
 
         }

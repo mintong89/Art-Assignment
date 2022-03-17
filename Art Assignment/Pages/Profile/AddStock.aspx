@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <input type="file" id="profilePicInput" class="hidden" runat="server" clientidmode="Static" />
+        <input type="file" id="artPicture" class="hidden" runat="server" clientidmode="Static" />
         <div>
             <div class="input-label">
                 Art Name<span style="color: red">*</span>
