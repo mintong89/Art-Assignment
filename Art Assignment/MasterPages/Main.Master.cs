@@ -30,7 +30,7 @@ namespace Art_Assignment
             Int64 userID = -1;
             try
             {
-                userID = Auth.getLogonUserUID(Request);
+                userID = Auth.getLogonUserUID(Request, Response);
             }
             catch (UnauthorizedAccessException ex)
             {

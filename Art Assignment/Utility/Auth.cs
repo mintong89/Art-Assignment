@@ -106,9 +106,10 @@ namespace Art_Assignment.Utility
         /// Get the logon userID. May throw UnauthorizedAccessException if user is not logon or the token had expired
         /// </summary>
         /// <param name="Request">HTTP Request Object</param>
+        /// <param name="Response">HTTP Response Object</param>
         /// <returns>UserID in Int64</returns>
         /// <exception cref="UnauthorizedAccessException"></exception>
-        public static Int64 getLogonUserUID(System.Web.HttpRequest Request)
+        public static Int64 getLogonUserUID(System.Web.HttpRequest Request, System.Web.HttpResponse Response)
         {
             if (Request.Cookies["token"] == null || Request.Cookies["token"].Value.Trim() == "")
             {
@@ -121,7 +122,7 @@ namespace Art_Assignment.Utility
             }
             catch (Exception ex)
             {
-                throw new UnauthorizedAccessException("Unauthorized Access. (Expired token)");
+                Response.Redirect("~/Pages/LogOut.aspx");
             }
 
             Dictionary<string, object> payload = parsePayload(token);

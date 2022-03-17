@@ -44,7 +44,7 @@ WHERE ID = @ArtistID AND UserID = @UserID";
             ArtistDataSource.UpdateParameters["ArtistID"].DefaultValue = artistID;
             try
             {
-                Int64 userid = Auth.getLogonUserUID(Request);
+                Int64 userid = Auth.getLogonUserUID(Request, Response);
                 ArtistDataSource.UpdateParameters["UserID"].DefaultValue = userid.ToString();
             }
             catch (UnauthorizedAccessException ex)
@@ -55,7 +55,7 @@ WHERE ID = @ArtistID AND UserID = @UserID";
 
         protected void FormView1_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
-            Int64 userid = Auth.getLogonUserUID(Request);
+            Int64 userid = Auth.getLogonUserUID(Request, Response);
             string artistID = Request.QueryString["id"];
 
             var profilePicInput = (System.Web.UI.HtmlControls.HtmlInputFile)FormView1.FindControl("profilePicInput");
@@ -85,7 +85,7 @@ WHERE ID = @ArtistID AND UserID = @UserID";
             Int64 userid = -1;
             try
             {
-                userid = Auth.getLogonUserUID(Request);
+                userid = Auth.getLogonUserUID(Request, Response);
             }
             catch (UnauthorizedAccessException ex)
             {

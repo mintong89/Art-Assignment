@@ -16,7 +16,7 @@ namespace Art_Assignment.Pages.Profile
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check if user already is an artist
-            object artist_id_o = SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", Auth.getLogonUserUID(Request) } });
+            object artist_id_o = SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", Auth.getLogonUserUID(Request, Response) } });
             if (artist_id_o == null)
             {
                 return;
@@ -34,7 +34,7 @@ namespace Art_Assignment.Pages.Profile
                 return;
             }
 
-            Int64 uid = Auth.getLogonUserUID(Request);
+            Int64 uid = Auth.getLogonUserUID(Request, Response);
 
             string strFileName = "";
             if (profilePicInput.Value != "")
@@ -94,7 +94,7 @@ namespace Art_Assignment.Pages.Profile
                 cmd.ExecuteNonQuery();
             }
 
-            int artist_id = (int) SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", Auth.getLogonUserUID(Request) } });
+            int artist_id = (int) SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", Auth.getLogonUserUID(Request, Response) } });
             Response.Redirect("~/Pages/Artist/View.aspx?ID=" + artist_id);
         }
     }

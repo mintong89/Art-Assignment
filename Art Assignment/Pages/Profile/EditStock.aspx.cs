@@ -15,7 +15,7 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Int64 artProdID = Art_Assignment.Utility.Auth.getLogonUserUID(Request);
+            Int64 artProdID = Art_Assignment.Utility.Auth.getLogonUserUID(Request, Response);
             ArtProdDataSource.SelectParameters["ArtProdID"].DefaultValue = artProdID.ToString();
 
 
@@ -29,7 +29,7 @@ namespace Art_Assignment.Pages.Profile
 
         protected void FormView1_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
-            //Int64 userid = Auth.getLogonUserUID(Request);
+            //Int64 userid = Auth.getLogonUserUID(Request, Response);
             string artProdID = Request.QueryString["id"];
             //var txtArtProdName = FormView1.FindControl("txtArtProdName"); 
             //var txtArtProdDescription = FormView1.FindControl("txtArtProdDescription");

@@ -23,7 +23,7 @@ namespace Art_Assignment.Pages.Profile
             //{
             //    return;
             //}
-            Int64 userid = Art_Assignment.Utility.Auth.getLogonUserUID(Request);
+            Int64 userid = Art_Assignment.Utility.Auth.getLogonUserUID(Request, Response);
             ArtProdDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
             
         }

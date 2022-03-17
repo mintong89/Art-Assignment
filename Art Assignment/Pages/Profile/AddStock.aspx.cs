@@ -24,7 +24,7 @@ namespace Art_Assignment.Pages.Profile
                 return;
             }
 
-            Int64 uid = Auth.getLogonUserUID(Request);
+            Int64 uid = Auth.getLogonUserUID(Request, Response);
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
