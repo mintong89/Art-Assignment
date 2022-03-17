@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Main.Master" AutoEventWireup="true" CodeBehind="Product.aspx.cs" Inherits="Art_Assignment.Pages.Product" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Main.Master" AutoEventWireup="true" CodeBehind="Product2.aspx.cs" Inherits="Art_Assignment.Pages.Product" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Welcome to Art Gallery Display System</title>
     <link rel="stylesheet" type="text/css" href="<%= Page.ResolveUrl("~/css/Gallery.css")%>" />
-    <script src="<%= Page.ResolveUrl("~/js/Gallery.js") %>"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
@@ -31,10 +30,17 @@
                                         </h3>
                                         </asp:Label>
                                     </div>
-                                    <button class="btn text-lg">
-                                        <asp:Literal Text='<%# Eval("isSold").ToString() == "False" ? "Add To Cart" : "Sold Out" %>' runat="server">
-                                        </asp:Literal>
-                                    </button>
+                                    <div class="relative">
+                                        <asp:Button CssClass="btn text-lg cursor-pointer" ID="AddCartButton" runat="server" Text='<%# Eval("isSold").ToString() == "False" ? "Add To Cart" : "Sold Out" %>' OnClick="AddCartButton_Click" />
+                                        <div visible="false" runat="server" id="CartResultPanel" class="text-xs text-center p-1 absolute w-[120%] -left-[10%] bg-white border border-slate-500 mt-2 rounded whitespace-pre-wrap">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-8 flex items-center">
+                                    <asp:Button ID="WishlistButton" CssClass="heart mr-2 cursor-pointer" runat="server" OnClick="ToggleWishlist" />
+                                    <h4 class="text-2xl">
+                                        <asp:Literal ID="WishlistText" runat="server" Text="Add to Wishlist"></asp:Literal>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="w-full h-px bg-black my-8"></div>
