@@ -54,6 +54,7 @@ namespace Art_Assignment.Pages
                 TaxText.Text = string.Format("RM {0:0.00}", subtotal * 0.06);
                 TotalText.Text = string.Format("RM {0:0.00}", totalPrice);
             }
+            totalDr.Close();
 
             // if delete item
             string deleteId = Request.QueryString["DeleteId"];
@@ -63,7 +64,6 @@ namespace Art_Assignment.Pages
                     $"WHERE UserId=${userID} AND ArtProdId=${deleteId}";
                 SqlCommand deleteCmd = new SqlCommand(deleteSql, con);
 
-                con.Open();
                 deleteCmd.ExecuteNonQuery();
                 con.Close();
 
