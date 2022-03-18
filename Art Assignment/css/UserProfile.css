@@ -29,7 +29,8 @@
     color: blue;
 }
 
-.user-profile-upload-image-cont .artProduct-upload-image-cont {
+.user-profile-upload-image-cont,
+.artProduct-upload-image-cont {
     border-radius: 9999px;
     overflow: hidden;
     width: 12rem;
@@ -42,7 +43,8 @@
         display: flex;
     }
 
-.user-profile-upload-image-hover-overlay .artProduct-upload-image-hover-overlay {
+.user-profile-upload-image-hover-overlay,
+.artProduct-upload-image-hover-overlay {
     display: none;
     border-radius: 9999px;
     width: inherit;
@@ -84,7 +86,6 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
-    
 }
 
 .wishlist-pager {
