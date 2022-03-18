@@ -7,13 +7,43 @@
     <div class="font-bold mb-3 text-xl">
         <i class="fa-solid fa-star"></i>&nbsp;My Wishlist
     </div>
-    <div style="display: grid; row-gap: 10px;">
-        <asp:ListView ID="ListView1" runat="server" DataSourceID="WishListDataSource">
+    <form runat="server">
+        <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupPlaceHolder1"
+            ItemPlaceholderID="itemPlaceHolder1" DataSourceID="WishListDataSource">
+            <LayoutTemplate>
+                <div style="display: grid; row-gap: 10px;">
+                    <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
+                </div>
+                <div class="flex justify-center">
+                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="5" class="wishlist-pager">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="true" ShowPreviousPageButton="true"
+                                ShowNextPageButton="false" FirstPageText='<i class="fa-solid fa-angles-left fa-lg"></i>' PreviousPageText='<i class="fa-solid fa-angle-left fa-lg"></i>' />
+                            <%--<asp:NumericPagerField ButtonType="Link" />--%>
+                            <asp:TemplatePagerField>
+                                <PagerTemplate>
+                                    <div>
+                                        Page
+                                <asp:Label runat="server" ID="labelCurrentPage" Text="<%# Container.TotalRowCount > 0 ? (Container.StartRowIndex / Container.PageSize) + 1 : 0 %>" />
+                                        of
+                                <asp:Label runat="server" ID="labelTotalPages" Text="<%#  Math.Ceiling ((double)Container.TotalRowCount / Container.PageSize) %>" />
+                                    </div>
+                                    &nbsp;
+                                </PagerTemplate>
+                            </asp:TemplatePagerField>
+                            <asp:NextPreviousPagerField ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="true" ShowPreviousPageButton="false" NextPageText='<i class="fa-solid fa-angle-right fa-lg"></i>' LastPageText='<i class="fa-solid fa-angles-right fa-lg"></i>' />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
+            </LayoutTemplate>
+            <GroupTemplate>
+                <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+            </GroupTemplate>
             <ItemTemplate>
                 <a runat="server" href='<%# "~/Pages/Product.aspx?ID=" + Eval("ArtProdID") %>'>
                     <div style="display: grid; grid-template-columns: auto auto 1fr auto; grid-template-rows: auto 1fr; row-gap: 10px; column-gap: 10px; padding: 10px" class="div-card">
                         <div class="flex items-center font-bold" style="grid-row-start: 1; grid-row-end: 3">
-                            <i style="color: red" class="fa-solid fa-trash fa-xl"></i>
+                            <i class="fa-solid fa-trash fa-xl text-red-400 hover:text-red-500"></i>
                         </div>
                         <div style="grid-row-start: 1; grid-row-end: 3; width: 128px; height: 128px">
                             <img runat="server" class="w-full h-full" src='<%# Eval("ArtPicture") %>' />
@@ -36,5 +66,5 @@
                 <asp:Parameter Name="UserID" Type="Int32" DefaultValue="-1" />
             </SelectParameters>
         </asp:SqlDataSource>
-    </div>
+    </form>
 </asp:Content>

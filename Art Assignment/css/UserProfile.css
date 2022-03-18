@@ -86,3 +86,15 @@
     text-overflow: ellipsis;
     
 }
+
+.wishlist-pager {
+    display: grid;
+    text-align: center;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    width: 200px;
+    margin: 20px;
+}
+
+.wishlist-pager i {
+    color: blue;
+}

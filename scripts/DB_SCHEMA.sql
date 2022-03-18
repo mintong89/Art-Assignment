@@ -155,5 +155,21 @@ VALUES (
 GO
 
 INSERT INTO ArtProd ([Name],[Description],[ArtistOwner],[Price],[DateCreated],[DateModified])
-VALUES ('Ice Scream','An ice cream screaming.',1,'123.00',getDate(),getDate());
+VALUES 
+	('Ice Scream','An ice cream screaming.',1,'123.00',getDate(),getDate()),
+	('Ice Scream_2','An ice cream screaming.',1,'123.00',getDate(),getDate()),
+	('Ice Scream_3','An ice cream screaming.',1,'123.00',getDate(),getDate()),
+	('Ice Scream_4','An ice cream screaming.',1,'123.00',getDate(),getDate()),
+	('Ice Scream_5','An ice cream screaming.',1,'123.00',getDate(),getDate()),
+	('Ice Scream_6','An ice cream screaming.',1,'123.00',getDate(),getDate());
+GO
+
+INSERT INTO WishlistItem
+VALUES 
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(1, 4),
+	(1, 5),
+	(1, 6);
 GO
