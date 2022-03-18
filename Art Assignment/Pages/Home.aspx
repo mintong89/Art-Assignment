@@ -9,7 +9,8 @@
     <form runat="server">
         <div class="home-container flex justify-center items-center">
             <div class="home-content">
-                <div class="flex justify-center text-7xl">Buy Art from {n} artist</div>
+                <div class="flex font-bold justify-center text-7xl">Buy Art from us!</div>
+                <div class="text-gray-400">Every artist dips his brush in his own soul, and paints his own nature into his pictures</div>
 
                 <div class="flex justify-center mt-3 ">
                     <div class="relative">
