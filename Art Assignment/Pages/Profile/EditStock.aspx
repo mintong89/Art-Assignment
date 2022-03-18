@@ -20,8 +20,8 @@
             border-bottom: 1px solid black;
         }
 
-        table{
-            width:100%;
+        table {
+            width: 100%;
         }
     </style>
 
@@ -61,7 +61,11 @@ ROW_NUMBER() OVER(ORDER BY ID) AS [Row],
 ID,
  Name,
  Description,
- Price
+ Price,
+             case
+    when [ArtPicture] IS NULL THEN '~/resources/Blank_Art.jpg'
+    else concat('~/upload/', ArtPicture)
+  end AS ArtPicture
 FROM
   [ArtProd]
             
@@ -79,6 +83,11 @@ WHERE ID = @ArtProdID"
 
         <asp:FormView ID="FormView1" runat="server" DataSourceID="ArtProdDataSource" OnItemUpdating="FormView1_ItemUpdating">
             <ItemTemplate>
+                <div class="flex justify-center my-1">
+                    <div class="rounded-md overflow-hidden h-40 w-40">
+                        <img id="ArtPicture" style="width: 100%; height: 100%" alt="artPicture" src='<%# Eval("ArtPicture") %>' runat="server" />
+                    </div>
+                </div>
                 <table id="notFormView">
                     <thead>
                         <tr>
@@ -114,7 +123,14 @@ WHERE ID = @ArtProdID"
                 </div>
             </ItemTemplate>
             <EditItemTemplate>
-
+                <div class="flex justify-center">
+                    <div class="artProduct-upload-image-cont">
+                        <img runat="server" clientidmode="Static" id="userProfileImg" style="width: 100%; height: 100%" alt="artProd-preview" src='<%# Bind("ArtPicture") %>' />
+                        <div class="artProduct-upload-image-hover-overlay">
+                            Click to Upload
+                        </div>
+                    </div>
+                </div>
                 <div class="input-label">
                     Stock Name<span style="color: red">*</span>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdName" ForeColor="Red">Name is required.</asp:RequiredFieldValidator>
@@ -145,4 +161,7 @@ WHERE ID = @ArtProdID"
 
     </form>
 
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="<%= Page.ResolveUrl("~/js/AddArtistProfile.js") %>"></script>
 </asp:Content>

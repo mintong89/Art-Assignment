@@ -8,9 +8,9 @@
     <%--<h1 class="text-xl font-bold">Add Stock</h1>--%>
     <form id="Form1" method="post" runat="server" enctype="multipart/form-data" autocomplete="off">
         <div class="flex justify-center">
-            <div class="user-profile-upload-image-cont">
-                <img runat="server" clientidmode="Static" id="userProfileImg" style="width: 100%; height: 100%" alt="profile-pic-preview" src="~/resources/Blank_Art.jpg" />
-                <div class="user-profile-upload-image-hover-overlay">
+            <div class="artProduct-upload-image-cont">
+                <img runat="server" clientidmode="Static" id="userProfileImg" style="width: 100%; height: 100%" alt="artProd-preview" src="~/resources/Blank_Art.jpg" />
+                <div class="artProduct-upload-image-hover-overlay">
                     Click to Upload
                 </div>
             </div>

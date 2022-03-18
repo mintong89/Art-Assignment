@@ -70,7 +70,7 @@ WHERE ID = @ArtProdID">
 
                 <div class="flex justify-center">
                     <div class="rounded-md overflow-hidden h-40 w-40">
-                        <img id="ArtPicture" style="width: 100%; height: 100%" alt="profile_pic" src='<%# Eval("ArtPicture") %>' runat="server" />
+                        <img id="ArtPicture" style="width: 100%; height: 100%" alt="artPicture" src='<%# Eval("ArtPicture") %>' runat="server" />
                     </div>
                 </div>
 

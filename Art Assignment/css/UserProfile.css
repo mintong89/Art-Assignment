@@ -39,9 +39,13 @@
     cursor: pointer;
 }
 
-    .user-profile-upload-image-cont:hover .user-profile-upload-image-hover-overlay {
-        display: flex;
-    }
+.artProduct-upload-image-cont {
+border-radius:0px !important ;
+}
+
+.user-profile-upload-image-cont:hover .user-profile-upload-image-hover-overlay {
+    display: flex;
+}
 
 .user-profile-upload-image-hover-overlay,
 .artProduct-upload-image-hover-overlay {
@@ -64,7 +68,6 @@
     display: grid;
     row-gap: 10px;
     grid-template-rows: 200px 30px 1fr;
-
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -96,6 +99,6 @@
     margin: 20px;
 }
 
-.wishlist-pager i {
-    color: blue;
-}
+    .wishlist-pager i {
+        color: blue;
+    }
