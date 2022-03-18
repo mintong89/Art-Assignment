@@ -43,11 +43,20 @@
             </div>
             <!-- Logged in -->
             <div runat="server" id="NavMenuLoggedIn" class="ml-auto flex items-center hidden">
-                <div class="m-2 dropdown-menu-item" style="display: flex;flex-direction: row;align-items: center;column-gap: 10px;">
+                <a href='<%= Page.ResolveUrl("~/Pages/Cart.aspx") %>'>
+                    <div class="px-3 relative">
+                        <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                        &nbsp;Cart
+                    <div id="shop_cart_count" runat="server" class="absolute right-0 bg-red-600 rounded-full w-5 h-5 flex justify-center items-center text-white" style="top: -1rem;">
+                        0
+                    </div>
+                    </div>
+                </a>
+                <div class="m-2 dropdown-menu-item" style="display: flex; flex-direction: row; align-items: center; column-gap: 10px;">
                     <!-- <i class="fa-solid fa-lg fa-user"></i> -->
-                    <img runat="server" id="topbar_profileimg" src="https://i.pinimg.com/736x/73/2b/a7/732ba7cb21fbc0d008b06ad2d3f76f1a.jpg" style="height: 48px; width: 48px; border-radius: 9999px;"/>
+                    <img runat="server" id="topbar_profileimg" src="https://i.pinimg.com/736x/73/2b/a7/732ba7cb21fbc0d008b06ad2d3f76f1a.jpg" style="height: 48px; width: 48px; border-radius: 9999px;" />
                     <span runat="server" id="topbar_username">Account</span>
-                        <i class="fa-solid fa-angle-down"></i>
+                    <i class="fa-solid fa-angle-down"></i>
                     <div class="dropdown-cont" style="background-color: #02214b">
                         <a runat="server" href="~/Pages/Profile/User.aspx">
                             <div class="dropdown-item">

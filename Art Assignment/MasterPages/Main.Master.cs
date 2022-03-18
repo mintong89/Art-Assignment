@@ -66,6 +66,15 @@ namespace Art_Assignment
             topbar_profileimg.Attributes.Remove("src");
             topbar_profileimg.Attributes.Add("src", userProfilePicture);
             topbar_username.InnerText = username;
+
+            int cart_item_count = (int) SqlHelper.ExecuteScalar("SELECT COUNT(*) FROM CartItem WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", userID } });
+            if(cart_item_count <= 0)
+            {
+                shop_cart_count.Attributes["class"] = shop_cart_count.Attributes["class"] + " hidden";
+            } else
+            {
+                shop_cart_count.InnerText = cart_item_count + "";
+            }
         }
     }
 }
