@@ -15,7 +15,7 @@ namespace Art_Assignment.Pages
         double totalPrice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            userID = Utility.Auth.getLogonUserUID(Request);
+            userID = Utility.Auth.getLogonUserUID(Request, Response);
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
 
             string sql = "SELECT ArtProd.Id, ArtProd.Name, ArtProd.Price, ArtProd.IsSold, Artist.Name AS ArtistName " +
