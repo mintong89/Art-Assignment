@@ -37,7 +37,6 @@
     opacity: 0;
     top: 0;
     width: 125px;
-    height: 100px;
     background-color: white;
     transition: top .25s, opacity .25s;
     box-shadow: 2px 2px 7px grey;

@@ -16,6 +16,12 @@
         <i class="fa-solid fa-cart-shopping"></i>
         My Purchase
     </div>
+    <a href="~/Pages/Profile/Wishlist.aspx" runat="server" id="a_WishList">
+        <div runat="server" id="divMyWishlist" class="user-profile-sidebar-item">
+            <i class="fa-solid fa-star"></i>
+            My Wishlist
+        </div>
+    </a>
     <a href="~/Pages/Profile/AddArtistProfile.aspx" runat="server" id="a_AddArtistProfile">
         <div runat="server" id="divManageArtistProfile" class="user-profile-sidebar-item">
             <i class="fa-solid fa-palette"></i>

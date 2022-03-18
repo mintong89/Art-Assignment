@@ -69,6 +69,12 @@
                                 Profile
                             </div>
                         </a>
+                        <a runat="server" href="~/Pages/Profile/Wishlist.aspx">
+                            <div class="dropdown-item">
+                                <i class="fa-solid fa-star"></i>
+                                Wishlist
+                            </div>
+                        </a>
                         <a runat="server" href="~/Pages/LogOut.aspx">
                             <div class="dropdown-item">
                                 <i class="fa-solid fa-right-from-bracket"></i>

@@ -30,6 +30,9 @@ namespace Art_Assignment.UserControls
                 case "Security.aspx":
                     addCssClass(divSecurity, "user-profile-sidebar-item-active");
                     break;
+                case "Wishlist.aspx":
+                    addCssClass(divMyWishlist, "user-profile-sidebar-item-active");
+                    break;
             }
             Dictionary<string, object> param = new Dictionary<string, object>()
             {
