@@ -19,7 +19,6 @@
                         <i class="fas fa-lg fa-search absolute z-10 left-4 leading-10"></i>
                     </div>
                 </div>
-
             </div>
         </div>
     </form>
