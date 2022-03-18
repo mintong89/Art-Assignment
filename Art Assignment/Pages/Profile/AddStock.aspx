@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
 
-    <h1 class="text-xl font-bold">Add Stock</h1>
+    <%--<h1 class="text-xl font-bold">Add Stock</h1>--%>
     <form id="Form1" method="post" runat="server" enctype="multipart/form-data" autocomplete="off">
         <div class="flex justify-center">
             <div class="user-profile-upload-image-cont">
@@ -39,14 +39,14 @@
             <asp:TextBox class="input" runat="server" ID="txtArtPrice"></asp:TextBox>
         </div>
         <div>
-            <div class="inline-block">
+            <div class="inline-block mt-2">
                 <button runat="server" class="button-22 button-22-success" onserverclick="AddArtProd_OnClick">
                     <i class="fa-solid fa-plus"></i>&nbsp;
                             Add
                 </button>
             </div>
         </div>
-        </div>
+
     </form>
 
 

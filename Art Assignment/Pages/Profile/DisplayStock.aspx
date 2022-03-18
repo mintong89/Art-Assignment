@@ -20,9 +20,21 @@
             border-bottom: 1px solid black;
         }
 
-        table {
-            width: 100%;
+        table{
+            width:100%
         }
+
+        table#notFormView {
+            width: 40%;
+        }
+
+        table#notFormView th {
+            width: 20%;
+        }
+
+        
+
+
     </style>
 
 
@@ -62,33 +74,36 @@ WHERE ID = @ArtProdID">
                     </div>
                 </div>
 
-                <table id="notFormView" class="mt-2">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <asp:Label ID="ArtProdName" runat="server"
-                                    Text='<%# Eval("Name") %>' />
+                <table id="notFormView" class="mt-2 text-justify mx-auto">
 
-                            </td>
-                            <td>
-                                <asp:Label ID="ArtProdDescription" runat="server"
-                                    Text='<%# Eval("Description") %>' />
+                    <tr>
+                        <th>Name</th>
+                        <td>
+                            <asp:Label ID="ArtProdName" runat="server"
+                                Text='<%# Eval("Name") %>' />
 
-                            </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>
+                            <asp:Label ID="ArtProdDescription" runat="server"
+                                Text='<%# Eval("Description") %>' />
 
-                            <td>
-                                <asp:Label ID="ArtProdPrice" runat="server"
-                                    Text='<%# Eval("Price") %>' />
-                            </td>
-                        </tr>
-                    </tbody>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>
+                            <asp:Label ID="ArtProdPrice" runat="server"
+                                Text='<%# Eval("Price") %>' />
+                        </td>
+                    </tr>
+
+                        
+                    
+
                 </table>
 
 

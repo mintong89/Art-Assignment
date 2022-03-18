@@ -18,6 +18,8 @@
         tr:last-child {
             border-bottom: 1px solid black;
         }
+
+       
     </style>
 
 
@@ -46,7 +48,7 @@ WHERE Artist.UserID = @UserID">
         </asp:SqlDataSource>
 
        
-        <table class="mt-8" style="width: 100%">
+        <table class="mt-8 mx-auto" style="width: 70%">
             <thead>
                 <tr>
                     <th>No</th>
