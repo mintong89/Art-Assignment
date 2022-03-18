@@ -17,7 +17,7 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-            Int64 userid = Auth.getLogonUserUID(Request);
+            Int64 userid = Auth.getLogonUserUID(Request, Response);
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
@@ -49,7 +49,7 @@ namespace Art_Assignment.Pages.Profile
 
         protected void btnSubmit_OnClick(object sender, EventArgs e)
         {
-            Int64 userid = Auth.getLogonUserUID(Request);
+            Int64 userid = Auth.getLogonUserUID(Request, Response);
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();

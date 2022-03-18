@@ -11,7 +11,7 @@ namespace Art_Assignment.Pages.Profile
 {
 
 
-    public partial class EditStock
+    public partial class DisplayStock
     {
 
         /// <summary>

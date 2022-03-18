@@ -19,7 +19,7 @@ namespace Art_Assignment.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             artProdId = Request.QueryString["id"];
-            userID = Utility.Auth.getLogonUserUID(Request);
+            userID = Utility.Auth.getLogonUserUID(Request, Response);
 
             if (artProdId == null || artProdId == "") Response.Redirect("~/Pages/Gallery.aspx");
 

@@ -55,6 +55,7 @@ WHERE Artist.UserID = @UserID">
                     <th>Price(RM)</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                     <%--<th>Edit</th>
                     <th>Delete</th>--%>
                 </tr>
@@ -80,6 +81,7 @@ WHERE Artist.UserID = @UserID">
                                 <asp:Label ID="ArtProdPrice" runat="server"
                                     Text='<%# Eval("Price") %>' />
                             </td>
+                            <td class="text-center"><a href='<%# "DisplayStock.aspx?ID=" + Eval("ID") %>'><i class="fas fa-info"></i></a></td>
                             <td class="text-center"><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-edit"></i></a></td>
                             <td  class="text-center"><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-trash-alt"></i></a></td>
 

@@ -24,12 +24,12 @@ namespace Art_Assignment.Pages.Profile
                 return;
             }
 
-            Int64 uid = Auth.getLogonUserUID(Request);
+            Int64 uid = Auth.getLogonUserUID(Request, Response);
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO ArtProd([Name], [Description], [ArtistOwner], [Price], [DateCreated], [DateModified]) VALUES(@ArtName, @ArtDescription, @UserID, @ArtPrice, getdate(), getdate())", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO ArtProd([Name], [Description], [ArtistOwner], [Price], [ArtPicture], [DateCreated], [DateModified]) VALUES(@ArtName, @ArtDescription, @UserID, @ArtPrice, @ArtPicture, getdate(), getdate())", con);
                 cmd.Parameters.AddWithValue("@ArtName", txtArtName.Text);
                 if (txtArtDescription.Text == "")
                 {
@@ -40,7 +40,7 @@ namespace Art_Assignment.Pages.Profile
                     cmd.Parameters.AddWithValue("@ArtDescription", txtArtDescription.Text);
                 }
                 cmd.Parameters.AddWithValue("@ArtPrice", txtArtPrice.Text);
-
+                cmd.Parameters.AddWithValue("@ArtPicture", artPicture.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(artPicture, Server));
                 cmd.Parameters.AddWithValue("@UserID", uid);
                 cmd.ExecuteNonQuery();
             }

@@ -20,7 +20,7 @@ namespace Art_Assignment.Pages.Profile
                 return;
             }
             UserDataSource.SelectCommand = "SELECT UserProfilePicture, COALESCE(Name, FORMAT(ID, 'User\\#000#')) AS Name,COALESCE(FirstName, '&lt;not set&gt;') AS FirstName,COALESCE(LastName, '&lt;not set&gt;') AS LastName,COALESCE(convert(varchar, DateBirth, 105), '&lt;not set&gt;') AS DateBirth, Email FROM [User] WHERE ID = @ID";
-            Int64 userid = Auth.getLogonUserUID(Request);
+            Int64 userid = Auth.getLogonUserUID(Request, Response);
             UserDataSource.SelectParameters["ID"].DefaultValue = userid.ToString();
         }
 

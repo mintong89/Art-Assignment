@@ -23,8 +23,8 @@
 
 
     <form runat="server">
-        <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
-            <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>
+        <%--<asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
+            <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>--%>
 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>

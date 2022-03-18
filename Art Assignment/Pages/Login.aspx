@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="<%= Page.ResolveUrl("~/css/Home.css")%>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <form runat="server">
+    <form runat="server" autocomplete="off">
         <div class="flex items-center justify-center home-container">
             <div class="register-box-cont p-5 w-96 text-sm">
                 <div class="text-base pb-3">Login</div>

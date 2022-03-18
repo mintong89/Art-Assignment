@@ -34,7 +34,7 @@ namespace Art_Assignment.UserControls
             Dictionary<string, object> param = new Dictionary<string, object>()
             {
                 {
-                    "UserID", Auth.getLogonUserUID(Request)
+                    "UserID", Auth.getLogonUserUID(Request, Response)
                 }
             };
             object artistid_obj = SqlHelper.ExecuteScalar("SELECT ID FROM [Artist] WHERE UserID = @UserID", param);
