@@ -1,0 +1,7 @@
+﻿.total-price-container {
+    height: calc(100vh - 100px);
+}
+
+.total-price {
+    width: 350px;
+}
