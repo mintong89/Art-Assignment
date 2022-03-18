@@ -23,7 +23,7 @@
 
     <form runat="server">
         <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
-            <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>
+            <div class="button-22 w-auto  float-right">Add Stock</div></asp:HyperLink>
 
         <br />
         <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
