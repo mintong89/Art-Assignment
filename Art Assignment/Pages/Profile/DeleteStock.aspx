@@ -26,7 +26,7 @@
         <%--<asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
             <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>--%>
 
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <asp:GridView ID="gvStock" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="Art ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
@@ -49,53 +49,7 @@
             </DeleteParameters>
 
         </asp:SqlDataSource>
-        <%--<table class="mt-8" style="width: 100%">
-            <thead>
-                <tr>
-                    <th>Art ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price(RM)</th>
-                   
-                </tr>
-            </thead>
-            <tbody>
-
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater1_ItemCommand">
-                    <ItemTemplate>
-                        <tr>
-                           <td class="px-1">
-                                <asp:Label ID="ArtProdID" runat="server"
-                                    Text='<%# Eval("ID") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdName" runat="server"
-                                    Text='<%# Eval("Name") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdDescription" runat="server"
-                                    Text='<%# Eval("Description") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdPrice" runat="server"
-                                    Text='<%# Eval("Price") %>' />
-                            </td>
-                            
-                            
-                        </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
-
-            </tbody>
-        </table>--%>
-
-        <%--<asp:Label ID="lblConfirm" runat="server" Text="Are you sure?">
-            <div class="inline-block">
-                    <button runat="server" class="button-22 button-22-danger" onserverclick="DeleteArtProd_OnClick" >
-                        <i class="fa-solid fa-trash"></i>&nbsp;
-                            Delete
-                    </button>
-                </div></asp:Label>--%>
+       
     </form>
 
 </asp:Content>
