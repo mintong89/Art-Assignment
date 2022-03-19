@@ -17,7 +17,6 @@ namespace Art_Assignment.Pages.Profile
   [ArtProd].[Name] as [Name],
   [Artist].[Name] as [ArtistName],
   [ArtProd].[Price] as Price,
-  [ArtProd].[DateDeleted] as DateDeleted,
   case
     when [ArtProd].[ArtPicture] IS NULL THEN '~/resources/Blank_Art.jpg'
     else concat('~/upload/', [ArtProd].ArtPicture)
@@ -27,7 +26,7 @@ FROM
 INNER JOIN [ArtProd] ON [WishlistItem].ArtProdID = ArtProd.ID
 INNER JOIN [Artist] ON [ArtProd].ArtistOwner = Artist.ID
 WHERE
-  WishlistItem.UserID = @UserID AND DateDeleted IS NULL";
+  WishlistItem.UserID = @UserID AND [ArtProd].DateDeleted IS NULL";
             WishListDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
 
             string deleteId = Request.QueryString["DeleteId"];
