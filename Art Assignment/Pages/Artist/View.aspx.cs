@@ -58,6 +58,10 @@ WHERE
             ArtistDataSource.SelectParameters["ID"].DefaultValue = artistID;
             ArtistDataSource.UpdateParameters["ArtistID"].DefaultValue = artistID;
             ArtProdDataSource.SelectParameters["ArtistOwner"].DefaultValue = artistID;
+
+            string artistName = (string) SqlHelper.ExecuteScalar("SELECT Name FROM Artist WHERE ID = @ID", new Dictionary<string, object>() { { "@ID", artistID } });
+            ArtistPageTitle.Text = "Artist | " + artistName;
+
             try
             {
                 Int64 userid = Auth.getLogonUserUID(Request, Response);
@@ -93,8 +97,8 @@ WHERE
         }
 
         protected void FormView1_ItemCreated(object sender, EventArgs e)
-        { 
-            if(FormView1.FindControl("EditButton") == null)
+        {
+            if (FormView1.FindControl("EditButton") == null)
             {
                 return;
             }
