@@ -8,13 +8,13 @@
     <%--<h1 class="text-xl font-bold">Add Stock</h1>--%>
     <form id="Form1" method="post" runat="server" enctype="multipart/form-data" autocomplete="off">
         <div class="flex justify-center">
-            <div class="artProduct-upload-image-cont">
-                <img runat="server" clientidmode="Static" id="userProfileImg" style="width: 100%; height: 100%" alt="artProd-preview" src="~/resources/Blank_Art.jpg" />
-                <div class="artProduct-upload-image-hover-overlay">
-                    Click to Upload
+                <div class="user-profile-upload-image-cont">
+                    <img runat="server" ClientIDMode="Static" ID="userProfileImg" style="width:100%; height:100%" alt="profile-pic-preview" src="~/resources/profile-pic-blank.png" />
+                    <div class="user-profile-upload-image-hover-overlay">
+                        Click to Upload
+                    </div>  
                 </div>
             </div>
-        </div>
         <input type="file" id="artPicture" class="hidden" runat="server" clientidmode="Static" />
         <div>
             <div class="input-label">
