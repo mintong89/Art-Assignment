@@ -163,5 +163,5 @@ WHERE ID = @ArtProdID"
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src="<%= Page.ResolveUrl("~/js/AddArtistProfile.js") %>"></script>
+    <script src="<%= Page.ResolveUrl("~/js/UploadImage.js") %>"></script>
 </asp:Content>
