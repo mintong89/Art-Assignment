@@ -13,6 +13,8 @@ namespace Art_Assignment.Pages
     {
         Int64 userID = 0;
         double totalPrice = 0;
+        double shipping = 0;
+        double tax = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -49,17 +51,18 @@ namespace Art_Assignment.Pages
             SqlDataReader totalDr = cmd.ExecuteReader();
             if (totalDr.HasRows)
             {
-                double shipping = 4.5;
+                shipping = 4.5;
                 while (totalDr.Read())
                 {
                     subtotal += double.Parse(totalDr["Price"].ToString());
                 }
 
                 totalPrice = subtotal * 1.06 + shipping;
+                tax = subtotal * 0.06;
 
                 SubtotalText.Text = string.Format("RM {0:0.00}", subtotal);
                 ShippingText.Text = string.Format("RM {0:0.00}", shipping);
-                TaxText.Text = string.Format("RM {0:0.00}", subtotal * 0.06);
+                TaxText.Text = string.Format("RM {0:0.00}", tax);
                 TotalText.Text = string.Format("RM {0:0.00}", totalPrice);
             }
             totalDr.Close();
@@ -86,10 +89,84 @@ namespace Art_Assignment.Pages
             string state = StateText.Text.ToString();
             string country = CountryText.Text.ToString();
 
+            List<int> ArtItemIdList = new List<int>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
+            con.Open();
 
-            string sql = "INSERT INTO Order " +
-                "(Address1, Address2, State, Country, OrderTotal, )";
+            // get all cart item id
+            string selectSql = "SELECT ArtProd.Id " +
+                           "FROM ArtProd " +
+                           $"INNER JOIN CartItem ON CartItem.ArtProdId = ArtProd.Id AND CartItem.UserId = ${userID} AND ArtProd.IsSold = 0";
+
+            SqlCommand SelectedCmd = new SqlCommand(selectSql, con);
+
+            SqlDataReader dr = SelectedCmd.ExecuteReader();
+            if (!dr.HasRows) return;
+
+            while (dr.Read())
+            {
+                ArtItemIdList.Add(dr.GetInt32(0));
+            }
+            dr.Close();
+
+            // create order
+            string sql = "INSERT INTO [Order] " +
+                "(Address1, Address2, State, Country, OrderTotal, OrderMadeBy, DeliveryFee, TaxFee) " +
+                "OUTPUT Inserted.ID " +
+                "VALUES" +
+                "(@Address1, @Address2, @State, @Country, @OrderTotal, @OrderMadeBy, @DeliveryFee, @TaxFee)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@Address1", address1);
+            cmd.Parameters.AddWithValue("@Address2", address2);
+            cmd.Parameters.AddWithValue("@State", state);
+            cmd.Parameters.AddWithValue("@Country", country);
+            cmd.Parameters.AddWithValue("@OrderTotal", totalPrice);
+            cmd.Parameters.AddWithValue("@OrderMadeBy", userID);
+            cmd.Parameters.AddWithValue("@DeliveryFee", shipping);
+            cmd.Parameters.AddWithValue("@TaxFee", tax);
+
+            int orderID = (int)cmd.ExecuteScalar();
+            if (orderID != 0)
+            {
+                // delete cart item from cart
+                string deleteSql = $"DELETE FROM CartItem WHERE CartItem.UserId = ${userID}";
+                SqlCommand deleteCmd = new SqlCommand(deleteSql, con);
+                deleteCmd.ExecuteNonQuery();
+
+                // update art item to sold out
+                foreach (int id in ArtItemIdList)
+                {
+                    string addSql = "UPDATE [ArtProd] " +
+                        "SET IsSold = 1 " +
+                        $"WHERE ID=${id}";
+
+                    SqlCommand addCmd = new SqlCommand(addSql, con);
+                    addCmd.Parameters.AddWithValue("@OrderID", orderID);
+                    addCmd.Parameters.AddWithValue("@ArtItemID", id);
+
+                    addCmd.ExecuteNonQuery();
+                }
+
+                // add order item
+                foreach (int id in ArtItemIdList)
+                {
+                    string addSql = "INSERT INTO [OrderItem] " +
+                        "(OrderID, ArtItemID) " +
+                        "VALUES " +
+                        "(@OrderID, @ArtItemID)";
+
+                    SqlCommand addCmd = new SqlCommand(addSql, con);
+                    addCmd.Parameters.AddWithValue("@OrderID", orderID);
+                    addCmd.Parameters.AddWithValue("@ArtItemID", id);
+
+                    addCmd.ExecuteNonQuery();
+                }
+            }
+
+            con.Close();
+
+            Page.Response.Redirect("~/Pages/Profile/PurchaseHistory.aspx", true);
         }
     }
 }
