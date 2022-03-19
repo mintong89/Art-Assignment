@@ -16,7 +16,8 @@
                 Rejected
             </div>
         </div>
-        <asp:ListView ID="ListView1" runat="server">
+        <asp:ListView ID="ListView1" runat="server" DataSourceID="OrderDataSource" GroupPlaceholderID="groupPlaceHolder1"
+            ItemPlaceholderID="itemPlaceHolder1">
             <LayoutTemplate>
                 <div class="ph-content-cont">
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
@@ -50,20 +51,22 @@
                         </div>
                     </div>
                     <div>
-                        1
+                        <%# Eval("OrderID") %>
                     </div>
                     <div>
-                        2
+                        <%# Eval("ItemCount") %>
                     </div>
                     <div>
-                        3, Fruits Street<br />
-                        10201 TreeState
+                        <%# Eval("Address1") %><br />
+                        <%# Eval("Address2") %><br />
+                        <%# Eval("State") %><br />
+                        <%# Eval("Country") %><br />
                     </div>
                     <div>
-                        19 Mar 2022
+                        <%# Eval("DateCreated") %>
                     </div>
                     <div>
-                        MYR 299.99
+                        MYR <%# Eval("OrderTotal") %>
                     </div>
                 </div>
                 <div class="ph-order-details">
@@ -115,6 +118,12 @@
                 </div>
             </ItemTemplate>
         </asp:ListView>
+        <asp:SqlDataSource ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" ID="OrderDataSource" runat="server">
+            <SelectParameters>
+                <asp:Parameter DbType="Int32" DefaultValue="-1" Name="UserID" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" ID="OrderDetailsDataSource" runat="server"></asp:SqlDataSource>
         <div class="ph-content-cont">
             <div class="ph-order-row div-card">
                 <div style="grid-row: 1 / 3">
