@@ -42,9 +42,9 @@ namespace Art_Assignment.Pages.Profile
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE [ArtProd] SET [Name]=@Name,[Description]=@Description,[Price]=@Price,[DateModified]=getDate() WHERE ([ID] = @ID)", con);
+                SqlCommand cmd = new SqlCommand("UPDATE [ArtProd] SET [Name]=@Name,[Description]=@Description,[ArtPicture]=@ArtPicture, [Price]=@Price,[DateModified]=getDate() WHERE ([ID] = @ID)", con);
 
-                
+
                 //if (txtArtProdDescription == "")
                 //{
                 //    cmd.Parameters.AddWithValue("@ArtDescription", DBNull.Value);
@@ -53,10 +53,11 @@ namespace Art_Assignment.Pages.Profile
                 //{
                 //    cmd.Parameters.AddWithValue("@ArtDescription", txtArtProdDescription);
                 //}
+                var imageInput = (System.Web.UI.HtmlControls.HtmlInputFile) FormView1.FindControl("imageInput");
                 cmd.Parameters.AddWithValue("@Name", txtArtProdName.Text);
                 cmd.Parameters.AddWithValue("@Description", txtArtProdDescription.Text);
                 cmd.Parameters.AddWithValue("@Price", txtArtProdPrice.Text);
-
+                cmd.Parameters.AddWithValue("@ArtPicture", imageInput.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server));
                 cmd.Parameters.AddWithValue("@ID", artProdID);
                 //Console.WriteLine(artProdID);
 
