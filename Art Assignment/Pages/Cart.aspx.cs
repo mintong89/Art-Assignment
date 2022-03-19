@@ -15,7 +15,15 @@ namespace Art_Assignment.Pages
         double totalPrice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            userID = Utility.Auth.getLogonUserUID(Request, Response);
+            try
+            {
+                userID = Utility.Auth.getLogonUserUID(Request, Response);
+            }
+            catch (Exception)
+            {
+                Response.Redirect("~/Pages/Login.aspx");
+            }
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
 
             string sql = "SELECT ArtProd.Id, ArtProd.Name, ArtProd.Price, ArtProd.IsSold, Artist.Name AS ArtistName " +
@@ -69,6 +77,19 @@ namespace Art_Assignment.Pages
 
                 Page.Response.Redirect("~/Pages/Cart.aspx", true);
             }
+        }
+
+        protected void Checkout_Action(object sender, EventArgs e)
+        {
+            string address1 = Address1Text.Text.ToString();
+            string address2 = Address2Text.Text.ToString();
+            string state = StateText.Text.ToString();
+            string country = CountryText.Text.ToString();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
+
+            string sql = "INSERT INTO Order " +
+                "(Address1, Address2, State, Country, OrderTotal, )";
         }
     }
 }

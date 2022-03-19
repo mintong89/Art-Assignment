@@ -15,6 +15,42 @@ namespace Art_Assignment.Pages
     {
 
         /// <summary>
+        /// Address1Text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Address1Text;
+
+        /// <summary>
+        /// Address2Text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Address2Text;
+
+        /// <summary>
+        /// StateText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox StateText;
+
+        /// <summary>
+        /// CountryText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CountryText;
+
+        /// <summary>
         /// CartRepeater control.
         /// </summary>
         /// <remarks>

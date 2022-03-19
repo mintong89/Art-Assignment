@@ -8,7 +8,31 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <form class="cart-container relative flex flex-1 items-start" runat="server">
         <div class="flex w-full">
-            <div class="px-16 py-8 pt-4 flex-1">
+            <div class="px-16 py-8 flex-1">
+                <h4 class="text-xl font-bold">Address</h4>
+                <div class="my-4 border border-black py-4 px-8">
+                    <div class="my-2">
+                        <p>Address 1:</p>
+                        <asp:TextBox CssClass="border border-black outline-none p-2 w-full" ID="Address1Text" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="block text-red-600 text-xs" runat="server" ControlToValidate="Address1Text" ErrorMessage="Please enter your address!" />
+                    </div>
+                    <div class="my-2">
+                        <p>Address 2:</p>
+                        <asp:TextBox CssClass="border border-black outline-none p-2 w-full" ID="Address2Text" runat="server"></asp:TextBox>
+                        <div class="h-4"></div>
+                    </div>
+                    <div class="my-2">
+                        <p>State:</p>
+                        <asp:TextBox CssClass="border border-black outline-none p-2" ID="StateText" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="block text-red-600 text-xs" runat="server" ControlToValidate="StateText" ErrorMessage="Please enter your state!" />
+                    </div>
+                    <div class="my-2">
+                        <p>Country:</p>
+                        <asp:TextBox CssClass="border border-black outline-none p-2" ID="CountryText" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="block text-red-600 text-xs" runat="server" ControlToValidate="CountryText" ErrorMessage="Please enter your country!" />
+                    </div>
+                </div>
+                <h4 class="text-xl font-bold">Items</h4>
                 <asp:Repeater ID="CartRepeater" runat="server">
                     <ItemTemplate>
                         <div class="flex border border-black h-36 w-full justify-between items-center px-5 my-4">
@@ -35,8 +59,8 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-            <div class="w-px bg-black mx-12"></div>
-            <div class="total-price-container sticky top-0 px-16 py-8 flex flex-col items-center">
+            <div class="w-px bg-black mx-12 sticky top-0"></div>
+            <div class="total-price-container sticky top-[100px] px-16 py-8 flex flex-col items-center">
                 <div class="total-price">
                     <div class="border border-black py-12 px-8">
                         <ul class="font-bold">
@@ -68,7 +92,7 @@
                         </div>
                     </div>
                     <div class="my-4 flex justify-center">
-                        <asp:LinkButton CssClass="btn text-lg cursor-pointer" runat="server" Text="Checkout" />
+                        <asp:LinkButton CssClass="btn text-lg cursor-pointer" runat="server" Text="Checkout" OnClick="Checkout_Action" />
                     </div>
                 </div>
             </div>
