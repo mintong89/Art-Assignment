@@ -1,18 +1,18 @@
-﻿const AddArtistProfile = {
+﻿const UploadImage = {
     oldImageFileSrc: "",
     inputFileOnChange: function (evt) {
-        const [file] = $("#profilePicInput").prop("files");
+        const [file] = $("#imageInput").prop("files");
         if (file) {
-            AddArtistProfile.oldImageFileSrc = $("#userProfileImg").prop("src")
-            $("#userProfileImg").prop("src", URL.createObjectURL(file))
+            UploadImage.oldImageFileSrc = $("#displayImage").prop("src")
+            $("#displayImage").prop("src", URL.createObjectURL(file))
         }
     },
     uploadImageOnClick: function (evt) {
-        $("#profilePicInput").click();
+        $("#imageInput").click();
     }
 }
 
 $(function () {
-    $("#profilePicInput").on("change", AddArtistProfile.inputFileOnChange);
-    $(".user-profile-upload-image-cont").on("click", AddArtistProfile.uploadImageOnClick)
+    $("#imageInput").on("change", UploadImage.inputFileOnChange);
+    $(".upload-image-cont").on("click", UploadImage.uploadImageOnClick)
 });
