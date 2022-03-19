@@ -33,6 +33,15 @@ namespace Art_Assignment.UserControls
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSecurity;
 
         /// <summary>
+        /// a_MyPurchase control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor a_MyPurchase;
+
+        /// <summary>
         /// divMyPurchase control.
         /// </summary>
         /// <remarks>

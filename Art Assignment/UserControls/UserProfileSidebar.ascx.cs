@@ -33,6 +33,14 @@ namespace Art_Assignment.UserControls
                 case "Wishlist.aspx":
                     addCssClass(divMyWishlist, "user-profile-sidebar-item-active");
                     break;
+                case "PurchaseHistory.aspx":
+                    addCssClass(divMyPurchase, "user-profile-sidebar-item-active");
+                    break;
+                case "Order.aspx":
+                    addCssClass(divOrders, "user-profile-sidebar-item-active");
+                    addCssClass(divStockManagement, "user-profile-sidebar-item-active");
+                    removeCssClass(submenuStockManagement, "hidden");
+                    break;
             }
             Dictionary<string, object> param = new Dictionary<string, object>()
             {
