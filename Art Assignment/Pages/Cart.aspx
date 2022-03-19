@@ -33,6 +33,14 @@
                         </div>
 
                     </ItemTemplate>
+                    <FooterTemplate>
+                        <div runat="server" visible='<%# CartRepeater.Items.Count == 0 %>' class="flex justify-center p-3">
+                            -- There is nothing in your shopping cart --
+                        </div>
+                        <div runat="server" visible='<%# CartRepeater.Items.Count == 0 %>' class="flex justify-center p-3">
+                            <asp:HyperLink CssClass="btn text-lg cursor-pointer" runat="server" Text="Shop Now" NavigateUrl="~/Pages/Gallery.aspx" />
+                        </div>
+                    </FooterTemplate>
                 </asp:Repeater>
             </div>
             <div class="w-px bg-black mx-12"></div>
