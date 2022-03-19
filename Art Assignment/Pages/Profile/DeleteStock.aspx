@@ -80,7 +80,7 @@ WHERE ID = @ArtProdID"
                             </td>
                             <td class="px-1">
                                 <asp:Label ID="ArtProdPrice" runat="server"
-                                    Text='<%# Eval("Price") %>' />
+                                    Text='<%# string.Format("{0:n2}", Eval("Price")) %>' />
                             </td>
 
                             <td class="text-center">

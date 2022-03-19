@@ -66,7 +66,7 @@
                             <%# "By: " + Eval("ArtistName") %>
                         </div>
                         <div style="grid-row-start: 1; grid-row-end: 3; grid-column: 4 / 5" class="flex items-center font-bold">
-                            RM <%# Eval("Price") %>
+                            RM <%# string.Format("{0:n2}", Eval("Price")) %>
                         </div>
                     </a>
                 </div>

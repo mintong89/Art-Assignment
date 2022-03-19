@@ -138,7 +138,7 @@
                                     <%# Eval("Name") %>
                                 </div>
                                 <div>
-                                    RM <%# Eval("Price") %>
+                                    RM <%# string.Format("{0:n2}", Eval("Price")) %>
                                 </div>
                             </ItemTemplate>
                         </asp:ListView>
@@ -154,25 +154,25 @@
                                         Subtotal
                                     </div>
                                     <div>
-                                        <%# Eval("Subtotal") %>
+                                        <%# string.Format("{0:n2}", Eval("Subtotal")) %>
                                     </div>
                                     <div>
                                         Tax
                                     </div>
                                     <div>
-                                        <%# Eval("TaxFee") %>
+                                        <%# string.Format("{0:n2}", Eval("TaxFee")) %>
                                     </div>
                                     <div>
                                         Delivery
                                     </div>
                                     <div>
-                                        <%# Eval("DeliveryFee") %>
+                                        <%# string.Format("{0:n2}", Eval("DeliveryFee")) %>
                                     </div>
                                     <div>
                                         Grand Total
                                     </div>
                                     <div>
-                                        <%# Eval("OrderTotal") %>
+                                        <%# string.Format("{0:n2}", Eval("OrderTotal")) %>
                                     </div>
                                 </div>
                             </ItemTemplate>

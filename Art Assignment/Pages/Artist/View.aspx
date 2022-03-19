@@ -117,7 +117,7 @@
                 <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupPlaceHolder1"
                     ItemPlaceholderID="itemPlaceHolder1" DataSourceID="ArtProdDataSource">
                     <LayoutTemplate>
-                        <div class="p-3" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
+                        <div class="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                         </div>
                         <div class="flex justify-center">
@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="text"><%# Eval("Name") %></div>
                                 <div class="text-gray-600"><%# Eval("ArtistName") %></div>
-                                <div class="font-bold">RM <%# Eval("Price") %></div>
+                                <div class="font-bold">RM <%# string.Format("{0:n2}", Eval("Price")) %></div>
                             </div>
                         </a>
                     </ItemTemplate>
