@@ -17,6 +17,21 @@ namespace Art_Assignment.Pages.Profile
             if (Request.QueryString["filter"] != null)
             {
                 OrderDataSource.SelectParameters["OrderStatus"].DefaultValue = Request.QueryString["filter"];
+                switch (Request.QueryString["filter"])
+                {
+                    case "PENDING":
+                        CatPending.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatPending.Attributes["class"]); 
+                        break;
+                    case "ACCEPT":
+                        CatAccepted.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatAccepted.Attributes["class"]);
+                        break;
+                    case "REJECT":
+                        CatRejected.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatRejected.Attributes["class"]);
+                        break;
+                }
+            } else
+            {
+                CatAll.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatAll.Attributes["class"]);
             }
             OrderDataSource.SelectCommand = @"SELECT
   [OrderItem].OrderID,

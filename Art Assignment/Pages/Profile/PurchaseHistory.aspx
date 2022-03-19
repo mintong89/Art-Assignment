@@ -7,21 +7,34 @@
     <form runat="server">
         <div class="ph-cont">
             <div class="ph-top-status-nav">
-                <div class="nav-item">
-                    All
-                </div>
-                <div class="nav-item">
-                    Pending
-                </div>
-                <div class="nav-item">
-                    Accepted
-                </div>
-                <div class="nav-item">
-                    Rejected
-                </div>
+                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx">
+                    <div runat="server" id="CatAll" class="nav-item">
+                        All
+                    </div>
+                </a>
+                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=PENDING">
+                    <div runat="server" id="CatPending" class="nav-item">
+                        Pending
+                    </div>
+                </a>
+                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=ACCEPT">
+                    <div runat="server" id="CatAccepted" class="nav-item">
+                        Accepted
+                    </div>
+                </a>
+                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=REJECT">
+                    <div runat="server" id="CatRejected" class="nav-item">
+                        Rejected
+                    </div>
+                </a>
             </div>
             <asp:ListView ID="ListView1" runat="server" DataSourceID="OrderDataSource" GroupPlaceholderID="groupPlaceHolder1"
                 ItemPlaceholderID="itemPlaceHolder1">
+                <EmptyDataTemplate>
+                    <div class="flex justify-center p-3">
+                        -- No Purchase History --
+                    </div>
+                </EmptyDataTemplate>
                 <LayoutTemplate>
                     <div class="ph-content-cont">
                         <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
