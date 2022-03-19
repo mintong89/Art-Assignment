@@ -12,7 +12,18 @@ namespace Art_Assignment.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Int64 userid = Auth.getLogonUserUID(Request, Response);
             string currentPageFileName = new FileInfo(this.Request.Url.LocalPath).Name;
+            int artistCount = (int) SqlHelper.ExecuteScalar("SELECT COUNT(*) FROM Artist WHERE UserID = @UserID", new Dictionary<string, object>() {
+                {
+                    "@UserID", userid
+                }
+            });
+            if(artistCount <= 0)
+            {
+                divStockManagement.Attributes["class"] = "hidden";
+                submenuStockManagement.Attributes["class"] = "hidden";
+            }
             switch (currentPageFileName)
             {
                 case "User.aspx":
