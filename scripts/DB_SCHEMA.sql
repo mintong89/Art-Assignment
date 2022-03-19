@@ -182,3 +182,8 @@ VALUES
         (3,3),
         (4,4);
 GO
+
+UPDATE ArtProd
+SET IsSold = 1
+WHERE ID = 1 OR ID = 2 OR ID = 3 OR ID = 4;
+GO
