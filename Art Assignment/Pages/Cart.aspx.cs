@@ -111,10 +111,10 @@ namespace Art_Assignment.Pages
 
             // create order
             string sql = "INSERT INTO [Order] " +
-                "(Address1, Address2, State, Country, OrderTotal, OrderMadeBy, DeliveryFee, TaxFee) " +
+                "(Address1, Address2, State, Country, OrderTotal, OrderMadeBy, DeliveryFee, TaxFee, Status) " +
                 "OUTPUT Inserted.ID " +
                 "VALUES" +
-                "(@Address1, @Address2, @State, @Country, @OrderTotal, @OrderMadeBy, @DeliveryFee, @TaxFee)";
+                "(@Address1, @Address2, @State, @Country, @OrderTotal, @OrderMadeBy, @DeliveryFee, @TaxFee, @Status)";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@Address1", address1);
@@ -125,6 +125,7 @@ namespace Art_Assignment.Pages
             cmd.Parameters.AddWithValue("@OrderMadeBy", userID);
             cmd.Parameters.AddWithValue("@DeliveryFee", shipping);
             cmd.Parameters.AddWithValue("@TaxFee", tax);
+            cmd.Parameters.AddWithValue("@Status", "Pending");
 
             int orderID = (int)cmd.ExecuteScalar();
             if (orderID != 0)
