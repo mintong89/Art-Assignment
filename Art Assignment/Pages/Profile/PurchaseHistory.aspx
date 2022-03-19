@@ -17,12 +17,12 @@
                         Pending
                     </div>
                 </a>
-                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=ACCEPT">
+                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=ACCEPTED">
                     <div runat="server" id="CatAccepted" class="nav-item">
                         Accepted
                     </div>
                 </a>
-                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=REJECT">
+                <a runat="server" href="~/Pages/Profile/PurchaseHistory.aspx?filter=REJECTED">
                     <div runat="server" id="CatRejected" class="nav-item">
                         Rejected
                     </div>

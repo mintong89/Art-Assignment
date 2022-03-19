@@ -22,10 +22,10 @@ namespace Art_Assignment.Pages.Profile
                     case "PENDING":
                         CatPending.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatPending.Attributes["class"]); 
                         break;
-                    case "ACCEPT":
+                    case "ACCEPTED":
                         CatAccepted.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatAccepted.Attributes["class"]);
                         break;
-                    case "REJECT":
+                    case "REJECTED":
                         CatRejected.Attributes["class"] = Utility.Misc.AddCssClass("nav-item-active", CatRejected.Attributes["class"]);
                         break;
                 }
