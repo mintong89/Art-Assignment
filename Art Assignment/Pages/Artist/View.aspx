@@ -121,7 +121,7 @@
                             <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                         </div>
                         <div class="flex justify-center">
-                            <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="5">
+                            <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="8">
                                 <Fields>
                                     <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="true" ShowPreviousPageButton="true"
                                         ShowNextPageButton="false" FirstPageText='<i style="color: blue" class="fa-solid fa-angles-left fa-lg"></i>' PreviousPageText='<i style="color: blue" class="fa-solid fa-angle-left fa-lg"></i>' />
