@@ -111,7 +111,7 @@ WHERE ID = @ArtProdID"
 
                             <td>
                                 <asp:Label ID="ArtProdPrice" runat="server"
-                                    Text='<%# Eval("Price") %>' />
+                                    Text='<%# string.Format("{0:n2}", Eval("Price")) %>' />
                             </td>
                         </tr>
                     </tbody>
