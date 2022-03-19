@@ -165,3 +165,20 @@ VALUES
 	('Vitruvian Man','Description for Vitruvian Man',1,'297.90',getDate(),getDate()),
 	('Virgin of the Rocks','Description for Virgin of the Rocks',1,'305.64',getDate(),getDate());
 GO
+
+INSERT INTO [Order] ([Address1],[Address2],[State],[Country],[OrderTotal],[OrderMadeBy],[DeliveryFee],[TaxFee],[Status],[DateCreated],[DateModified]) 
+VALUES
+	('Bayan Baru','Bayan Lepas' , 'Pulau Pinang','Malaysia' ,'200' ,'1' , '5', '5', 'PENDING', getDate(),getDate()),
+        ('77','Lorong Lembah Permai' , 'Pulau Pinang','Malaysia' ,'250' ,'1' , '6', '5', 'PENDING', getDate(),getDate()),
+        ('7','Lorong Lembah Permai' , 'Pulau Pinang','Malaysia' ,'89' ,'1' , '4', '2', 'PENDING', getDate(),getDate()),
+        ('1','Simpang Ampat' , 'Pulau Pinang','Malaysia' ,'100' ,'1' , '6', '3', 'PENDING', getDate(),getDate());
+GO
+
+
+INSERT INTO [OrderItem]([OrderID],[ArtItemID])
+VALUES
+        (1,1),
+        (2,2),
+        (3,3),
+        (4,4);
+GO
