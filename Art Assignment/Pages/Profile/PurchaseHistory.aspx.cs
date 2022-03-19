@@ -60,6 +60,7 @@ GROUP BY
   [Order].[State],
   [Order].[Country],
   [Order].[Status]
+ORDER BY [Order].DateCreated DESC
 ";
 
         }
