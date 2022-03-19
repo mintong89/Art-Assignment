@@ -9,11 +9,23 @@ namespace Art_Assignment.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack) return;
+
+            string searchQuery = Request.QueryString["Search"];
+            string searchSql = "";
+
+            if (searchQuery != null)
+            {
+                searchSql = $"WHERE ArtProd.Name LIKE '%{searchQuery}%'";
+                SearchBox.Text = searchQuery;
+            }
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
 
             string sql = "SELECT ArtProd.Id, ArtProd.Name, ArtProd.Price, ArtProd.IsSold, Artist.Name AS ArtistName " +
                 "FROM ArtProd " +
-                "INNER JOIN Artist ON ArtProd.ArtistOwner = Artist.Id";
+                "INNER JOIN Artist ON ArtProd.ArtistOwner = Artist.Id " +
+                searchSql;
             SqlCommand cmd = new SqlCommand(sql, con);
 
             con.Open();
@@ -25,6 +37,13 @@ namespace Art_Assignment.Pages
 
             dr.Close();
             con.Close();
+        }
+
+        protected void RedirectSearch(object sender, EventArgs e)
+        {
+            string searchThing = SearchBox.Text.ToString();
+
+            Response.Redirect($"~/Pages/Gallery.aspx?Search={searchThing}", true);
         }
     }
 }
