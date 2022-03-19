@@ -168,10 +168,10 @@ GO
 
 INSERT INTO [Order] ([Address1],[Address2],[State],[Country],[OrderTotal],[OrderMadeBy],[DeliveryFee],[TaxFee],[Status],[DateCreated],[DateModified]) 
 VALUES
-	('Bayan Baru','Bayan Lepas' , 'Pulau Pinang','Malaysia' ,'200' ,'1' , '5', '5', 'PENDING', getDate(),getDate()),
-        ('77','Lorong Lembah Permai' , 'Pulau Pinang','Malaysia' ,'250' ,'1' , '6', '5', 'PENDING', getDate(),getDate()),
-        ('7','Lorong Lembah Permai' , 'Pulau Pinang','Malaysia' ,'89' ,'1' , '4', '2', 'PENDING', getDate(),getDate()),
-        ('1','Simpang Ampat' , 'Pulau Pinang','Malaysia' ,'100' ,'1' , '6', '3', 'PENDING', getDate(),getDate());
+	      ('Bayan Baru','Bayan Lepas'          , 'Pulau Pinang','Malaysia' ,'256.04' ,'1' , '4.5', '14.24', 'PENDING', getDate(),getDate()),
+        ('77'        ,'Lorong Lembah Permai' , 'Pulau Pinang','Malaysia' ,'735.26' ,'1' , '4.5', '41.36', 'PENDING', getDate(),getDate()),
+        ('7'         ,'Lorong Lembah Permai' , 'Pulau Pinang','Malaysia' ,'619.15' ,'1' , '4.5', '34.79', 'PENDING', getDate(),getDate()),
+        ('1'         ,'Simpang Ampat'        , 'Pulau Pinang','Malaysia' ,'134.88' ,'1' , '4.5', '7.38', 'PENDING', getDate(),getDate());
 GO
 
 
