@@ -49,7 +49,7 @@
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="OrderApproval.aspx">Make Approvals</a>
 
     <form runat="server">
-        <asp:SqlDataSource ID="OrderDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
+        <asp:SqlDataSource ID="OrderItemDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
 
             <SelectParameters>
                 <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
@@ -58,6 +58,7 @@
         <table class="mt-8 mx-auto" style="width: 90%">
             <thead>
                 <tr>
+                    <th>Art Name</th>
                     <th>Address1</th>
                     <th>Address2</th>
                     <th>State</th>
@@ -72,9 +73,13 @@
             </thead>
 
             <tbody>
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OrderDataSource" OnItemCommand="Repeater1_ItemCommand">
+                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OrderItemDataSource" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
                         <tr>
+                            <td class="px-1">
+                                <asp:Label ID="ArtProdName" runat="server"
+                                    Text='<%# Eval("Name") %>' />
+                            </td>
                             <td class="px-1">
                                 <asp:Label ID="OrderAddress1" runat="server"
                                     Text='<%# Eval("Address1") %>' />

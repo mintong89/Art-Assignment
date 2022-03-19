@@ -15,13 +15,13 @@ namespace Art_Assignment.Pages.Profile
     {
 
         /// <summary>
-        /// OrderDataSource control.
+        /// OrderItemDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource OrderDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource OrderItemDataSource;
 
         /// <summary>
         /// Repeater1 control.

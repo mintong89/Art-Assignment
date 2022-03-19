@@ -16,11 +16,12 @@ namespace Art_Assignment.Pages.Profile
         {
 
             Int64 userid = Art_Assignment.Utility.Auth.getLogonUserUID(Request, Response);
-            OrderDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
+            OrderItemDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
 
-            OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='PENDING' AND OrderMadeBy =@UserID";
+            //OrderItemDataSource.SelectCommand = "SELECT * FROM [Order] INNER JOIN [OrderItem] ON [Order].ID = [OrderItem].OrderID INNER JOIN [ArtProd] ON [OrderItem].ArtItemID = [ArtProd].ID WHERE [ArtProd].ArtistOwner =@UserID AND Status='PENDING' ORDER BY [Order].Status ASC ";
+            OrderItemDataSource.SelectCommand = "SELECT * FROM [OrderItem] INNER JOIN [Order] ON [OrderItem].OrderID = [Order].ID INNER JOIN [ArtProd] ON [OrderItem].ArtItemID = [ArtProd].ID WHERE [ArtProd].ArtistOwner =@UserID AND Status='PENDING' ORDER BY [Order].Status ASC ";
 
-            OrderDataSource.UpdateCommand = "UPDATE [Order] SET [Status]=@status WHERE ID=@OrderID";
+            OrderItemDataSource.UpdateCommand = "UPDATE [Order] SET [Status]=@status WHERE ID=@OrderID";
 
         }
 
