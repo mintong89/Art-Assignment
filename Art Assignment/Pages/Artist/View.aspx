@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Main.Master" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="Art_Assignment.Pages.Artist.View" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Shiji</title>
+    <title><asp:Literal runat="server" ID="ArtistPageTitle">Artist</asp:Literal></title>
     <link rel="stylesheet" href="<%= Page.ResolveUrl("~/css/Artist.css") %>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
