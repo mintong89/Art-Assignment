@@ -80,7 +80,7 @@ namespace Art_Assignment
             {
                 return;
             }
-            int cart_item_count = (int)SqlHelper.ExecuteScalar("SELECT COUNT(*) FROM CartItem WHERE UserID = @UserID", new Dictionary<string, object>() { { "@UserID", userID } });
+            int cart_item_count = (int)SqlHelper.ExecuteScalar("SELECT COUNT(*) FROM CartItem WHERE UserID = @UserID AND DateDeleted IS NULL", new Dictionary<string, object>() { { "@UserID", userID } });
             if (cart_item_count <= 0)
             {
                 shop_cart_count.Attributes["class"] = shop_cart_count.Attributes["class"] + " hidden";
