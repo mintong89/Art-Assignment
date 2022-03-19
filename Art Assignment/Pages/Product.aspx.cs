@@ -35,7 +35,7 @@ namespace Art_Assignment.Pages
             string sql = "SELECT ArtProd.*, Artist.Name AS ArtistName " +
                 "FROM ArtProd INNER JOIN Artist " +
                 "ON ArtProd.ArtistOwner = Artist.Id " +
-                $"AND ArtProd.Id=${artProdId} ";
+                $"AND ArtProd.Id=${artProdId} AND ArtProd.DateDeleted IS NULL";
             SqlCommand cmd = new SqlCommand(sql, con);
 
             string wishlistSql = "SELECT * FROM WishlistItem " +
@@ -46,6 +46,11 @@ namespace Art_Assignment.Pages
 
             // get all product data
             SqlDataReader dr = cmd.ExecuteReader();
+            if (!dr.HasRows)
+            {
+                Response.Redirect("~/Pages/Gallery.aspx");
+            }
+
             ProdView.DataSource = dr;
             ProdView.DataBind();
             dr.Close();

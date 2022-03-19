@@ -16,7 +16,7 @@ namespace Art_Assignment.Pages
 
             if (searchQuery != null)
             {
-                searchSql = $"WHERE ArtProd.Name LIKE '%{searchQuery}%'";
+                searchSql = $"WHERE ArtProd.DateDeleted IS NULL AND ArtProd.Name LIKE '%{searchQuery}%'";
                 SearchBox.Text = searchQuery;
             }
 

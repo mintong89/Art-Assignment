@@ -31,7 +31,7 @@ namespace Art_Assignment.Pages
             string sql = "SELECT ArtProd.Id, ArtProd.Name, ArtProd.Price, ArtProd.IsSold, ArtProd.ArtPicture, Artist.Name AS ArtistName " +
                            "FROM ArtProd " +
                            "INNER JOIN Artist ON ArtProd.ArtistOwner = Artist.Id " +
-                           $"INNER JOIN CartItem ON CartItem.ArtProdId = ArtProd.Id AND CartItem.UserId = ${userID}";
+                           $"INNER JOIN CartItem ON CartItem.ArtProdId = ArtProd.Id AND CartItem.UserId = ${userID} AND ArtProd.DateDeleted IS NULL";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -96,7 +96,7 @@ namespace Art_Assignment.Pages
             // get all cart item id
             string selectSql = "SELECT ArtProd.Id " +
                            "FROM ArtProd " +
-                           $"INNER JOIN CartItem ON CartItem.ArtProdId = ArtProd.Id AND CartItem.UserId = ${userID} AND ArtProd.IsSold = 0";
+                           $"INNER JOIN CartItem ON CartItem.ArtProdId = ArtProd.Id AND CartItem.UserId = ${userID} AND ArtProd.IsSold = 0 AND ArtProd.DateDeleted IS NULL";
 
             SqlCommand SelectedCmd = new SqlCommand(selectSql, con);
 
