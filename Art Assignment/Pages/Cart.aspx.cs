@@ -111,10 +111,10 @@ namespace Art_Assignment.Pages
 
             // create order
             string sql = "INSERT INTO [Order] " +
-                "(Address1, Address2, State, Country, OrderTotal, OrderMadeBy, DeliveryFee, TaxFee, Status) " +
+                "(Address1, Address2, State, Country, OrderTotal, OrderMadeBy, DeliveryFee, TaxFee, Status, DateCreated, DateModified) " +
                 "OUTPUT Inserted.ID " +
                 "VALUES" +
-                "(@Address1, @Address2, @State, @Country, @OrderTotal, @OrderMadeBy, @DeliveryFee, @TaxFee, @Status)";
+                "(@Address1, @Address2, @State, @Country, @OrderTotal, @OrderMadeBy, @DeliveryFee, @TaxFee, @Status, GETDATE(), GETDATE())";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@Address1", address1);
