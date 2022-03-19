@@ -11,7 +11,15 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            OrderDataSource.SelectCommand = "SELECT * FROM [Order]";
+        }
+
+
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
 
         }
     }
+
+    
 }

@@ -106,6 +106,7 @@ namespace Art_Assignment.Pages
                 CartResultPanel.Visible = true;
                 CartResultPanel.InnerText = "Success:\nThe Item has been added in the cart.";
             }
+            (this.Master as Main).updateCartCount();
         }
 
         protected void ToggleWishlist(object sender, EventArgs e)
