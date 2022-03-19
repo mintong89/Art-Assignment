@@ -23,33 +23,78 @@
 
 
     <form runat="server">
-        <%--<asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
-            <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>--%>
+        <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
+            SelectCommand="SELECT
+             concat('~/Pages/Profile/StockDetails.aspx?ID=', ID) as Url,
+ROW_NUMBER() OVER(ORDER BY ID) AS [Row],
+ID,
+ Name,
+ Description,
+ Price
+FROM
+  [ArtProd]
+            
+WHERE ID = @ArtProdID"
+            
+            DeleteCommand="DELETE FROM ArtProd WHERE ID = @ArtProdID"
+            
+            
+            >
 
-        <asp:GridView ID="gvStock" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-            <Columns>
-                <asp:BoundField DataField="ID" HeaderText="Art ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-                <asp:BoundField DataField="Price" HeaderText="Price(RM)" SortExpression="Price" />
-                <asp:CommandField ShowDeleteButton="True" />
-            </Columns>
-        </asp:GridView>
-
-        <br />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
-            SelectCommand="SELECT [ID], [Name], [Description], [Price] FROM [ArtProd] WHERE ([ID]=@ID)"
-            DeleteCommand="DELETE [ArtProd] WHERE ([ID]=@ID)">
             <SelectParameters>
-                <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
+                <asp:QueryStringParameter Name="ArtProdID" QueryStringField="ID" Type="Int32" />
             </SelectParameters>
 
             <DeleteParameters>
-                <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
+                <asp:QueryStringParameter Name="ArtProdID" QueryStringField="ID" Type="Int32" />
             </DeleteParameters>
 
+
         </asp:SqlDataSource>
-       
+        <table class="mt-8 mx-auto" style="width: 90%">
+            <thead>
+                <tr>
+                    <th>Art ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price(RM)</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ArtProdDataSource" OnItemCommand="Repeater1_ItemCommand">
+                    <ItemTemplate>
+                        <tr>
+                            <td class="px-1">
+                                <asp:Label ID="ArtProdID" runat="server"
+                                    Text='<%# Eval("ID") %>' />
+                            </td>
+                            <td class="px-1">
+                                <asp:Label ID="ArtProdName" runat="server"
+                                    Text='<%# Eval("Name") %>' />
+                            </td>
+                            <td class="px-1">
+                                <asp:Label ID="ArtProdDescription" runat="server"
+                                    Text='<%# Eval("Description") %>' />
+                            </td>
+                            <td class="px-1">
+                                <asp:Label ID="ArtProdPrice" runat="server"
+                                    Text='<%# Eval("Price") %>' />
+                            </td>
+
+                            <td class="text-center">
+                                <asp:Button class="btnReject bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" Text="Delete" runat="server" data-ID='<%# Eval("ID") %>' OnCommand="DeleteStock_OnClick" CommandName="Delete" UseSubmitBehavior="False" CausesValidation="False" /></td>
+
+
+                        </tr>
+
+                    </ItemTemplate>
+
+                </asp:Repeater>
+            </tbody>
+        </table>
+
     </form>
 
 </asp:Content>

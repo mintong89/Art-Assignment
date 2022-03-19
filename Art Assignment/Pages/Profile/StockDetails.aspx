@@ -23,7 +23,7 @@
     </style>
 
 
-    <form runat="server">
+    <form runat="server">   
         <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
             <div class="button-22 w-auto  float-right">Add Stock</div></asp:HyperLink>
 
