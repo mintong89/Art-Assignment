@@ -16,5 +16,12 @@ namespace Art_Assignment.Pages
             string strcon = ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString;
             SqlConnection con = new SqlConnection(strcon);
         }
+
+        protected void RedirectSearch(object sender, EventArgs e)
+        {
+            string searchThing = SearchBox.Text.ToString();
+
+            Response.Redirect($"~/Pages/Gallery.aspx?Search={searchThing}", true);
+        }
     }
 }

@@ -17,6 +17,7 @@
                         <asp:TextBox class="rounded-full h-10 pl-12" ID="SearchBox" runat="server" placeholder="Find an Art Piece...">
                         </asp:TextBox>
                         <i class="fas fa-lg fa-search absolute z-10 left-4 leading-10"></i>
+                        <asp:Button CssClass="hidden" OnClick="RedirectSearch" runat="server" Text="Button" />
                     </div>
                 </div>
             </div>
