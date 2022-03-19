@@ -28,6 +28,18 @@ INNER JOIN [Artist] ON [ArtProd].ArtistOwner = Artist.ID
 WHERE
   WishlistItem.UserID = @UserID";
             WishListDataSource.SelectParameters["UserID"].DefaultValue = userid.ToString();
+
+            string deleteId = Request.QueryString["DeleteId"];
+            if (!string.IsNullOrEmpty(deleteId))
+            {
+                SqlHelper.ExecuteNonQuery("DELETE FROM [WishlistItem] WHERE UserID = @UserID AND ArtProdID = @ArtProdID", new Dictionary<string, object>() { { "@UserID", userid }, { "@ArtProdID", deleteId } });
+                Response.Redirect("~/Pages/Profile/Wishlist.aspx", true);
+            }
+        }
+
+        protected void DeleteWishlistOnClick(object sender, EventArgs e)
+        {
+            Console.WriteLine("Test");
         }
     }
 }
