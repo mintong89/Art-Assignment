@@ -19,7 +19,14 @@ namespace Art_Assignment.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             artProdId = Request.QueryString["id"];
-            userID = Utility.Auth.getLogonUserUID(Request, Response);
+            try
+            {
+                userID = Utility.Auth.getLogonUserUID(Request, Response);
+            }
+            catch (Exception)
+            {
+
+            }
 
             if (artProdId == null || artProdId == "") Response.Redirect("~/Pages/Gallery.aspx");
 
@@ -73,9 +80,8 @@ namespace Art_Assignment.Pages
 
         protected void AddCartButton_Click(object sender, EventArgs e)
         {
-            if (userID == 0) Response.Redirect("~/Pages/Login.aspx");
-
             if (isSoldOut) return;
+            if (userID == 0) Response.Redirect("~/Pages/Login.aspx");
 
             HtmlGenericControl CartResultPanel = (HtmlGenericControl)ProdView.FindControl("CartResultPanel");
 

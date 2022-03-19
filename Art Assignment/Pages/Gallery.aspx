@@ -72,6 +72,7 @@
                         <li>
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "~/Pages/Product.aspx?Id={0}") %>'>
                                 <div class="w-44 h-44 border border-black">
+                                    <img src="<%# Eval("ArtPicture", "~/upload/{0}") %>" />
                                 </div>
                                 <h5 class="text-lg">
                                     <asp:Literal runat="server" Text='<%# Eval("Name") %>'></asp:Literal>

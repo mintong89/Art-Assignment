@@ -7,12 +7,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <form class="relative flex flex-1 items-start" runat="server">
-        <asp:FormView ID="ProdView" runat="server">
+        <asp:FormView CssClass="w-full" ID="ProdView" runat="server">
             <ItemTemplate>
                 <div class="px-20 py-14 w-full">
                     <div class="lg:flex mb-4">
                         <div class="product--image flex-1 lg:mr-12 mb-4 lg:mb-0">
-                            <img class="w-full max-w-full max-h-full" src="https://via.placeholder.com/4000x3000.png?text=test" />
+                            <img src="<%# Eval("ArtPicture", "~/upload/{0}") %>" />
                         </div>
                         <div class="flex-1">
                             <div class="product--summary">
