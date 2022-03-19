@@ -44,7 +44,7 @@ namespace Art_Assignment.Pages.Profile
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM ArtProd WHERE ID=@artProdID", con);
+                SqlCommand cmd = new SqlCommand("UPDATE ArtProd SET DateDeleted = GETDATE() WHERE ID=@artProdID", con);
                 cmd.Parameters.AddWithValue("@artProdID", artProdID.Attributes["data-ID"]);
                 ;
                 cmd.ExecuteNonQuery();

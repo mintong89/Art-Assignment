@@ -39,7 +39,8 @@ ROW_NUMBER() OVER(ORDER BY [ArtProd].ID) AS [Row],
 FROM
   [ArtProd]
             INNER JOIN Artist ON [ArtProd].ArtistOwner = Artist.ID
-WHERE Artist.UserID = @UserID">
+WHERE Artist.UserID = @UserID
+AND [ArtProd].[DateDeleted] IS NULL">
             
             <SelectParameters>
                 <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
