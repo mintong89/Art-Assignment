@@ -79,6 +79,7 @@
     <Content Include="css\PurchaseHistory.css" />
     <Content Include="css\Stock.css" />
     <Content Include="css\UserProfile.css" />
+    <Content Include="js\PurchaseHistory.js" />
     <Content Include="js\UploadImage.js" />
     <Content Include="js\Artist.js" />
     <Content Include="js\Gallery.js" />

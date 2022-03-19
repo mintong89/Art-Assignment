@@ -44,10 +44,10 @@
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                 </GroupTemplate>
                 <ItemTemplate>
-                    <div class="ph-order-row div-card">
+                    <div class="ph-order-row div-card" data-open="0">
                         <div style="grid-row: 1 / 3">
                             <div class="flex h-full items-center py-3 pr-3">
-                                <i class="fa-solid fa-caret-right fa-xl"></i>
+                                <i class="fa-solid fa-caret-right fa-xl collapse-tag"></i>
                             </div>
                         </div>
                         <div class="ph-order-header-wrapper">
@@ -93,7 +93,7 @@
                         </div>
                         <asp:TextBox Visible="false" runat="server" ID="OrderIDLiteral" Text='<%# Bind("OrderID") %>'></asp:TextBox>
                     </div>
-                    <div class="ph-order-details">
+                    <div class="ph-order-details" style="overflow: hidden; max-height: 0">
                         <asp:ListView ID="ListViewInner" runat="server" GroupPlaceholderID="gph1"
                             ItemPlaceholderID="iph1" DataSourceID="OrderDetailsDataSource">
                             <LayoutTemplate>
@@ -193,4 +193,5 @@ WHERE ID = @ID;">
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src='<%=Page.ResolveUrl("~/js/PurchaseHistory.js") %>'></script>
 </asp:Content>
