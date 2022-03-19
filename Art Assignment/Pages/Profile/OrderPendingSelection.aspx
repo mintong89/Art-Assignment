@@ -97,7 +97,7 @@
                             <td class="text-center">
                                 <asp:Button class="btnAccept" text="Accept" runat="server" data-ID='<%# Eval("ID") %>' onCommand="AcceptOrder_OnClick" CommandName="Accept" UseSubmitBehavior="False" CausesValidation="False" /></td>
                             <td class="text-center">
-                                <asp:Button class="btnReject" text="Reject" runat="server" onserverclick="RejectOrder_OnClick" data-ID='<%# Eval("ID") %>' UseSubmitBehavior="False" CausesValidation="False" /></td>
+                                <asp:Button class="btnReject" text="Reject" runat="server" data-ID='<%# Eval("ID") %>' onCommand="RejectOrder_OnClick" CommandName="Reject" UseSubmitBehavior="False" CausesValidation="False" /></td></td>
 
 
                         </tr>

@@ -28,7 +28,7 @@ namespace Art_Assignment.Pages.Profile
             }
             else
             {
-                OrderDataSource.SelectCommand = "SELECT * FROM [Order]";
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] ORDER BY [Status] ASC";
             }
         }
 

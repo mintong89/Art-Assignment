@@ -45,7 +45,7 @@ namespace Art_Assignment.Pages.Profile
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE [Order] SET Status = @Status WHERE ID=@OrderID", con);
-                cmd.Parameters.AddWithValue("@OrderID", orderID.Text);
+                cmd.Parameters.AddWithValue("@OrderID", orderID.Attributes["data-ID"]);
                 cmd.Parameters.AddWithValue("@Status", "ACCEPTED");
                 cmd.ExecuteNonQuery();
             }
@@ -58,8 +58,20 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
+            Button orderID = (Button)sender;
+            Console.WriteLine(orderID.Attributes["data-ID"]);
 
-            
+
+            //Int64 uid = Auth.getLogonUserUID(Request, Response);
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE [Order] SET Status = @Status WHERE ID=@OrderID", con);
+                cmd.Parameters.AddWithValue("@OrderID", orderID.Attributes["data-ID"]);
+                cmd.Parameters.AddWithValue("@Status", "REJECTED");
+                cmd.ExecuteNonQuery();
+            }
             Response.Redirect("OrderPendingSelection.aspx");
         }
 
