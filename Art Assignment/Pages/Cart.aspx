@@ -37,7 +37,7 @@
                     <ItemTemplate>
                         <div class="flex border border-black h-36 w-full justify-between items-center px-5 my-4">
                             <div class="flex items-center">
-                                <img class="w-16 h-16 min-w-[4rem] min-h-[4rem]" src="https://via.placeholder.com/200x200" />
+                                <img class="w-16 h-16 min-w-[4rem] min-h-[4rem]" src="<%# Eval("ArtPicture", "~/upload/{0}") %>" />
                                 <div class="px-4">
                                     <h5 class="text-xl">
                                         <asp:Literal runat="server" Text='<%# Eval("Name") %>'></asp:Literal>
