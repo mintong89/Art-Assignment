@@ -39,6 +39,27 @@
                     <div class="ph-content-cont">
                         <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                     </div>
+                    <div class="flex justify-center">
+                    <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="5">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="true" ShowPreviousPageButton="true"
+                                ShowNextPageButton="false" FirstPageText='<i style="color: blue" class="fa-solid fa-angles-left fa-lg"></i>' PreviousPageText='<i style="color: blue" class="fa-solid fa-angle-left fa-lg"></i>' />
+                            <%--<asp:NumericPagerField ButtonType="Link" />--%>
+                            <asp:TemplatePagerField>
+                                <PagerTemplate>
+                                    <div style="display: inline">
+                                        Page
+                                <asp:Label runat="server" ID="labelCurrentPage" Text="<%# Container.TotalRowCount > 0 ? (Container.StartRowIndex / Container.PageSize) + 1 : 0 %>" />
+                                        of
+                                <asp:Label runat="server" ID="labelTotalPages" Text="<%#  Math.Ceiling ((double)Container.TotalRowCount / Container.PageSize) %>" />
+                                    </div>
+                                    &nbsp;
+                                </PagerTemplate>
+                            </asp:TemplatePagerField>
+                            <asp:NextPreviousPagerField ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="true" ShowPreviousPageButton="false" NextPageText='<i style="color: blue" class="fa-solid fa-angle-right fa-lg"></i>' LastPageText='<i style="color: blue" class="fa-solid fa-angles-right fa-lg"></i>' />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
                 </LayoutTemplate>
                 <GroupTemplate>
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
