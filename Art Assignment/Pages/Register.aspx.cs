@@ -54,7 +54,7 @@ namespace Art_Assignment.Pages
                 cmd.ExecuteNonQuery();
             }
 
-            Server.Transfer("Home.aspx");
+            Response.Redirect("~/Pages/Login.aspx");
         }
     }
 }

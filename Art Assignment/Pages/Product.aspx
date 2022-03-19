@@ -12,7 +12,7 @@
                 <div class="px-20 py-14 w-full">
                     <div class="lg:flex mb-4">
                         <div class="product--image flex-1 lg:mr-12 mb-4 lg:mb-0">
-                            <img src="<%# Eval("ArtPicture", "~/upload/{0}") %>" />
+                            <img runat="server" src='<%# Eval("ArtPicture", "~/upload/{0}") %>' />
                         </div>
                         <div class="flex-1">
                             <div class="product--summary">
