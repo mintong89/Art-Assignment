@@ -41,13 +41,13 @@
                             <div class="div-card w-96 bg-white p-3 grid gap-y-3" onmousedown="event.stopPropagation()">
                                 <div class="flex justify-center">
                                     <div class="artist-upload-image-cont">
-                                        <img runat="server" ClientIDMode="Static" id="edit_image_preview" style="width: 100%; height: 100%" alt="profile-pic-preview" src='<%# Eval("ArtistImage") %>' />
+                                        <img runat="server" clientidmode="Static" id="edit_image_preview" style="width: 100%; height: 100%" alt="profile-pic-preview" src='<%# Eval("ArtistImage") %>' />
                                         <div class="artist-upload-image-hover-overlay">
                                             Click to Upload
                                         </div>
                                     </div>
                                 </div>
-                                <input type="file" id="profilePicInput" class="hidden" runat="server" ClientIDMode="Static" />
+                                <input type="file" id="profilePicInput" class="hidden" runat="server" clientidmode="Static" />
                                 <div>
                                     <div class="input-label">
                                         Artist Display Name<span style="color: red">*</span>
@@ -111,14 +111,58 @@
                     </div>
                     <div class="item-idle">
                         <i class="fa-solid fa-comment"></i>&nbsp;Comments
-   <asp:LinkButton runat="server" ID="delIfSeen"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="delIfSeen"></asp:LinkButton>
                     </div>
                 </div>
-                <div>
-                    Item 1<br>
-                    Item 2<br>
-                    Item 3
-                </div>
+                <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupPlaceHolder1"
+                    ItemPlaceholderID="itemPlaceHolder1" DataSourceID="ArtProdDataSource">
+                    <LayoutTemplate>
+                        <div class="p-3" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
+                            <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
+                        </div>
+                        <div class="flex justify-center">
+                            <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView1" PageSize="8">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="true" ShowPreviousPageButton="true"
+                                        ShowNextPageButton="false" FirstPageText='<i style="color: blue" class="fa-solid fa-angles-left fa-lg"></i>' PreviousPageText='<i style="color: blue" class="fa-solid fa-angle-left fa-lg"></i>' />
+                                    <%--<asp:NumericPagerField ButtonType="Link" />--%>
+                                    <asp:TemplatePagerField>
+                                        <PagerTemplate>
+                                            <div style="display: inline">
+                                                Page
+                                <asp:Label runat="server" ID="labelCurrentPage" Text="<%# Container.TotalRowCount > 0 ? (Container.StartRowIndex / Container.PageSize) + 1 : 0 %>" />
+                                                of
+                                <asp:Label runat="server" ID="labelTotalPages" Text="<%#  Math.Ceiling ((double)Container.TotalRowCount / Container.PageSize) %>" />
+                                            </div>
+                                            &nbsp;
+                                        </PagerTemplate>
+                                    </asp:TemplatePagerField>
+                                    <asp:NextPreviousPagerField ButtonType="Link" ShowNextPageButton="true" ShowLastPageButton="true" ShowPreviousPageButton="false" NextPageText='<i style="color: blue" class="fa-solid fa-angle-right fa-lg"></i>' LastPageText='<i style="color: blue" class="fa-solid fa-angles-right fa-lg"></i>' />
+                                </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </LayoutTemplate>
+                    <GroupTemplate>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+                    </GroupTemplate>
+                    <ItemTemplate>
+                        <a runat="server" href='<%# Eval("ID", "~/Pages/Product.aspx?ID={0}") %>'>
+                            <div style="display: grid; width: 11rem;" class="p-3 div-card">
+                                <div style="width: 100%; height: 100%">
+                                    <img id="ArtPicture" alt="pic" runat="server" src='<%# Eval("ArtPictureAbs") %>' />
+                                </div>
+                                <div class="text"><%# Eval("Name") %></div>
+                                <div class="text-gray-600"><%# Eval("ArtistName") %></div>
+                                <div class="font-bold">RM <%# Eval("Price") %></div>
+                            </div>
+                        </a>
+                    </ItemTemplate>
+                </asp:ListView>
+                <asp:SqlDataSource ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" ID="ArtProdDataSource" runat="server">
+                    <SelectParameters>
+                        <asp:Parameter DbType="Int32" DefaultValue="-1" Name="ArtistOwner" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </div>
         </div>
     </form>
