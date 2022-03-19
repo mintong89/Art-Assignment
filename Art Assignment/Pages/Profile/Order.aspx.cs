@@ -21,19 +21,26 @@ namespace Art_Assignment.Pages.Profile
             if (Request.QueryString["filter"] != null && Request.QueryString["filter"] == "PENDING")
             {
                 // Add WHERE Status = "ACCEPTED" into sql
-                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='PENDING' && OrderMadeBy =@UserID";
+                //OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='PENDING' && OrderMadeBy =@UserID";
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] INNER JOIN [OrderItem] ON [Order].ID = [OrderItem].OrderID INNER JOIN [ArtProd] ON [OrderItem].ArtItemID = [ArtProd].ID WHERE [ArtProd].ArtistOwner =@UserID AND Status='PENDING' ORDER BY [Order].Status ASC ";
+
             }
             else if (Request.QueryString["filter"] != null && Request.QueryString["filter"] == "ACCEPTED")
             {
-                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='ACCEPTED' && OrderMadeBy =@UserID";
+                //OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='ACCEPTED' && OrderMadeBy =@UserID";
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] INNER JOIN [OrderItem] ON [Order].ID = [OrderItem].OrderID INNER JOIN [ArtProd] ON [OrderItem].ArtItemID = [ArtProd].ID WHERE [ArtProd].ArtistOwner =@UserID AND Status='ACCEPTED' ORDER BY [Order].Status ASC ";
+
+
             }
             else if (Request.QueryString["filter"] != null && Request.QueryString["filter"] == "REJECTED")
             {
-                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='REJECTED' && OrderMadeBy =@UserID";
+                //OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='REJECTED' && OrderMadeBy =@UserID";
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] INNER JOIN [OrderItem] ON [Order].ID = [OrderItem].OrderID INNER JOIN [ArtProd] ON [OrderItem].ArtItemID = [ArtProd].ID WHERE [ArtProd].ArtistOwner =@UserID AND Status='REJECTED' ORDER BY [Order].Status ASC ";
+
             }
             else
             {
-                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE OrderMadeBy =@UserID ORDER BY [Status] ASC ";
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] INNER JOIN [OrderItem] ON [Order].ID = [OrderItem].OrderID INNER JOIN [ArtProd] ON [OrderItem].ArtItemID = [ArtProd].ID WHERE [ArtProd].ArtistOwner =@UserID ORDER BY [Order].Status ASC ";
             }
         }
 

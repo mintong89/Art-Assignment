@@ -27,33 +27,7 @@
 
 
     <form runat="server" autocomplete="off">
-        <%--<asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
-            <div class="button-22 w-1/6  float-right">Add Stock</div></asp:HyperLink>
-
-        <asp:GridView ID="GridView1"
-            runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-            <Columns>
-                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-                <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
-                <asp:CommandField ShowEditButton="True" />
-            </Columns>
-        </asp:GridView>
-
-        <br />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
-            SelectCommand="SELECT [ID], [Name], [Description], [Price] FROM [ArtProd] WHERE ([ID] = @ID)"
-            UpdateCommand="UPDATE [ArtProd] SET [Name]=@Name,[Description]=@Description,[Price]=@Price,[DateModified]=getDate() WHERE ([ID] = @ID)">
-            <SelectParameters>
-                <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
-            </SelectParameters>
-
-            <UpdateParameters>
-                <asp:QueryStringParameter Name="ID" QueryStringField-="ID" Type="Int32" />
-            </UpdateParameters>
-
-        </asp:SqlDataSource>--%>
+       
         <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
             SelectCommand="SELECT
              concat('~/Pages/Profile/StockDetails.aspx?ID=', ID) as Url,
