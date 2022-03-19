@@ -81,7 +81,7 @@ WHERE Artist.UserID = @UserID">
                             </td>
                             <td class="px-1">
                                 <asp:Label ID="ArtProdPrice" runat="server"
-                                    Text='<%# Eval("Price") %>' />
+                                    Text='<%# string.Format("{0:n2}", Eval("Price")) %>' />
                             </td>
                             <td class="text-center"><a href='<%# "DisplayStock.aspx?ID=" + Eval("ID") %>'><i class="fas fa-info"></i></a></td>
                             <td class="text-center"><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-edit"></i></a></td>

@@ -12,10 +12,12 @@
             Security
         </div>
     </a>
-    <div runat="server" id="divMyPurchase" class="user-profile-sidebar-item">
-        <i class="fa-solid fa-cart-shopping"></i>
-        My Purchase
-    </div>
+    <a href="~/Pages/Profile/PurchaseHistory.aspx" runat="server" id="a_MyPurchase">
+        <div runat="server" id="divMyPurchase" class="user-profile-sidebar-item">
+            <i class="fa-solid fa-cart-shopping"></i>
+            My Purchase
+        </div>
+    </a>
     <a href="~/Pages/Profile/Wishlist.aspx" runat="server" id="a_WishList">
         <div runat="server" id="divMyWishlist" class="user-profile-sidebar-item">
             <i class="fa-solid fa-star"></i>
@@ -45,9 +47,11 @@
                 Stock Details
             </div>
         </a>
-        <div runat="server" id="divOrders" class="user-profile-sidebar-item">
-            <i></i>
-            Orders
-        </div>
+        <a href="Order.aspx">
+            <div runat="server" id="divOrders" class="user-profile-sidebar-item">
+                <i></i>
+                Orders
+            </div>
+        </a>
     </div>
 </div>

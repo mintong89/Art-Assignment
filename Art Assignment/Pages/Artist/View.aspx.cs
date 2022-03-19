@@ -40,8 +40,24 @@ SET [DateModified] = GETDATE(),
 [ContactTwitter] = @ContactTwitter
 WHERE ID = @ArtistID AND UserID = @UserID";
 
+            ArtProdDataSource.SelectCommand = @"SELECT
+  [ArtProd].*,
+  case
+    when [ArtPicture] IS NULL THEN '~/resources/Blank_Art.jpg'
+    else concat('~/upload/', ArtPicture)
+  end AS ArtPictureAbs,
+  Artist.Name as ArtistName
+FROM
+  [ArtProd]
+INNER JOIN [Artist] ON [ArtProd].ArtistOwner = [Artist].ID
+WHERE
+  ArtistOwner = @ArtistOwner
+  AND IsSold = 0
+  AND [ArtProd].DateDeleted IS NULL";
+
             ArtistDataSource.SelectParameters["ID"].DefaultValue = artistID;
             ArtistDataSource.UpdateParameters["ArtistID"].DefaultValue = artistID;
+            ArtProdDataSource.SelectParameters["ArtistOwner"].DefaultValue = artistID;
             try
             {
                 Int64 userid = Auth.getLogonUserUID(Request, Response);

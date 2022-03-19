@@ -78,7 +78,8 @@ CREATE TABLE [dbo].[Order] (
   [OrderTotal] float NOT NULL,
   [OrderMadeBy] int NOT NULL,
   [DeliveryFee] float,
-  [TaxFee] float,	
+  [TaxFee] float,
+  [Status] varchar(255) NOT NULL,	
 
   -- Common Fields
   [DateCreated] DateTime,
