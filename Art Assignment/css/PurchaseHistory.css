@@ -6,7 +6,7 @@
 .ph-top-status-nav {
     border-bottom: 1px solid black;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     justify-items: center;
 }
 
@@ -23,7 +23,7 @@
     padding: 10px;
     display: grid;
     row-gap: 10px;
-    grid-template-columns: auto 5rem 5rem 1fr 1fr 1fr;
+    grid-template-columns: auto 5rem 5rem 1fr 1fr 1fr auto;
     border: 1px solid rgba(200, 200, 200, 0.5)
 }
 

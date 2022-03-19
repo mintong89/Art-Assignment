@@ -8,6 +8,9 @@
         <div class="ph-cont">
             <div class="ph-top-status-nav">
                 <div class="nav-item">
+                    All
+                </div>
+                <div class="nav-item">
                     Pending
                 </div>
                 <div class="nav-item">
@@ -30,7 +33,7 @@
                 <ItemTemplate>
                     <div class="ph-order-row div-card">
                         <div style="grid-row: 1 / 3">
-                            <div class="flex h-full items-center p-3">
+                            <div class="flex h-full items-center py-3 pr-3">
                                 <i class="fa-solid fa-caret-right fa-xl"></i>
                             </div>
                         </div>
@@ -50,6 +53,9 @@
                             <div>
                                 Total Amount
                             </div>
+                            <div>
+                                Status
+                            </div>
                         </div>
                         <div>
                             <%# Eval("OrderID") %>
@@ -68,6 +74,9 @@
                         </div>
                         <div>
                             RM <%# Eval("OrderTotal") %>
+                        </div>
+                        <div>
+                            <%# Eval("OrderStatus") %>
                         </div>
                         <asp:TextBox Visible="false" runat="server" ID="OrderIDLiteral" Text='<%# Bind("OrderID") %>'></asp:TextBox>
                     </div>
@@ -164,97 +173,9 @@ WHERE ID = @ID;">
             <asp:SqlDataSource ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" ID="OrderDataSource" runat="server">
                 <SelectParameters>
                     <asp:Parameter DbType="Int32" DefaultValue="-1" Name="UserID" />
+                    <asp:Parameter DbType="String" DefaultValue="Nope" Name="OrderStatus" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            <div class="ph-content-cont">
-                <div class="ph-order-row div-card">
-                    <div style="grid-row: 1 / 3">
-                        <div class="flex h-full items-center p-3">
-                            <i class="fa-solid fa-caret-right fa-xl"></i>
-                        </div>
-                    </div>
-                    <div class="ph-order-header-wrapper">
-                        <div>
-                            Order ID
-                        </div>
-                        <div>
-                            Items
-                        </div>
-                        <div>
-                            Delivery Address
-                        </div>
-                        <div>
-                            Payment Date
-                        </div>
-                        <div>
-                            Total Amount
-                        </div>
-                    </div>
-                    <div>
-                        1
-                    </div>
-                    <div>
-                        2
-                    </div>
-                    <div>
-                        3, Fruits Street<br />
-                        10201 TreeState
-                    </div>
-                    <div>
-                        19 Mar 2022
-                    </div>
-                    <div>
-                        RM 299.99
-                    </div>
-                </div>
-                <div class="ph-order-details">
-                    <div class="ph-od-cont">
-                        <div>#</div>
-                        <div>Item Name</div>
-                        <div>Amount</div>
-                        <div>
-                            1
-                        </div>
-                        <div>
-                            Famous Art
-                        </div>
-                        <div>
-                            RM 200
-                        </div>
-                    </div>
-                    <div class="ph-od-subtotal">
-                        <div>
-                        </div>
-                        <div>
-                            RM
-                        </div>
-                        <div>
-                            Subtotal
-                        </div>
-                        <div>
-                            10.00
-                        </div>
-                        <div>
-                            Tax
-                        </div>
-                        <div>
-                            3.00
-                        </div>
-                        <div>
-                            Delivery
-                        </div>
-                        <div>
-                            1.47
-                        </div>
-                        <div>
-                            Grand Total
-                        </div>
-                        <div>
-                            999
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
 </asp:Content>

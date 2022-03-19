@@ -13,6 +13,11 @@ namespace Art_Assignment.Pages.Profile
         {
             Int64 userid = Art_Assignment.Utility.Auth.getLogonUserUID(Request, Response);
             OrderDataSource.SelectParameters["UserID"].DefaultValue = userid + "";
+
+            if (Request.QueryString["filter"] != null)
+            {
+                OrderDataSource.SelectParameters["OrderStatus"].DefaultValue = Request.QueryString["filter"];
+            }
             OrderDataSource.SelectCommand = @"SELECT
   [OrderItem].OrderID,
   COUNT(*) as ItemCount,
@@ -21,11 +26,16 @@ namespace Art_Assignment.Pages.Profile
   [Order].[Address1],
   [Order].[Address2],
   [Order].[State],
-  [Order].[Country]
+  [Order].[Country],
+  [Order].[Status] AS OrderStatus
 FROM
   OrderItem
   INNER JOIN [Order] ON OrderItem.OrderID = [Order].ID
 WHERE [Order].OrderMadeBy = @UserID
+AND [Order].[Status] = (case
+    when @OrderStatus = 'Nope' THEN [Order].[Status]
+    else @OrderStatus
+  end)
 GROUP BY
   [OrderItem].OrderID,
   [Order].DateCreated,
@@ -33,8 +43,10 @@ GROUP BY
   [Order].[Address1],
   [Order].[Address2],
   [Order].[State],
-  [Order].[Country]
+  [Order].[Country],
+  [Order].[Status]
 ";
+
         }
     }
 }
