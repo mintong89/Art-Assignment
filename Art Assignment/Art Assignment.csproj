@@ -98,7 +98,6 @@
     <Content Include="Pages\Profile\EditUser.aspx" />
     <Content Include="Pages\Profile\Order.aspx" />
     <Content Include="Pages\Profile\OrderApproval.aspx" />
-    <Content Include="Pages\Profile\OrderPendingSelection.aspx" />
     <Content Include="Pages\Profile\PurchaseHistory.aspx" />
     <Content Include="Pages\Profile\Security.aspx" />
     <Content Include="Pages\Profile\StockDetails.aspx" />
@@ -231,13 +230,6 @@
     </Compile>
     <Compile Include="Pages\Profile\OrderApproval.aspx.designer.cs">
       <DependentUpon>OrderApproval.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Profile\OrderPendingSelection.aspx.cs">
-      <DependentUpon>OrderPendingSelection.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Profile\OrderPendingSelection.aspx.designer.cs">
-      <DependentUpon>OrderPendingSelection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Profile\PurchaseHistory.aspx.cs">
       <DependentUpon>PurchaseHistory.aspx</DependentUpon>

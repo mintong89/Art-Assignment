@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/UserProfile.master" AutoEventWireup="true" CodeBehind="OrderPendingSelection.aspx.cs" Inherits="Art_Assignment.Pages.Profile.OrderPendingSelection" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/UserProfile.master" AutoEventWireup="true" CodeBehind="OrderApproval.aspx.cs" Inherits="Art_Assignment.Pages.Profile.OrderApproval" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitle" runat="server">
     Order
@@ -29,6 +29,10 @@
     <form runat="server">
         <asp:SqlDataSource ID="OrderDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
 
+            <SelectParameters>
+                <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
+            </SelectParameters>
+
             <UpdateParameters>
                 <asp:QueryStringParameter Name="OrderID" QueryStringField-="ID" Type="Int32" />
             </UpdateParameters>
@@ -45,6 +49,7 @@
                     <th>Delivery Fee</th>
                     <th>Tax Fee</th>
                     <th>Status</th>
+                    <th></th>
                     <th></th>
 
                 </tr>
@@ -90,14 +95,23 @@
                                 <asp:Label ID="Label2" runat="server"
                                     Text='<%# Eval("Status") %>' />
                             </td>
-                            <td class="text-center"><a href='<%# "OrderApproval.aspx?ID=" + Eval("ID") %>'><i class="fas fa-edit"></i></a></td>
+                            <%--<td class="text-center"><asp:Button class="btnAccept" text="" runat="server" onserverclick="AcceptOrder_OnClick"><i class="fas fa-thumbs-up"></i></asp:Button></td>
+                            <td class="text-center"><asp:Button class="btnReject" runat="server" onserverclick="RejectOrder_OnClick"><i class="fas fa-thumbs-down"></i></asp:Button></td>
+                            --%>
+                            <td class="text-center">
+                                <asp:Button class="btnAccept" text="Accept" runat="server" data-ID='<%# Eval("ID") %>' onCommand="AcceptOrder_OnClick" CommandName="Accept" UseSubmitBehavior="False" CausesValidation="False" /></td>
+                            <td class="text-center">
+                                <asp:Button class="btnReject" text="Reject" runat="server" data-ID='<%# Eval("ID") %>' onCommand="RejectOrder_OnClick" CommandName="Reject" UseSubmitBehavior="False" CausesValidation="False" /></td></td>
+
+
                         </tr>
+
                     </ItemTemplate>
 
                 </asp:Repeater>
             </tbody>
         </table>
-       
+
     </form>
 
 </asp:Content>

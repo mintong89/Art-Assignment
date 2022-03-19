@@ -46,10 +46,15 @@
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=PENDING">Show Pending Only</a>
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=ACCEPTED">Show Accepted Only</a>
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=REJECTED">Show Rejected Only</a>
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="OrderPendingSelection.aspx">Make Approvals</a>
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="OrderApproval.aspx">Make Approvals</a>
 
     <form runat="server">
-        <asp:SqlDataSource ID="OrderDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="OrderDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
+
+            <SelectParameters>
+                <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <table class="mt-8 mx-auto" style="width: 90%">
             <thead>
                 <tr>

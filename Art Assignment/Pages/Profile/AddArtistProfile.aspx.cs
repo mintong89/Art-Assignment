@@ -37,9 +37,9 @@ namespace Art_Assignment.Pages.Profile
             Int64 uid = Auth.getLogonUserUID(Request, Response);
 
             string strFileName = "";
-            if (profilePicInput.Value != "")
+            if (imageInput.Value != "")
             {
-                strFileName = Art_Assignment.Utility.Misc.handleFileUpload(profilePicInput, Server);
+                strFileName = Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server);
             }
 
 
