@@ -39,7 +39,7 @@ namespace Art_Assignment.Pages
             SqlCommand cmd = new SqlCommand(sql, con);
 
             string wishlistSql = "SELECT * FROM WishlistItem " +
-                                     $"WHERE UserID=${userID}";
+                                     $"WHERE UserID=${userID} AND ArtProdID = ${artProdId}";
             SqlCommand wishlistCmd = new SqlCommand(wishlistSql, con);
 
             con.Open();
