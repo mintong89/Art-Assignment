@@ -13,10 +13,10 @@ namespace Art_Assignment.Pages
 
             string searchQuery = Request.QueryString["Search"];
             string searchSql = "";
-
+            string whereClause = "WHERE ArtProd.DateDeleted IS NULL";
             if (searchQuery != null)
             {
-                searchSql = $"WHERE ArtProd.DateDeleted IS NULL AND ArtProd.Name LIKE '%{searchQuery}%'";
+                searchSql = $" AND ArtProd.Name LIKE '%{searchQuery}%'";
                 SearchBox.Text = searchQuery;
             }
 
@@ -25,6 +25,7 @@ namespace Art_Assignment.Pages
             string sql = "SELECT ArtProd.Id, ArtProd.Name, ArtProd.Price, ArtProd.IsSold, ArtProd.ArtPicture, Artist.Name AS ArtistName " +
                 "FROM ArtProd " +
                 "INNER JOIN Artist ON ArtProd.ArtistOwner = Artist.Id " +
+                whereClause +
                 searchSql;
             SqlCommand cmd = new SqlCommand(sql, con);
 
