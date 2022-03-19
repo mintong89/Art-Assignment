@@ -32,11 +32,11 @@ namespace Art_Assignment.Pages.Profile
                         txtFirstName.Text = reader.GetColumnSafe<string>("FirstName", "");
                         txtLastName.Text = reader.GetColumnSafe<string>("LastName", "");
                         string userProfilePictureFilename = reader.GetColumnSafe<string>("UserProfilePicture", "");
-                        if(userProfilePictureFilename != "")
+                        if (userProfilePictureFilename != "")
                         {
                             displayImage.Src = Page.ResolveUrl(ConfigurationManager.AppSettings["upload_path"] + "/" + userProfilePictureFilename);
                         }
-                            
+
                         DateTime? dateBirth = reader.GetColumnSafe<DateTime?>("DateBirth", null);
                         if (dateBirth != null)
                         {
@@ -53,13 +53,22 @@ namespace Art_Assignment.Pages.Profile
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE [User] SET Name = @Name, UserProfilePicture = @UserProfilePicture, FirstName = @FirstName, LastName = @LastName, DateBirth = @DateOfBirth, DateModified = GETDATE() WHERE ID = @ID", con);
+                String sql = "UPDATE [User] SET Name = @Name, FirstName = @FirstName, LastName = @LastName, DateBirth = @DateOfBirth, DateModified = GETDATE() WHERE ID = @ID";
+                if (imageInput.Value != "")
+                {
+                    sql = "UPDATE [User] SET Name = @Name, UserProfilePicture = @UserProfilePicture, FirstName = @FirstName, LastName = @LastName, DateBirth = @DateOfBirth, DateModified = GETDATE() WHERE ID = @ID";
+                }
+                SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@ID", userid);
-                cmd.Parameters.AddWithValue("@Name", txtUsername.Text == "" ? (object) DBNull.Value : txtUsername.Text);
-                cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text == "" ? (object) DBNull.Value : txtFirstName.Text);
-                cmd.Parameters.AddWithValue("@LastName", txtLastName.Text == "" ? (object) DBNull.Value : txtLastName.Text);
-                cmd.Parameters.AddWithValue("@DateOfBirth", txtDateOfBirth.Text == "" ? (object) DBNull.Value : txtDateOfBirth.Text);
-                cmd.Parameters.AddWithValue("@UserProfilePicture", imageInput.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server));
+                cmd.Parameters.AddWithValue("@Name", txtUsername.Text == "" ? (object)DBNull.Value : txtUsername.Text);
+                cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text == "" ? (object)DBNull.Value : txtFirstName.Text);
+                cmd.Parameters.AddWithValue("@LastName", txtLastName.Text == "" ? (object)DBNull.Value : txtLastName.Text);
+                cmd.Parameters.AddWithValue("@DateOfBirth", txtDateOfBirth.Text == "" ? (object)DBNull.Value : txtDateOfBirth.Text);
+                if (imageInput.Value != "")
+                {
+                    cmd.Parameters.AddWithValue("@UserProfilePicture", Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server));
+                }
+
                 cmd.ExecuteNonQuery();
             }
             Response.Redirect("User.aspx");
