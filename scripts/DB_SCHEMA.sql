@@ -156,14 +156,14 @@ VALUES (
 );
 GO
 
-INSERT INTO ArtProd ([Name],[Description],[ArtistOwner],[Price],[DateCreated],[DateModified])
+INSERT INTO ArtProd ([ArtPicture],[Name],[Description],[ArtistOwner],[Price],[DateCreated],[DateModified])
 VALUES 
-	('Mona Lisa','Description for Mona Lisa',1,'237.30',getDate(),getDate()),
-	('Salvator Mundi','Description for Salvator Mundi',1,'689.40',getDate(),getDate()),
-	('The Last Supper','Description for The Last Supper',1,'579.86',getDate(),getDate()),
-	('Lady with an Ermine','Description for Lady with an Ermine',1,'123.00',getDate(),getDate()),
-	('Vitruvian Man','Description for Vitruvian Man',1,'297.90',getDate(),getDate()),
-	('Virgin of the Rocks','Description for Virgin of the Rocks',1,'305.64',getDate(),getDate());
+	('mona.jpg','Mona Lisa','Description for Mona Lisa',1,'237.30',getDate(),getDate()),
+	('salvator.jpg','Salvator Mundi','Description for Salvator Mundi',1,'689.40',getDate(),getDate()),
+	('last_supper.jpg','The Last Supper','Description for The Last Supper',1,'579.86',getDate(),getDate()),
+	('lady.jpg','Lady with an Ermine','Description for Lady with an Ermine',1,'123.00',getDate(),getDate()),
+	('vit.jpg','Vitruvian Man','Description for Vitruvian Man',1,'297.90',getDate(),getDate()),
+	('vit.jpg','Virgin of the Rocks','Description for Virgin of the Rocks',1,'305.64',getDate(),getDate());
 GO
 
 INSERT INTO [Order] ([Address1],[Address2],[State],[Country],[OrderTotal],[OrderMadeBy],[DeliveryFee],[TaxFee],[Status],[DateCreated],[DateModified]) 
