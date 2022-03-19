@@ -11,7 +11,25 @@ namespace Art_Assignment.Pages.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            OrderDataSource.SelectCommand = "SELECT * FROM [Order]";
+
+
+            if (Request.QueryString["filter"] != null && Request.QueryString["filter"] == "PENDING")
+            {
+                // Add WHERE Status = "ACCEPTED" into sql
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='PENDING'";
+            }
+            else if (Request.QueryString["filter"] != null && Request.QueryString["filter"] == "ACCEPTED")
+            {
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='ACCEPTED'";
+            }
+            else if (Request.QueryString["filter"] != null && Request.QueryString["filter"] == "REJECTED")
+            {
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order] WHERE Status='REJECTED'";
+            }
+            else
+            {
+                OrderDataSource.SelectCommand = "SELECT * FROM [Order]";
+            }
         }
 
 
@@ -21,5 +39,5 @@ namespace Art_Assignment.Pages.Profile
         }
     }
 
-    
+
 }
