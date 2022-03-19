@@ -34,7 +34,7 @@ namespace Art_Assignment.Pages.Profile
                         string userProfilePictureFilename = reader.GetColumnSafe<string>("UserProfilePicture", "");
                         if(userProfilePictureFilename != "")
                         {
-                            userProfileImg.Src = Page.ResolveUrl(ConfigurationManager.AppSettings["upload_path"] + "/" + userProfilePictureFilename);
+                            displayImage.Src = Page.ResolveUrl(ConfigurationManager.AppSettings["upload_path"] + "/" + userProfilePictureFilename);
                         }
                             
                         DateTime? dateBirth = reader.GetColumnSafe<DateTime?>("DateBirth", null);
@@ -59,7 +59,7 @@ namespace Art_Assignment.Pages.Profile
                 cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text == "" ? (object) DBNull.Value : txtFirstName.Text);
                 cmd.Parameters.AddWithValue("@LastName", txtLastName.Text == "" ? (object) DBNull.Value : txtLastName.Text);
                 cmd.Parameters.AddWithValue("@DateOfBirth", txtDateOfBirth.Text == "" ? (object) DBNull.Value : txtDateOfBirth.Text);
-                cmd.Parameters.AddWithValue("@UserProfilePicture", profilePicInput.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(profilePicInput, Server));
+                cmd.Parameters.AddWithValue("@UserProfilePicture", imageInput.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server));
                 cmd.ExecuteNonQuery();
             }
             Response.Redirect("User.aspx");

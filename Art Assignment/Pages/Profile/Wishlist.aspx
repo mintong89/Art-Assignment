@@ -10,6 +10,14 @@
     <form runat="server">
         <asp:ListView ID="ListView1" runat="server" GroupPlaceholderID="groupPlaceHolder1"
             ItemPlaceholderID="itemPlaceHolder1" DataSourceID="WishListDataSource">
+            <EmptyDataTemplate>
+                <div class="flex justify-center p-3">
+                    -- Your wishlist is empty --
+                </div>
+                <div class="flex justify-center p-3">
+                    <a class="button-22" runat="server" href="~/Pages/Gallery.aspx">Click me to browse gallery</a>
+                </div>
+            </EmptyDataTemplate>
             <LayoutTemplate>
                 <div style="display: grid; row-gap: 10px;">
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
@@ -40,11 +48,14 @@
                 <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
             </GroupTemplate>
             <ItemTemplate>
-                <a runat="server" href='<%# "~/Pages/Product.aspx?ID=" + Eval("ArtProdID") %>'>
-                    <div style="display: grid; grid-template-columns: auto auto 1fr auto; grid-template-rows: auto 1fr; row-gap: 10px; column-gap: 10px; padding: 10px" class="div-card">
-                        <div class="flex items-center font-bold" style="grid-row-start: 1; grid-row-end: 3">
+                <div style="display: grid; grid-template-columns: auto auto 1fr auto; grid-template-rows: auto 1fr; row-gap: 10px; column-gap: 10px; padding: 10px" class="div-card">
+                    <a runat="server" href='<%# Eval("ArtProdID", "~/Pages/Profile/Wishlist.aspx?DeleteId={0}")%>' style="display: contents">
+                        <div runat="server" class="flex items-center font-bold" style="grid-row-start: 1; grid-row-end: 3; cursor: pointer">
                             <i class="fa-solid fa-trash fa-xl text-red-400 hover:text-red-500"></i>
                         </div>
+                    </a>
+                    </a>
+                    <a runat="server" href='<%# "~/Pages/Product.aspx?ID=" + Eval("ArtProdID") %>' style="display: contents">
                         <div style="grid-row-start: 1; grid-row-end: 3; width: 128px; height: 128px">
                             <img runat="server" class="w-full h-full" src='<%# Eval("ArtPicture") %>' />
                         </div>
@@ -57,8 +68,8 @@
                         <div style="grid-row-start: 1; grid-row-end: 3; grid-column: 4 / 5" class="flex items-center font-bold">
                             RM <%# Eval("Price") %>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </ItemTemplate>
         </asp:ListView>
         <asp:SqlDataSource ConnectionString="<%$ ConnectionStrings:ArtDBContext %>" ID="WishListDataSource" runat="server">

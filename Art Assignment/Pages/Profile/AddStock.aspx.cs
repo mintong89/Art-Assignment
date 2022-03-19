@@ -40,7 +40,7 @@ namespace Art_Assignment.Pages.Profile
                     cmd.Parameters.AddWithValue("@ArtDescription", txtArtDescription.Text);
                 }
                 cmd.Parameters.AddWithValue("@ArtPrice", txtArtPrice.Text);
-                cmd.Parameters.AddWithValue("@ArtPicture", artPicture.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(artPicture, Server));
+                cmd.Parameters.AddWithValue("@ArtPicture", imageInput.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server));
                 cmd.Parameters.AddWithValue("@UserID", uid);
                 cmd.ExecuteNonQuery();
             }

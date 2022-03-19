@@ -15,22 +15,22 @@ namespace Art_Assignment.Pages.Profile
     {
 
         /// <summary>
-        /// userProfileImg control.
+        /// displayImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage userProfileImg;
+        protected global::System.Web.UI.HtmlControls.HtmlImage displayImage;
 
         /// <summary>
-        /// profilePicInput control.
+        /// imageInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile profilePicInput;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile imageInput;
 
         /// <summary>
         /// txtUsername control.

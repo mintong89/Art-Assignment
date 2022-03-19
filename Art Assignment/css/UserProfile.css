@@ -29,8 +29,7 @@
     color: blue;
 }
 
-.user-profile-upload-image-cont,
-.artProduct-upload-image-cont {
+.upload-image-cont {
     border-radius: 9999px;
     overflow: hidden;
     width: 12rem;
@@ -39,16 +38,13 @@
     cursor: pointer;
 }
 
-.artProduct-upload-image-cont {
-border-radius:0px !important ;
-}
 
-.user-profile-upload-image-cont:hover .user-profile-upload-image-hover-overlay {
+
+.upload-image-cont:hover .upload-image-hover-overlay {
     display: flex;
 }
 
-.user-profile-upload-image-hover-overlay,
-.artProduct-upload-image-hover-overlay {
+.upload-image-hover-overlay{
     display: none;
     border-radius: 9999px;
     width: inherit;

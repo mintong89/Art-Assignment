@@ -124,13 +124,14 @@ WHERE ID = @ArtProdID"
             </ItemTemplate>
             <EditItemTemplate>
                 <div class="flex justify-center">
-                    <div class="artProduct-upload-image-cont">
-                        <img runat="server" clientidmode="Static" id="userProfileImg" style="width: 100%; height: 100%" alt="artProd-preview" src='<%# Bind("ArtPicture") %>' />
-                        <div class="artProduct-upload-image-hover-overlay">
+                    <div class="upload-image-cont" style="border-radius:0px;">
+                        <img runat="server" clientidmode="Static" id="displayimage" style="width: 100%; height: 100%" alt="artProd-preview" src='<%# Bind("ArtPicture") %>' />
+                        <div class="upload-image-hover-overlay" style="border-radius:0px;">
                             Click to Upload
                         </div>
                     </div>
                 </div>
+                <input type="file" id="imageInput" class="hidden" runat="server" clientidmode="Static" />
                 <div class="input-label">
                     Stock Name<span style="color: red">*</span>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdName" ForeColor="Red">Name is required.</asp:RequiredFieldValidator>
@@ -163,5 +164,5 @@ WHERE ID = @ArtProdID"
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src="<%= Page.ResolveUrl("~/js/AddArtistProfile.js") %>"></script>
+    <script src="<%= Page.ResolveUrl("~/js/UploadImage.js") %>"></script>
 </asp:Content>
