@@ -27,7 +27,7 @@
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=REJECTED">Show Rejected Only</a>--%>
 
     <form runat="server">
-        <asp:SqlDataSource ID="OrderDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
+        <asp:SqlDataSource ID="OrderItemDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
 
             <SelectParameters>
                 <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
@@ -40,6 +40,7 @@
         <table class="mt-8 mx-auto" style="width: 90%">
             <thead>
                 <tr>
+                    <th>Art Name</th>
                     <th>Address1</th>
                     <th>Address2</th>
                     <th>State</th>
@@ -56,9 +57,13 @@
             </thead>
 
             <tbody>
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OrderDataSource" OnItemCommand="Repeater1_ItemCommand">
+                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OrderItemDataSource" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
                         <tr>
+                            <td class="px-1">
+                                <asp:Label ID="ArtProdName" runat="server"
+                                    Text='<%# Eval("Name") %>' />
+                            </td>
                             <td class="px-1">
                                 <asp:Label ID="OrderAddress1" runat="server"
                                     Text='<%# Eval("Address1") %>' />
@@ -99,9 +104,9 @@
                             <td class="text-center"><asp:Button class="btnReject" runat="server" onserverclick="RejectOrder_OnClick"><i class="fas fa-thumbs-down"></i></asp:Button></td>
                             --%>
                             <td class="text-center">
-                                <asp:Button class="btnAccept" text="Accept" runat="server" data-ID='<%# Eval("ID") %>' onCommand="AcceptOrder_OnClick" CommandName="Accept" UseSubmitBehavior="False" CausesValidation="False" /></td>
+                                <asp:Button class="btnAccept bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" text="Accept" runat="server" data-ID='<%# Eval("ID") %>' onCommand="AcceptOrder_OnClick" CommandName="Accept" UseSubmitBehavior="False" CausesValidation="False" /></td>
                             <td class="text-center">
-                                <asp:Button class="btnReject" text="Reject" runat="server" data-ID='<%# Eval("ID") %>' onCommand="RejectOrder_OnClick" CommandName="Reject" UseSubmitBehavior="False" CausesValidation="False" /></td></td>
+                                <asp:Button class="btnReject bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" text="Reject" runat="server" data-ID='<%# Eval("ID") %>' onCommand="RejectOrder_OnClick" CommandName="Reject" UseSubmitBehavior="False" CausesValidation="False" /></td></td>
 
 
                         </tr>
