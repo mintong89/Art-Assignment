@@ -74,6 +74,11 @@ namespace Art_Assignment.Pages.Profile
                 cmd.Parameters.AddWithValue("@Status", "REJECTED");
                 cmd.ExecuteNonQuery();
             }
+
+            SqlHelper.ExecuteNonQuery(@"UPDATE ArtProd
+SET IsSold = 0
+WHERE ID = (SELECT ArtItemID FROM [OrderItem] WHERE OrderID = @OrderID)", new Dictionary<string, object>() { { "@OrderID", orderID.Attributes["data-ID"] } });
+
             Response.Redirect("OrderApproval.aspx");
         }
 
