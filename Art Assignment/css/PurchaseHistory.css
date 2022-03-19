@@ -84,6 +84,7 @@
 
     .ph-od-subtotal div:nth-child(even) {
         font-weight: bold;
+        text-align: right;
     }
 
     .ph-od-subtotal div:nth-child(odd) {
