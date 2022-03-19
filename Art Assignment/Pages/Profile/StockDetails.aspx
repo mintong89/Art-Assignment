@@ -49,7 +49,7 @@ AND [ArtProd].[DateDeleted] IS NULL">
         </asp:SqlDataSource>
 
        
-        <table class="mt-8 mx-auto" style="width: 70%">
+        <table class="mt-8 mx-auto" style="width: 80%">
             <thead>
                 <tr>
                     <th>No</th>
