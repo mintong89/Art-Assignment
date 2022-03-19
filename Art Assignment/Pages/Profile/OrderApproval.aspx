@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/UserProfile.master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="Art_Assignment.Pages.Profile.Order" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/UserProfile.master" AutoEventWireup="true" CodeBehind="OrderApproval.aspx.cs" Inherits="Art_Assignment.Pages.Profile.OrderApproval" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="subtitle" runat="server">
     Order
@@ -21,32 +21,10 @@
         }
     </style>
 
-
-    <%--<<%--button id="dropdownbutton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 f<%--ocus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">dropdown button
-        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentcolor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9l-7 7-7-7"></path></svg></button>
-    --%>
-    <%--<div id="dropdown" class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
-        <ul class="py-1" aria-labelledby="dropdownButton">
-            <li>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-            </li>
-            <li>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
-            </li>
-        </ul>
-    </div>--%>
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx">Show All</a>
+    <%--  <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx">Show All</a>
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=PENDING">Show Pending Only</a>
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=ACCEPTED">Show Accepted Only</a>
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=REJECTED">Show Rejected Only</a>
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="OrderApproval.aspx">Make Approvals</a>
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=REJECTED">Show Rejected Only</a>--%>
 
     <form runat="server">
         <asp:SqlDataSource ID="OrderDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
@@ -54,6 +32,10 @@
             <SelectParameters>
                 <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
             </SelectParameters>
+
+            <UpdateParameters>
+                <asp:QueryStringParameter Name="OrderID" QueryStringField-="ID" Type="Int32" />
+            </UpdateParameters>
         </asp:SqlDataSource>
         <table class="mt-8 mx-auto" style="width: 90%">
             <thead>
@@ -67,6 +49,8 @@
                     <th>Delivery Fee</th>
                     <th>Tax Fee</th>
                     <th>Status</th>
+                    <th></th>
+                    <th></th>
 
                 </tr>
             </thead>
@@ -111,13 +95,23 @@
                                 <asp:Label ID="Label2" runat="server"
                                     Text='<%# Eval("Status") %>' />
                             </td>
+                            <%--<td class="text-center"><asp:Button class="btnAccept" text="" runat="server" onserverclick="AcceptOrder_OnClick"><i class="fas fa-thumbs-up"></i></asp:Button></td>
+                            <td class="text-center"><asp:Button class="btnReject" runat="server" onserverclick="RejectOrder_OnClick"><i class="fas fa-thumbs-down"></i></asp:Button></td>
+                            --%>
+                            <td class="text-center">
+                                <asp:Button class="btnAccept" text="Accept" runat="server" data-ID='<%# Eval("ID") %>' onCommand="AcceptOrder_OnClick" CommandName="Accept" UseSubmitBehavior="False" CausesValidation="False" /></td>
+                            <td class="text-center">
+                                <asp:Button class="btnReject" text="Reject" runat="server" data-ID='<%# Eval("ID") %>' onCommand="RejectOrder_OnClick" CommandName="Reject" UseSubmitBehavior="False" CausesValidation="False" /></td></td>
+
+
                         </tr>
+
                     </ItemTemplate>
 
                 </asp:Repeater>
             </tbody>
         </table>
-        
+
     </form>
 
 </asp:Content>

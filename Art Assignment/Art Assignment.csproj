@@ -76,6 +76,7 @@
     <Content Include="css\Home.css" />
     <Content Include="css\main.css" />
     <Content Include="css\normalize.css" />
+    <Content Include="css\PurchaseHistory.css" />
     <Content Include="css\Stock.css" />
     <Content Include="css\UserProfile.css" />
     <Content Include="js\UploadImage.js" />
@@ -97,6 +98,7 @@
     <Content Include="Pages\Profile\EditStock.aspx" />
     <Content Include="Pages\Profile\EditUser.aspx" />
     <Content Include="Pages\Profile\Order.aspx" />
+    <Content Include="Pages\Profile\OrderApproval.aspx" />
     <Content Include="Pages\Profile\PurchaseHistory.aspx" />
     <Content Include="Pages\Profile\Security.aspx" />
     <Content Include="Pages\Profile\StockDetails.aspx" />
@@ -222,6 +224,13 @@
     </Compile>
     <Compile Include="Pages\Profile\Order.aspx.designer.cs">
       <DependentUpon>Order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Profile\OrderApproval.aspx.cs">
+      <DependentUpon>OrderApproval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Profile\OrderApproval.aspx.designer.cs">
+      <DependentUpon>OrderApproval.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Profile\PurchaseHistory.aspx.cs">
       <DependentUpon>PurchaseHistory.aspx</DependentUpon>

@@ -6,6 +6,7 @@
         <asp:ContentPlaceHolder ID="subtitle" runat="server"></asp:ContentPlaceHolder>
     </title>
     <link href="<%= Page.ResolveUrl("~/css/UserProfile.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%= Page.ResolveUrl("~/css/PurchaseHistory.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%= Page.ResolveUrl("~/css/TableStyling.css") %>" rel="stylesheet" type="text/css" />
     <link href="<%= Page.ResolveUrl("~/css/Stock.css") %>" rel="stylesheet" type="text/css" />
 </asp:Content>

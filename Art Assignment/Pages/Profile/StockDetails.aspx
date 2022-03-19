@@ -40,7 +40,7 @@ FROM
   [ArtProd]
             INNER JOIN Artist ON [ArtProd].ArtistOwner = Artist.ID
 WHERE Artist.UserID = @UserID">
-             <%--WHERE ([ID]=@UserID) This WHERE clause still have errors. Will come back later--%>
+            
             <SelectParameters>
                 <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
             </SelectParameters>
