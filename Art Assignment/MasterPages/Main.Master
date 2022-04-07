@@ -12,88 +12,90 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <header class="sticky top-0 w-full px-4 py-2.5 bg-white z-50 drop-shadow-lg" style="background-color: #02214b; color: rgb(182, 224, 248); font-weight: bold;">
-        <div class="flex justify-center">
-            <div class="flex justify-between w-full" style="max-width: 1440px;">
-                <div class="flex items-center">
-                    <a href="<%= Page.ResolveUrl("~/") %>">
-                        <div class="header-icon w-48 h-20 flex justify-center items-center">
-                            <img src="<%= Page.ResolveUrl("~/resources/logo.png") %>" />
-                        </div>
-                    </a>
-                    <a href="<%= Page.ResolveUrl("~/Pages/Gallery.aspx") %>">
-                        <div class="ml-12 transition duration-150 border-b-2 border-dotted hover:border-solid hover:border-purple-500 cursor-pointer" style="font-size: large">
-                            Browse Gallery
-                        </div>
-                    </a>
-                    <!--
-                <div class="header-search w-96 h-11 mx-5 rounded-full shadow-md flex items-center" style="border: 1px solid rgb(182, 224, 248)">
-                    <i class="fas fa-lg fa-search mt-3 ml-3"></i>
-                </div>
-                -->
-                </div>
-                <!-- Not logged in -->
-                <div runat="server" id="NavMenuNormal" class="ml-auto flex p-1 items-center">
-                    <a runat="server" href="~/Pages/Register.aspx">
-                        <div class="m-2">
-                            <i class="fa-solid fa-lg fa-user"></i>
-                            Register
-                        </div>
-                    </a>
-                    <a runat="server" href="~/Pages/Login.aspx?redirectUrl=Profile/User.aspx">
-                        <div class="m-2">
-                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                            Log In
-                        </div>
-                    </a>
-                </div>
-                <!-- Logged in -->
-                <div runat="server" id="NavMenuLoggedIn" class="ml-auto flex items-center hidden">
-                    <a href='<%= Page.ResolveUrl("~/Pages/Cart.aspx") %>'>
-                        <div class="px-3 relative">
-                            <i class="fa-solid fa-cart-shopping fa-lg"></i>
-                            &nbsp;Cart
-                    <div id="shop_cart_count" runat="server" class="absolute right-0 bg-red-600 rounded-full w-5 h-5 flex justify-center items-center text-white" style="top: -1rem;">
-                        0
+    <form runat="server">
+        <header class="sticky top-0 w-full px-4 py-2.5 bg-white z-50 drop-shadow-lg" style="background-color: #02214b; color: rgb(182, 224, 248); font-weight: bold;">
+            <div class="flex justify-center">
+                <div class="flex justify-between w-full" style="max-width: 1440px;">
+                    <div class="flex items-center">
+                        <a href="<%= Page.ResolveUrl("~/") %>">
+                            <div class="header-icon w-48 h-20 flex justify-center items-center">
+                                <img src="<%= Page.ResolveUrl("~/resources/logo.png") %>" />
+                            </div>
+                        </a>
+                        <a href="<%= Page.ResolveUrl("~/Pages/Gallery.aspx") %>">
+                            <div class="ml-12 transition duration-150 border-b-2 border-dotted hover:border-solid hover:border-purple-500 cursor-pointer" style="font-size: large">
+                                Browse Gallery
+                            </div>
+                        </a>
+                        <!--
+                    <div class="header-search w-96 h-11 mx-5 rounded-full shadow-md flex items-center" style="border: 1px solid rgb(182, 224, 248)">
+                        <i class="fas fa-lg fa-search mt-3 ml-3"></i>
                     </div>
+                    -->
+                    </div>
+                    <!-- Not logged in -->
+                    <div runat="server" id="NavMenuNormal" class="ml-auto flex p-1 items-center">
+                        <a runat="server" href="~/Pages/Register.aspx">
+                            <div class="m-2">
+                                <i class="fa-solid fa-lg fa-user"></i>
+                                Register
+                            </div>
+                        </a>
+                        <a runat="server" href="~/Pages/Login.aspx?redirectUrl=Profile/User.aspx">
+                            <div class="m-2">
+                                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                                Log In
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Logged in -->
+                    <div runat="server" id="NavMenuLoggedIn" class="ml-auto flex items-center hidden">
+                        <a href='<%= Page.ResolveUrl("~/Pages/Cart.aspx") %>'>
+                            <div class="px-3 relative">
+                                <i class="fa-solid fa-cart-shopping fa-lg"></i>
+                                &nbsp;Cart
+                        <div id="shop_cart_count" runat="server" class="absolute right-0 bg-red-600 rounded-full w-5 h-5 flex justify-center items-center text-white" style="top: -1rem;">
+                            0
                         </div>
-                    </a>
-                    <div class="m-2 dropdown-menu-item" style="display: flex; flex-direction: row; align-items: center; column-gap: 10px;">
-                        <!-- <i class="fa-solid fa-lg fa-user"></i> -->
-                        <img runat="server" id="topbar_profileimg" src="https://i.pinimg.com/736x/73/2b/a7/732ba7cb21fbc0d008b06ad2d3f76f1a.jpg" style="height: 48px; width: 48px; border-radius: 9999px;" />
-                        <span runat="server" id="topbar_username">Account</span>
-                        <i class="fa-solid fa-angle-down"></i>
-                        <div class="dropdown-cont" style="background-color: #02214b">
-                            <a runat="server" href="~/Pages/Profile/User.aspx">
-                                <div class="dropdown-item">
-                                    <i class="fa-solid fa-address-card"></i>
-                                    Profile
-                                </div>
-                            </a>
-                            <a runat="server" href="~/Pages/Profile/Wishlist.aspx">
-                                <div class="dropdown-item">
-                                    <i class="fa-solid fa-star"></i>
-                                    Wishlist
-                                </div>
-                            </a>
-                            <a runat="server" href="~/Pages/LogOut.aspx">
-                                <div class="dropdown-item">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
-                                    Log out
-                                </div>
-                            </a>
+                            </div>
+                        </a>
+                        <div class="m-2 dropdown-menu-item" style="display: flex; flex-direction: row; align-items: center; column-gap: 10px;">
+                            <!-- <i class="fa-solid fa-lg fa-user"></i> -->
+                            <img runat="server" id="topbar_profileimg" src="https://i.pinimg.com/736x/73/2b/a7/732ba7cb21fbc0d008b06ad2d3f76f1a.jpg" style="height: 48px; width: 48px; border-radius: 9999px;" />
+                            <span runat="server" id="topbar_username">Account</span>
+                            <i class="fa-solid fa-angle-down"></i>
+                            <div class="dropdown-cont" style="background-color: #02214b">
+                                <a runat="server" href="~/Pages/Profile/User.aspx">
+                                    <div class="dropdown-item">
+                                        <i class="fa-solid fa-address-card"></i>
+                                        Profile
+                                    </div>
+                                </a>
+                                <a runat="server" href="~/Pages/Profile/Wishlist.aspx">
+                                    <div class="dropdown-item">
+                                        <i class="fa-solid fa-star"></i>
+                                        Wishlist
+                                    </div>
+                                </a>
+                                <a runat="server" href="~/Pages/LogOut.aspx">
+                                    <div class="dropdown-item">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                        Log out
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </header>
+        <div class="flex justify-center">
+            <div id="master_content_div" class="w-full" style="max-width: 1440px">
+                <asp:ContentPlaceHolder ID="content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
-    </header>
-    <div class="flex justify-center">
-        <div id="master_content_div" class="w-full" style="max-width: 1440px">
-            <asp:ContentPlaceHolder ID="content" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </div>
+    </form>
 </body>
 <script src="/js/main.js"></script>
 <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>

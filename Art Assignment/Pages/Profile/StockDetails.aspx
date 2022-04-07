@@ -23,80 +23,75 @@
     </style>
 
 
-    <form runat="server">   
-        <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
-            <div class="button-22 w-auto  float-right">Add Stock</div></asp:HyperLink>
+    <asp:HyperLink ID="StockAdd" runat="server" NavigateUrl="~/Pages/Profile/AddStock.aspx">
+        <div class="button-22 w-auto  float-right">Add Stock</div></asp:HyperLink>
 
-        <br />
-        <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
-            SelectCommand="SELECT
-             concat('~/Pages/Profile/StockDetails.aspx?ID=', [ArtProd].ID) as Url,
+    <br />
+    <asp:SqlDataSource ID="ArtProdDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>"
+        SelectCommand="SELECT
+            concat('~/Pages/Profile/StockDetails.aspx?ID=', [ArtProd].ID) as Url,
 ROW_NUMBER() OVER(ORDER BY [ArtProd].ID) AS [Row],
 [ArtProd].ID,
-  [ArtProd].Name,
-  [ArtProd].Description,
-  [ArtProd].Price
+[ArtProd].Name,
+[ArtProd].Description,
+[ArtProd].Price
 FROM
-  [ArtProd]
-            INNER JOIN Artist ON [ArtProd].ArtistOwner = Artist.ID
+[ArtProd]
+        INNER JOIN Artist ON [ArtProd].ArtistOwner = Artist.ID
 WHERE Artist.UserID = @UserID
 AND [ArtProd].[DateDeleted] IS NULL">
-            
-            <SelectParameters>
-                <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
-            </SelectParameters>
+        
+        <SelectParameters>
+            <asp:Parameter DefaultValue="-1" Name="UserID" Type="Int32" />
+        </SelectParameters>
 
-        </asp:SqlDataSource>
+    </asp:SqlDataSource>
 
-       
-        <table class="mt-8 mx-auto" style="width: 80%">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price(RM)</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <%--<th>Edit</th>
-                    <th>Delete</th>--%>
-                </tr>
-            </thead>
-            <tbody>
+    
+    <table class="mt-8 mx-auto" style="width: 80%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price(RM)</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <%--<th>Edit</th>
+                <th>Delete</th>--%>
+            </tr>
+        </thead>
+        <tbody>
 
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ArtProdDataSource" OnItemCommand="Repeater1_ItemCommand">
-                    <ItemTemplate>
-                        <tr>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdRow" runat="server"
-                                    Text='<%# Eval("Row") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdName" runat="server"
-                                    Text='<%# Eval("Name") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdDescription" runat="server"
-                                    Text='<%# Eval("Description") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdPrice" runat="server"
-                                    Text='<%# string.Format("{0:n2}", Eval("Price")) %>' />
-                            </td>
-                            <td class="text-center"><a href='<%# "DisplayStock.aspx?ID=" + Eval("ID") %>'><i class="fas fa-info"></i></a></td>
-                            <td class="text-center"><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-edit"></i></a></td>
-                            <td  class="text-center"><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-trash-alt"></i></a></td>
+            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ArtProdDataSource" OnItemCommand="Repeater1_ItemCommand">
+                <ItemTemplate>
+                    <tr>
+                        <td class="px-1">
+                            <asp:Label ID="ArtProdRow" runat="server"
+                                Text='<%# Eval("Row") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="ArtProdName" runat="server"
+                                Text='<%# Eval("Name") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="ArtProdDescription" runat="server"
+                                Text='<%# Eval("Description") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="ArtProdPrice" runat="server"
+                                Text='<%# string.Format("{0:n2}", Eval("Price")) %>' />
+                        </td>
+                        <td class="text-center"><a href='<%# "DisplayStock.aspx?ID=" + Eval("ID") %>'><i class="fas fa-info"></i></a></td>
+                        <td class="text-center"><a href='<%# "EditStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-edit"></i></a></td>
+                        <td  class="text-center"><a href='<%# "DeleteStock.aspx?ID=" + Eval("ID") %>'><i class="far fa-trash-alt"></i></a></td>
 
-                        </tr>
-                    </ItemTemplate>
-                </asp:Repeater>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
 
-            </tbody>
-        </table>
-
-
-
-    </form>
+        </tbody>
+    </table>
 
 </asp:Content>

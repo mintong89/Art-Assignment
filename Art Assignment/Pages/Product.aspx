@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <form class="relative flex flex-1 items-start" runat="server">
+    <div class="relative flex flex-1 items-start">
         <asp:FormView CssClass="w-full" ID="ProdView" runat="server">
             <ItemTemplate>
                 <div class="px-20 py-14 w-full">
@@ -55,5 +55,5 @@
                 </div>
             </ItemTemplate>
         </asp:FormView>
-    </form>
+    </div>
 </asp:Content>

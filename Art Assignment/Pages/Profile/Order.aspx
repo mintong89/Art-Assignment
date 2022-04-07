@@ -48,81 +48,78 @@
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="Order.aspx?filter=REJECTED">Show Rejected Only</a>
     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="OrderApproval.aspx">Make Approvals</a>
 
-    <form runat="server">
-        <asp:SqlDataSource ID="OrderItemDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
+    <asp:SqlDataSource ID="OrderItemDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ArtDBContext %>">
 
-            <SelectParameters>
-                <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-        <table class="mt-8 mx-auto" style="width: 90%">
-            <thead>
-                <tr>
-                    <th>Art Name</th>
-                    <th>Address1</th>
-                    <th>Address2</th>
-                    <th>State</th>
-                    <th>Country</th>
-                    <th>Order Total</th>
-                    <th>Order Made By</th>
-                    <th>Delivery Fee</th>
-                    <th>Tax Fee</th>
-                    <th>Status</th>
+        <SelectParameters>
+            <asp:QueryStringParameter Name="UserID" QueryStringField="ID" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <table class="mt-8 mx-auto" style="width: 90%">
+        <thead>
+            <tr>
+                <th>Art Name</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>Order Total</th>
+                <th>Order Made By</th>
+                <th>Delivery Fee</th>
+                <th>Tax Fee</th>
+                <th>Status</th>
 
-                </tr>
-            </thead>
+            </tr>
+        </thead>
 
-            <tbody>
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OrderItemDataSource" OnItemCommand="Repeater1_ItemCommand">
-                    <ItemTemplate>
-                        <tr>
-                            <td class="px-1">
-                                <asp:Label ID="ArtProdName" runat="server"
-                                    Text='<%# Eval("Name") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="OrderAddress1" runat="server"
-                                    Text='<%# Eval("Address1") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="OrderAddress2" runat="server"
-                                    Text='<%# Eval("Address2") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="OrderState" runat="server"
-                                    Text='<%# Eval("State") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="Label1" runat="server"
-                                    Text='<%# Eval("Country") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="Label6" runat="server"
-                                    Text='<%# Eval("OrderTotal") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="Label5" runat="server"
-                                    Text='<%# Eval("OrderMadeBy") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="Label4" runat="server"
-                                    Text='<%# Eval("DeliveryFee") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="Label3" runat="server"
-                                    Text='<%# Eval("TaxFee") %>' />
-                            </td>
-                            <td class="px-1">
-                                <asp:Label ID="Label2" runat="server"
-                                    Text='<%# Eval("Status") %>' />
-                            </td>
-                        </tr>
-                    </ItemTemplate>
+        <tbody>
+            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="OrderItemDataSource" OnItemCommand="Repeater1_ItemCommand">
+                <ItemTemplate>
+                    <tr>
+                        <td class="px-1">
+                            <asp:Label ID="ArtProdName" runat="server"
+                                Text='<%# Eval("Name") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="OrderAddress1" runat="server"
+                                Text='<%# Eval("Address1") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="OrderAddress2" runat="server"
+                                Text='<%# Eval("Address2") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="OrderState" runat="server"
+                                Text='<%# Eval("State") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="Label1" runat="server"
+                                Text='<%# Eval("Country") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="Label6" runat="server"
+                                Text='<%# Eval("OrderTotal") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="Label5" runat="server"
+                                Text='<%# Eval("OrderMadeBy") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="Label4" runat="server"
+                                Text='<%# Eval("DeliveryFee") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="Label3" runat="server"
+                                Text='<%# Eval("TaxFee") %>' />
+                        </td>
+                        <td class="px-1">
+                            <asp:Label ID="Label2" runat="server"
+                                Text='<%# Eval("Status") %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
 
-                </asp:Repeater>
-            </tbody>
-        </table>
-        
-    </form>
+            </asp:Repeater>
+        </tbody>
+    </table>
 
 </asp:Content>
