@@ -115,6 +115,8 @@ WHERE ID = @ArtProdID"
             <div class="input-label">
                 Price<span style="color: red">*</span>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdPrice" ForeColor="Red">Price is required.</asp:RequiredFieldValidator>
+                <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtArtProdPrice" ErrorMessage="Value must be a number"  ForeColor="Red"/>
+             <asp:CompareValidator runat="server" Operator="GreaterThanEqual" ValueToCompare="0" Type="Integer" ControlToValidate="txtArtProdPrice" ErrorMessage="Value must be greater or equal to 0" ForeColor="Red"/>
             </div>
             <asp:TextBox class="input" runat="server" ID="txtArtProdPrice" Text='<%# Bind("Price") %>'></asp:TextBox>
 
