@@ -33,16 +33,17 @@
         <div class="input-label">
             Price
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtPrice" ForeColor="Red">Price Is Required.</asp:RequiredFieldValidator>
-            <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtArtPrice" ErrorMessage="Value must be a number" />
+            <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtArtPrice" ErrorMessage="Value must be a number"  ForeColor="Red"/>
+            <asp:CompareValidator runat="server" Operator="GreaterThanEqual" ValueToCompare="0" Type="Integer" ControlToValidate="txtArtPrice" ErrorMessage="Value must be greater or equal to 0" ForeColor="Red"/>
+
         </div>
-        <asp:TextBox class="input" runat="server" ID="txtArtPrice"></asp:TextBox>
+        <asp:TextBox class="input" runat="server" ID="txtArtPrice" OnTextChanged="txtArtPrice_TextChanged"></asp:TextBox>
     </div>
     <div>
         <div class="inline-block mt-2">
             <button runat="server" class="button-22 button-22-success" onserverclick="AddArtProd_OnClick">
                 <i class="fa-solid fa-plus"></i>&nbsp;
-                        Add
-            </button>
+                        Add</button>
         </div>
     </div>
 

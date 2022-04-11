@@ -46,5 +46,10 @@ namespace Art_Assignment.Pages.Profile
             }
             Response.Redirect("StockDetails.aspx");
         }
+
+        protected void txtArtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

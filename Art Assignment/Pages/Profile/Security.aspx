@@ -12,7 +12,12 @@
             <asp:RequiredFieldValidator CssClass="block text-red-600 text-xs" runat="server" ControlToValidate="CurrentPassword" ErrorMessage="Please enter your password!" />
         </div>--%>
         <div class="my-2">
-            <h5>New Password</h5>
+            <h5>New Password &nbsp;
+                <asp:RegularExpressionValidator ID="valPassword" runat="server" CssClass="block text-red-600 text-xs"
+                    ControlToValidate="NewPassword"
+                    ErrorMessage="Minimum password length is 8"
+                    ValidationExpression=".{8}.*"
+                    ForeColor="Red" /></h5>
             <asp:TextBox CssClass="px-4 py-2 border border-black w-full outline-none" TextMode="Password" ID="NewPassword" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator CssClass="block text-red-600 text-xs" runat="server" ControlToValidate="NewPassword" ErrorMessage="Please enter your password!" />
         </div>
