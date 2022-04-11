@@ -16,7 +16,14 @@
                 <asp:TextBox class="input" runat="server" ID="txtEmail"></asp:TextBox>
             </div>
             <div>
-                <div class="input-label">Password</div>
+                <div class="input-label">
+                    Password&nbsp;
+                    <asp:RegularExpressionValidator ID="valPassword" runat="server"
+                        ControlToValidate="txtPassword"
+                        ErrorMessage="Minimum password length is 8"
+                        ValidationExpression=".{8}.*" 
+                        ForeColor="Red"/>
+                </div>
                 <asp:TextBox class="input" runat="server" ID="txtPassword" type="password"></asp:TextBox>
             </div>
             <div>
