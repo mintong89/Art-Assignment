@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Main.Master" AutoEventWireup="true"
     CodeBehind="Cart.aspx.cs" Inherits="Art_Assignment.Pages.Cart" %>
 
+<%@ Register TagPrefix="pce" TagName="Menu" Src="~/UserControls/PriceMenu.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Welcome to Art Gallery Display System</title>
     <link rel="stylesheet" type="text/css" href="<%= Page.ResolveUrl("~/css/Cart.css")%>" />
@@ -83,40 +85,9 @@
         </div>
         <div class="w-px bg-black mx-12 sticky top-0"></div>
         <div class="total-price-container sticky top-[100px] px-16 py-8 flex flex-col items-center">
-            <div class="total-price">
-                <div class="border border-black py-12 px-8">
-                    <ul class="font-bold">
-                        <li class="grid grid-cols-2 my-2">
-                            <div>Subtotal</div>
-                            <div class="text-right">
-                                <asp:Literal ID="SubtotalText" runat="server" Text='RM 0.00'></asp:Literal>
-                            </div>
-                        </li>
-                        <li class="grid grid-cols-2 my-2">
-                            <div>Shipping</div>
-                            <div class="text-right">
-                                <asp:Literal ID="ShippingText" runat="server" Text='RM 0.00'></asp:Literal>
-                            </div>
-                        </li>
-                        <li class="grid grid-cols-2 my-2">
-                            <div>Tax</div>
-                            <div class="text-right">
-                                <asp:Literal ID="TaxText" runat="server" Text='RM 0.00'></asp:Literal>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="h-px w-full bg-black my-4"></div>
-                    <div class="font-bold grid grid-cols-2 my-2">
-                        <div>Total</div>
-                        <div class="text-right">
-                            <asp:Literal ID="TotalText" runat="server" Text='RM 0.00'></asp:Literal>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-4 flex justify-center">
-                    <asp:LinkButton CssClass="btn text-lg cursor-pointer" runat="server" Text="Checkout"
-                        OnClick="Checkout_Action" />
-                </div>
+            <pce:Menu runat="server" />
+            <div class="my-4 flex justify-center">
+                <asp:Button CssClass="btn text-lg cursor-pointer" OnClick="Checkout_Click" ID="Checkout" runat="server" Text="Checkout" />
             </div>
         </div>
     </div>

@@ -91,6 +91,7 @@
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\LogOut.aspx" />
+    <Content Include="Pages\Payment.aspx" />
     <Content Include="Pages\Product.aspx" />
     <Content Include="Pages\Profile\AddArtistProfile.aspx" />
     <Content Include="Pages\Profile\AddStock.aspx" />
@@ -110,6 +111,7 @@
     <Content Include="resources\home-background.jpg" />
     <Content Include="resources\profile-pic-blank.png" />
     <Content Include="UserControls\GalleryItem.ascx" />
+    <Content Include="UserControls\PriceMenu.ascx" />
     <Content Include="UserControls\UserProfileSidebar.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -170,6 +172,13 @@
     </Compile>
     <Compile Include="Pages\LogOut.aspx.designer.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>
@@ -283,6 +292,13 @@
     </Compile>
     <Compile Include="UserControls\GalleryItem.ascx.designer.cs">
       <DependentUpon>GalleryItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PriceMenu.ascx.cs">
+      <DependentUpon>PriceMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\PriceMenu.ascx.designer.cs">
+      <DependentUpon>PriceMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserProfileSidebar.ascx.cs">
       <DependentUpon>UserProfileSidebar.ascx</DependentUpon>

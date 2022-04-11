@@ -11,61 +11,43 @@ namespace Art_Assignment.Pages
 {
 
 
-    public partial class Cart
+    public partial class Payment
     {
 
         /// <summary>
-        /// Address1Text control.
+        /// CardNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Address1Text;
+        protected global::System.Web.UI.WebControls.TextBox CardNumber;
 
         /// <summary>
-        /// Address2Text control.
+        /// CVC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Address2Text;
+        protected global::System.Web.UI.WebControls.TextBox CVC;
 
         /// <summary>
-        /// StateText control.
+        /// FullName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StateText;
+        protected global::System.Web.UI.WebControls.TextBox FullName;
 
         /// <summary>
-        /// CountryText control.
+        /// SubmitButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CountryText;
-
-        /// <summary>
-        /// CartRepeater control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater CartRepeater;
-
-        /// <summary>
-        /// Checkout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Checkout;
+        protected global::System.Web.UI.WebControls.Button SubmitButton;
     }
 }

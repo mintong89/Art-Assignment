@@ -43,6 +43,7 @@
     cursor: default;
     flex-direction: column;
     justify-content: space-evenly;
+    z-index: 999;
 }
 
 .dropdown-item {

@@ -7,65 +7,47 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Art_Assignment.Pages
+namespace Art_Assignment.UserControls
 {
 
 
-    public partial class Cart
+    public partial class PriceMenu
     {
 
         /// <summary>
-        /// Address1Text control.
+        /// SubtotalText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Address1Text;
+        protected global::System.Web.UI.WebControls.Literal SubtotalText;
 
         /// <summary>
-        /// Address2Text control.
+        /// ShippingText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Address2Text;
+        protected global::System.Web.UI.WebControls.Literal ShippingText;
 
         /// <summary>
-        /// StateText control.
+        /// TaxText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StateText;
+        protected global::System.Web.UI.WebControls.Literal TaxText;
 
         /// <summary>
-        /// CountryText control.
+        /// TotalText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CountryText;
-
-        /// <summary>
-        /// CartRepeater control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater CartRepeater;
-
-        /// <summary>
-        /// Checkout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Checkout;
+        protected global::System.Web.UI.WebControls.Literal TotalText;
     }
 }
