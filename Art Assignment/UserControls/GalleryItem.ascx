@@ -10,13 +10,13 @@
         </h5>
 
         <div class="flex py-1">
-            <asp:Label CssClass="flex items-end" Font-Strikeout='<% #Eval("isSold") %>' runat="server">
+            <asp:Label ID="Price" CssClass="flex items-end" runat="server">
                 <p class="text-sm leading-none">RM</p>
                 <p class="leading-none">
                     <asp:Literal runat="server" Text='<%# string.Format("{0:n2}", Eval("Price")) %>'></asp:Literal>
                 </p>
             </asp:Label>
-            <asp:Label Visible='<% #Eval("isSold") %>' ID="Label1" runat="server">
+            <asp:Label ID="SoldOutNotice" runat="server">
                 <p class="pl-1 leading-none text-red-500">Sold Out</p>
             </asp:Label>
         </div>

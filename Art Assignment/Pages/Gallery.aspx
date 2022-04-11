@@ -10,8 +10,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
 
-    <div class="sticky top-[100px] z-10">
-        <div class="flex bg-white px-8 pt-8">
+    <div class="sticky top-[140px] z-10">
+        <div class="flex bg-white px-8 pt-8 pb-4">
             <div class="relative">
                 <asp:TextBox class="rounded-full border border-black outline-none h-10 pl-12" ID="SearchBox" runat="server" placeholder="Find an Art Piece...">
                 </asp:TextBox>
@@ -71,7 +71,7 @@
                     <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-8 gap-y-5">
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <gll:Item runat="server" ID="ContactUC" />
+                    <gll:Item runat="server" ID="ContactUC" isSold='<% #Eval("isSold") %>' />
                 </ItemTemplate>
                 <FooterTemplate>
                     </ul>
