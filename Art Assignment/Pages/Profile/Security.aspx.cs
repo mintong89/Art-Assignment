@@ -17,6 +17,11 @@ namespace Art_Assignment.Pages.Profile
 
         protected void Submit_Password(object sender, EventArgs e)
         {
+            Page.Validate();
+            if(!Page.IsValid)
+            {
+                return;
+            }
             //string currentPassword = CurrentPassword.Text.ToString();
             string newPassword = NewPassword.Text.ToString();
             string confirmationPassword = ConfirmationPassword.Text.ToString();
