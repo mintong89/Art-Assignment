@@ -106,6 +106,7 @@ WHERE ID = @ArtProdID"
             <div class="input-label">
                 Stock Name<span style="color: red">*</span>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdName" ForeColor="Red">Name is required.</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z]*$"  ControlToValidate="txtArtName" ForeColor="Red">Art Name Accepts Alphabet Characters Only</asp:RegularExpressionValidator>
             </div>
             <asp:TextBox class="input" runat="server" ID="txtArtProdName" Text='<%# Bind("Name") %>'></asp:TextBox>
             <div class="input-label">
