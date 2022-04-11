@@ -19,6 +19,7 @@
         <div class="input-label">
             Art Name<span style="color: red">*</span>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtName" ForeColor="Red">Art Name Is Required.</asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z]*$"  ControlToValidate="txtArtName" ForeColor="Red">Art Name Accepts Alphabet Characters Only</asp:RegularExpressionValidator>
         </div>
         <asp:TextBox class="input" runat="server" ID="txtArtName"></asp:TextBox>
     </div>

@@ -23,13 +23,28 @@ namespace Art_Assignment.Pages.Profile
             {
                 return;
             }
-
+            //TODO Get Artist UserID
             Int64 uid = Auth.getLogonUserUID(Request, Response);
+           
+
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString))
             {
+
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO ArtProd([Name], [Description], [ArtistOwner], [Price], [ArtPicture], [DateCreated], [DateModified]) VALUES(@ArtName, @ArtDescription, @UserID, @ArtPrice, @ArtPicture, getdate(), getdate())", con);
+
+                SqlCommand cmd2 = new SqlCommand("SELECT id FROM Artist WHERE UserID=@UserID", con);
+                cmd2.Parameters.AddWithValue("UserID", uid);
+                
+
+
+                SqlDataReader dr = cmd2.ExecuteReader();
+                dr.Read();
+                var artistID = dr[0].ToString();
+                dr.Close();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO ArtProd([Name], [Description], [ArtistOwner], [Price], [ArtPicture], [DateCreated], [DateModified]) VALUES(@ArtName, @ArtDescription, @ArtistID, @ArtPrice, @ArtPicture, getdate(), getdate())", con);
+
                 cmd.Parameters.AddWithValue("@ArtName", txtArtName.Text);
                 if (txtArtDescription.Text == "")
                 {
@@ -41,8 +56,10 @@ namespace Art_Assignment.Pages.Profile
                 }
                 cmd.Parameters.AddWithValue("@ArtPrice", txtArtPrice.Text);
                 cmd.Parameters.AddWithValue("@ArtPicture", imageInput.Value == "" ? (object)DBNull.Value : Art_Assignment.Utility.Misc.handleFileUpload(imageInput, Server));
-                cmd.Parameters.AddWithValue("@UserID", uid);
+                cmd.Parameters.AddWithValue("@ArtistID", artistID);
+                
                 cmd.ExecuteNonQuery();
+                con.Close();
             }
             Response.Redirect("StockDetails.aspx");
         }
