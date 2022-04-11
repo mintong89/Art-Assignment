@@ -104,9 +104,9 @@ WHERE ID = @ArtProdID"
             </div>
             <input runat="server" type="file" id="imageInput" class="hidden" ClientIDMode="Static" />
             <div class="input-label">
-                Stock Name<span style="color: red">*</span>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdName" ForeColor="Red">Name is required.</asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z]*$"  ControlToValidate="txtArtName" ForeColor="Red">Art Name Accepts Alphabet Characters Only</asp:RegularExpressionValidator>
+                Art Name<span style="color: red">*</span>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdName" ForeColor="Red">Art Name is required.</asp:RequiredFieldValidator>
+                <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z ]*$"  ControlToValidate="txtArtProdName" ForeColor="Red">Art Name Accepts Alphabet Characters Only</asp:RegularExpressionValidator>--%>
             </div>
             <asp:TextBox class="input" runat="server" ID="txtArtProdName" Text='<%# Bind("Name") %>'></asp:TextBox>
             <div class="input-label">
@@ -116,8 +116,8 @@ WHERE ID = @ArtProdID"
             <div class="input-label">
                 Price<span style="color: red">*</span>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtProdPrice" ForeColor="Red">Price is required.</asp:RequiredFieldValidator>
-                <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtArtProdPrice" ErrorMessage="Value must be a number"  ForeColor="Red"/>
-             <asp:CompareValidator runat="server" Operator="GreaterThanEqual" ValueToCompare="0" Type="Integer" ControlToValidate="txtArtProdPrice" ErrorMessage="Value must be greater or equal to 0" ForeColor="Red"/>
+                <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Double" ControlToValidate="txtArtProdPrice" ErrorMessage="Value must be a number"  ForeColor="Red"/>
+             <asp:CompareValidator runat="server" Operator="GreaterThanEqual" ValueToCompare="0" Type="Double" ControlToValidate="txtArtProdPrice" ErrorMessage="Value must be greater or equal to 0" ForeColor="Red"/>
             </div>
             <asp:TextBox class="input" runat="server" ID="txtArtProdPrice" Text='<%# Bind("Price") %>'></asp:TextBox>
 
