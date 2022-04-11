@@ -13,7 +13,13 @@ namespace Art_Assignment.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                Auth.getLogonUserUID(Request, Response);
+                Response.Redirect("/Pages/Profile/User.aspx");
+            }
+            catch (Exception ex) { 
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
