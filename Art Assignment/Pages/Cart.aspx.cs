@@ -46,6 +46,7 @@ namespace Art_Assignment.Pages
             string deleteId = Request.QueryString["DeleteId"];
             if (!IsPostBack && !string.IsNullOrEmpty(deleteId))
             {
+                con.Open();
                 string deleteSql = "DELETE FROM CartItem " +
                     $"WHERE UserId=${userID} AND ArtProdId=${deleteId}";
                 SqlCommand deleteCmd = new SqlCommand(deleteSql, con);
