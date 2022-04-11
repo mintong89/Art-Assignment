@@ -19,7 +19,7 @@
         <div class="input-label">
             Art Name<span style="color: red">*</span>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtName" ForeColor="Red">Art Name Is Required.</asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z]*$"  ControlToValidate="txtArtName" ForeColor="Red">Art Name Accepts Alphabet Characters Only</asp:RegularExpressionValidator>
+            <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[a-zA-Z ]*$"  ControlToValidate="txtArtName" ForeColor="Red">Art Name Accepts Alphabet Characters Only</asp:RegularExpressionValidator>--%>
         </div>
         <asp:TextBox class="input" runat="server" ID="txtArtName"></asp:TextBox>
     </div>
@@ -34,8 +34,8 @@
         <div class="input-label">
             Price
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtArtPrice" ForeColor="Red">Price Is Required.</asp:RequiredFieldValidator>
-            <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" ControlToValidate="txtArtPrice" ErrorMessage="Value must be a number"  ForeColor="Red"/>
-            <asp:CompareValidator runat="server" Operator="GreaterThanEqual" ValueToCompare="0" Type="Integer" ControlToValidate="txtArtPrice" ErrorMessage="Value must be greater or equal to 0" ForeColor="Red"/>
+            <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Double" ControlToValidate="txtArtPrice" ErrorMessage="Value must be a number"  ForeColor="Red"/>
+            <asp:CompareValidator runat="server" Operator="GreaterThanEqual" ValueToCompare="0" Type="Double" ControlToValidate="txtArtPrice" ErrorMessage="Value must be greater or equal to 0" ForeColor="Red"/>
 
         </div>
         <asp:TextBox class="input" runat="server" ID="txtArtPrice" OnTextChanged="txtArtPrice_TextChanged"></asp:TextBox>
