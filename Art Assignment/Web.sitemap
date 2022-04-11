@@ -15,7 +15,9 @@
         <siteMapNode url="/Pages/Profile/PurchaseHistory.aspx" title="My Purchase"  description="" />
         <siteMapNode url="/Pages/Profile/Wishlist.aspx" title="My Wishlist"  description="" />
         <siteMapNode url="/Pages/Profile/StockDetails.aspx" title="Stock Management"  description="">
+            <siteMapNode url="/Pages/Profile/DisplayStock.aspx" title="Stock Details"  description="" />
             <siteMapNode url="/Pages/Profile/Order.aspx" title="Incoming Orders"  description="" />
+            <siteMapNode url="/Pages/Profile/OrderApproval.aspx" title="Order Approval"  description="" />
             <siteMapNode url="/Pages/Profile/AddStock.aspx" title="Add Stock"  description="" />
             <siteMapNode url="/Pages/Profile/DeleteStock.aspx" title="Delete Stock"  description="" />
             <siteMapNode url="/Pages/Profile/EditStock.aspx" title="Edit Stock"  description="" />
