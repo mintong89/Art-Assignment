@@ -89,6 +89,11 @@
                 </div>
             </div>
         </header>
+        <div class="p-2 flex justify-center">
+              <div class="flex justify-between w-full" style="max-width: 1440px;">
+                  <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+              </div>
+        </div>
         <div class="flex justify-center">
             <div id="master_content_div" class="w-full" style="max-width: 1440px">
                 <asp:ContentPlaceHolder ID="content" runat="server">
