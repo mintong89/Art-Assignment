@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Configuration;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 namespace Art_Assignment.Utility
 {
     public class Misc
@@ -17,6 +20,39 @@ namespace Art_Assignment.Utility
                                     .Replace('/', '-')
                                     .TrimEnd('=');
             return id;
+        }
+
+        /// <summary>
+        /// Send Email using smtp.gmail.com:587
+        /// </summary>
+        /// <param name="from">From email address</param>
+        /// <param name="to">To Email Address</param>
+        /// <param name="subject">Subject Line of the email</param>
+        /// <param name="mailbody">Body of the email</param>
+        /// <param name="cred_id">SMTP Credential ID</param>
+        /// <param name="cred_pass">SMTP Credential Password</param>
+        /// <exception cref="Exception">Will throw exception if mail fail to send</exception>
+        public static void sendMail(string from, string to, string subject, string mailbody, string cred_id, string cred_pass)
+        {
+            MailMessage message = new MailMessage(from, to);
+
+            message.Subject = subject;
+            message.Body = mailbody;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
+            System.Net.NetworkCredential basicCredential1 = new System.Net.NetworkCredential(cred_id, cred_pass);
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = basicCredential1;
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
