@@ -109,6 +109,7 @@
     <Content Include="resources\Blank_Art.jpg" />
     <Content Include="resources\home-background.jpg" />
     <Content Include="resources\profile-pic-blank.png" />
+    <Content Include="UserControls\GalleryItem.ascx" />
     <Content Include="UserControls\UserProfileSidebar.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -276,6 +277,13 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\GalleryItem.ascx.cs">
+      <DependentUpon>GalleryItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GalleryItem.ascx.designer.cs">
+      <DependentUpon>GalleryItem.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserProfileSidebar.ascx.cs">
       <DependentUpon>UserProfileSidebar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

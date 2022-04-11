@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Main.Master" AutoEventWireup="true" CodeBehind="Gallery.aspx.cs" Inherits="Art_Assignment.Pages.Gallery" %>
 
+<%@ Register TagPrefix="gll" TagName="Item" Src="~/UserControls/GalleryItem.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Welcome to Art Gallery Display System</title>
     <link rel="stylesheet" type="text/css" href="<%= Page.ResolveUrl("~/css/Gallery.css")%>" />
@@ -7,6 +9,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+
     <div class="sticky top-[100px] z-10">
         <div class="flex bg-white px-8 pt-8">
             <div class="relative">
@@ -18,7 +21,7 @@
         </div>
     </div>
     <div class="relative flex flex-1 items-start">
-        <div class="gallery-container sticky px-8 flex flex-col py-10">
+        <%--        <div class="gallery-container sticky px-8 flex flex-col py-10">
             <div class="flex flex-1">
                 <div class="gallery--search-filters">
                     <h3 class="font-bold text-lg drop-shadow-lg mb-2">Search Filters</h3>
@@ -61,39 +64,14 @@
                 </div>
                 <div class="w-px bg-black mx-12"></div>
             </div>
-        </div>
-        <div class="my-10">
+        </div>--%>
+        <div class="my-10 mx-8">
             <asp:Repeater ID="rptArtistProd" runat="server">
                 <HeaderTemplate>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-5">
+                    <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-8 gap-y-5">
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <li>
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "~/Pages/Product.aspx?Id={0}") %>'>
-                            <div class="w-44 h-44 border border-black">
-                                <img class="w-full h-full" runat="server" src='<%# Eval("ArtPicture", "~/upload/{0}") %>' />
-                            </div>
-                            <h5 class="text-lg">
-                                <asp:Literal runat="server" Text='<%# Eval("Name") %>'></asp:Literal>
-                            </h5>
-
-                            <div class="flex py-1">
-                                <asp:Label CssClass="flex items-end" Font-Strikeout='<% #Eval("isSold") %>' runat="server">
-                                    <p class="text-sm leading-none">RM</p>
-                                    <p class="leading-none">
-                                        <asp:Literal runat="server" Text='<%# string.Format("{0:n2}", Eval("Price")) %>'></asp:Literal>
-                                    </p>
-                                </asp:Label>
-                                <asp:Label Visible='<% #Eval("isSold") %>' ID="Label1" runat="server">
-                                    <p class="pl-1 leading-none text-red-500">Sold Out</p>
-                                </asp:Label>
-                            </div>
-                            <p class="text-xs text-gray-500 leading-3">
-                                By
-                            <asp:Literal runat="server" Text='<%# Eval("ArtistName") %>'></asp:Literal>
-                            </p>
-                        </asp:HyperLink>
-                    </li>
+                    <gll:Item runat="server" ID="ContactUC" />
                 </ItemTemplate>
                 <FooterTemplate>
                     </ul>

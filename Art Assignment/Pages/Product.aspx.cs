@@ -32,7 +32,7 @@ namespace Art_Assignment.Pages
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtDBContext"].ConnectionString);
 
-            string sql = "SELECT ArtProd.*, Artist.Name AS ArtistName " +
+            string sql = "SELECT ArtProd.*, Artist.Name AS ArtistName, Artist.ID AS ArtistID " +
                 "FROM ArtProd INNER JOIN Artist " +
                 "ON ArtProd.ArtistOwner = Artist.Id " +
                 $"AND ArtProd.Id=${artProdId} AND ArtProd.DateDeleted IS NULL";

@@ -20,7 +20,9 @@
                                     <asp:Literal runat="server" Text='<%# Eval("Name") %>'></asp:Literal>
                                 </h3>
                                 <h4 class="text-lg">By 
-                                    <asp:Literal runat="server" Text='<%# Eval("ArtistName") %>'></asp:Literal>
+                                    <a runat="server" href='<%# Eval("ArtistID", "/Pages/Artist/View.aspx?ID={0}") %>'>
+                                        <asp:Literal runat="server" Text='<%# Eval("ArtistName") %>'></asp:Literal>
+                                    </a>
                                 </h4>
                                 <div class="flex justify-between items-center mt-8">
                                     <div class="flex items-center">
