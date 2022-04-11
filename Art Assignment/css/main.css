@@ -171,3 +171,15 @@
     background-position: center;
     background-image: url("/resources/cross.png") !important;
 }
+
+#SiteMapPath1 > span > a:hover {
+    filter: drop-shadow(0 0 0.25em black);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+#SiteMapPath1 > span:last-of-type {
+    color: #02214b;
+    font-weight: bold;
+}
