@@ -363,7 +363,31 @@ WHERE OrderID = @OrderID
             Session.Remove("address2");
             Session.Remove("state");
             Session.Remove("country");
+            Int64 uid = Auth.getLogonUserUID(Request, Response);
+            Tuple<SqlConnection, SqlDataReader> tup = SqlHelper.ExecuteReader("SELECT Email FROM [User] WHERE ID = @ID", new Dictionary<string, object>() { { "@ID", uid } });
+            SqlConnection e_con = tup.Item1;
+            SqlDataReader reader = tup.Item2;
 
+            reader.Read();
+            string useremailaddress = reader.GetColumnSafe<string>("Email");
+
+            reader.Close();
+            e_con.Close();
+
+            string from_email = "loozk-pm19@student.tarc.edu.my";
+            string to_email = useremailaddress;
+            string email_subject = "Purchase Receipt";
+            string email_password = ""; // Warning: DO NOT commit your password or you're fucked :D
+
+            string mailbody = GenerateHTMLReceiptFromOrderID(orderID);
+            try
+            {
+                Art_Assignment.Utility.Misc.sendMail(from_email, to_email, email_subject, mailbody, from_email, email_password);
+            }
+            catch (Exception ex)
+            {
+                // Fail to send email;
+            }
             Page.Response.Redirect("~/Pages/Profile/PurchaseHistory.aspx", true);
         }
     }
