@@ -5,6 +5,7 @@
     <siteMapNode url="/Pages/Register.aspx" title="Register"  description="" />
     <siteMapNode url="/Pages/Gallery.aspx" title="Gallery"  description="">
         <siteMapNode url="/Pages/Cart.aspx" title="Shopping Cart" description="" />
+        <siteMapNode url="/Pages/Payment.aspx" title="Payment" description="" />
         <siteMapNode url="/Pages/Product.aspx" title="Product Details" description="" />
     </siteMapNode>
     <siteMapNode url="/Pages/Artist/View.aspx" title="Artist"  description="" />
