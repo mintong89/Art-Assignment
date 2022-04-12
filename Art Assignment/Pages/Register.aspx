@@ -12,6 +12,7 @@
                 <div class="input-label">
                     Email&nbsp;
                     <asp:CustomValidator ValidateEmptyText="True" ID="CustomValidator1" runat="server" ErrorMessage="(Email had been previously registered !)" ControlToValidate="txtEmail" ForeColor="Red" OnServerValidate="CustomValidator1_ServerValidate" Display="Dynamic"></asp:CustomValidator>
+                    <asp:RegularExpressionValidator ID="regexEmailValid" ForeColor="Red" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="txtEmail" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
                 </div>
                 <asp:TextBox class="input" runat="server" ID="txtEmail"></asp:TextBox>
             </div>
